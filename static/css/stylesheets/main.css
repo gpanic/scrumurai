@@ -1,10 +1,16 @@
-/* line 6, ../sass/main.scss */
+/* line 8, ../sass/main.scss */
 body {
   font-family: Arial;
   font-size: 20px;
+  color: #95a5a5;
 }
 
-/* line 11, ../sass/main.scss */
+/* line 14, ../sass/main.scss */
+.clear {
+  clear: both;
+}
+
+/* line 18, ../sass/main.scss */
 #window {
   height: 800px;
   width: 480px;
@@ -12,14 +18,14 @@ body {
   margin: 0 auto;
 }
 
-/* line 18, ../sass/main.scss */
+/* line 25, ../sass/main.scss */
 #androidtoolbar {
   height: 38px;
   width: 480px;
   background-color: black;
 }
 
-/* line 28, ../sass/main.scss */
+/* line 35, ../sass/main.scss */
 #menu {
   background-color: #19b99a;
   height: 70px;
@@ -27,7 +33,7 @@ body {
   margin: 0px;
 }
 
-/* line 35, ../sass/main.scss */
+/* line 42, ../sass/main.scss */
 #menu a {
   float: left;
   display: inline-block;
@@ -35,39 +41,40 @@ body {
   width: 70px;
 }
 
-/* line 42, ../sass/main.scss */
+/* line 49, ../sass/main.scss */
 #menu a:last-child {
   float: right;
 }
 
-/* line 46, ../sass/main.scss */
+/* line 53, ../sass/main.scss */
 #menu a:hover {
   background-color: #138c75;
 }
 
-/* line 50, ../sass/main.scss */
+/* line 57, ../sass/main.scss */
 #menu a img {
   padding: 15px;
 }
 
-/* line 54, ../sass/main.scss */
+/* line 61, ../sass/main.scss */
 #appname {
   background-color: #ecf0f1;
   height: 40px;
 }
 
-/* line 59, ../sass/main.scss */
+/* line 66, ../sass/main.scss */
 #projectname {
   background-color: #ecf0f1;
   height: 40px;
 }
-/* line 62, ../sass/main.scss */
+/* line 69, ../sass/main.scss */
 #projectname #namecontainer {
+  color: black;
   float: left;
   position: relative;
   left: 50%;
 }
-/* line 66, ../sass/main.scss */
+/* line 74, ../sass/main.scss */
 #projectname #namecontainer span.name {
   float: left;
   position: relative;
@@ -75,7 +82,7 @@ body {
   line-height: 40px;
   font-weight: bold;
 }
-/* line 73, ../sass/main.scss */
+/* line 81, ../sass/main.scss */
 #projectname #namecontainer .triangle {
   position: relative;
   left: -50%;
@@ -88,7 +95,28 @@ body {
   margin: 16px 0 0 7px;
 }
 
-/* line 89, ../sass/main.scss */
-.clear {
-  clear: both;
+/* line 98, ../sass/main.scss */
+.ttasks {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 101, ../sass/main.scss */
+.ttasks th {
+  font-size: 16px;
+  text-align: left;
+  background-color: #34495e;
+  color: white;
+}
+/* line 107, ../sass/main.scss */
+.ttasks th:first-child, .ttasks td:first-child {
+  padding-left: 5px;
+}
+/* line 110, ../sass/main.scss */
+.ttasks td:first-child {
+  color: #34495e;
+}
+/* line 115, ../sass/main.scss */
+.ttasks td {
+  border-bottom: 1px solid #95a5a5;
+  line-height: 60px;
 }

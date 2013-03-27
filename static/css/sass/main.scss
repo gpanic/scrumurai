@@ -2,12 +2,19 @@
 
 $turquoise: #19b99a;
 $clouds: #ECF0F1;
- 
+$concrete: #95A5A5;
+$wetasphalt: #34495E;
+
 body{
 	font-family: Arial;
 	font-size: 20px;
+	color: $concrete;
 } 
  
+.clear{
+    clear: both;
+}
+
 #window{
 	height: 800px;
 	width: 480px;
@@ -60,6 +67,7 @@ body{
 	background-color: $clouds;
 	height: 40px;
 	#namecontainer{
+		color: black;
 		float: left; 
 		position: relative; 
 		left: 50%;
@@ -84,8 +92,30 @@ body{
 	}
 }
 
+#content{
+}
 
-
-.clear{
-    clear: both;
+.ttasks{
+	width: 100%;
+	border-collapse: collapse;
+	th{
+		font-size: 16px;
+		text-align: left;
+		background-color: $wetasphalt;
+		color: white;
+	}
+	th:first-child{
+		padding-left: 5px;
+	}
+	td:first-child{
+		@extend th:first-child;
+		color: $wetasphalt;
+	}
+	
+	td{
+		border-bottom: 1px solid $concrete;
+		line-height: 60px;
+	}
+	
+	
 }
