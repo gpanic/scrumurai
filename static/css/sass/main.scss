@@ -23,6 +23,27 @@ $clouds: #ECF0F1;
 #menu{
 	background-color: $turquoise;
 	height: 70px;
+	padding: 0px;
+	margin: 0px;
+}
+
+#menu a{
+	float: left;
+	display: inline-block;
+	height: 100%;
+	width: 70px;
+}
+
+#menu a:last-child {
+	float: right;
+}
+
+#menu a:hover{
+	background-color: darken($turquoise, 10%);
+}
+
+#menu a img{
+	padding: 15px;
 }
 
 #appname{

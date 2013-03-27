@@ -17,9 +17,34 @@
 #menu {
   background-color: #19b99a;
   height: 70px;
+  padding: 0px;
+  margin: 0px;
 }
 
-/* line 28, ../sass/main.scss */
+/* line 30, ../sass/main.scss */
+#menu a {
+  float: left;
+  display: inline-block;
+  height: 100%;
+  width: 70px;
+}
+
+/* line 37, ../sass/main.scss */
+#menu a:last-child {
+  float: right;
+}
+
+/* line 41, ../sass/main.scss */
+#menu a:hover {
+  background-color: #138c75;
+}
+
+/* line 45, ../sass/main.scss */
+#menu a img {
+  padding: 15px;
+}
+
+/* line 49, ../sass/main.scss */
 #appname {
   background-color: #ecf0f1;
   height: 40px;
