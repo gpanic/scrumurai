@@ -1,7 +1,7 @@
 /* line 8, ../sass/main.scss */
 body {
   font-family: Arial;
-  font-size: 20px;
+  font-size: 24px;
   color: #95a5a5;
 }
 
@@ -66,15 +66,16 @@ body {
 #projectname {
   background-color: #ecf0f1;
   height: 40px;
+  font-size: 20px;
 }
-/* line 69, ../sass/main.scss */
+/* line 70, ../sass/main.scss */
 #projectname #namecontainer {
   color: black;
   float: left;
   position: relative;
   left: 50%;
 }
-/* line 74, ../sass/main.scss */
+/* line 75, ../sass/main.scss */
 #projectname #namecontainer span.name {
   float: left;
   position: relative;
@@ -82,7 +83,7 @@ body {
   line-height: 40px;
   font-weight: bold;
 }
-/* line 81, ../sass/main.scss */
+/* line 82, ../sass/main.scss */
 #projectname #namecontainer .triangle {
   position: relative;
   left: -50%;
@@ -95,28 +96,28 @@ body {
   margin: 16px 0 0 7px;
 }
 
-/* line 98, ../sass/main.scss */
+/* line 99, ../sass/main.scss */
 .ttasks {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 101, ../sass/main.scss */
+/* line 102, ../sass/main.scss */
 .ttasks th {
   font-size: 16px;
   text-align: left;
   background-color: #34495e;
   color: white;
 }
-/* line 107, ../sass/main.scss */
+/* line 108, ../sass/main.scss */
 .ttasks th:first-child, .ttasks td:first-child {
-  padding-left: 5px;
+  padding-left: 10px;
 }
-/* line 110, ../sass/main.scss */
+/* line 111, ../sass/main.scss */
 .ttasks td:first-child {
   color: #34495e;
 }
-/* line 115, ../sass/main.scss */
+/* line 116, ../sass/main.scss */
 .ttasks td {
   border-bottom: 1px solid #95a5a5;
-  line-height: 60px;
+  line-height: 70px;
 }

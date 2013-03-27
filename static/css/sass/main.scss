@@ -7,7 +7,7 @@ $wetasphalt: #34495E;
 
 body{
 	font-family: Arial;
-	font-size: 20px;
+	font-size: 24px;
 	color: $concrete;
 } 
  
@@ -66,6 +66,7 @@ body{
 #projectname{
 	background-color: $clouds;
 	height: 40px;
+	font-size: 20px;
 	#namecontainer{
 		color: black;
 		float: left; 
@@ -105,7 +106,7 @@ body{
 		color: white;
 	}
 	th:first-child{
-		padding-left: 5px;
+		padding-left: 10px;
 	}
 	td:first-child{
 		@extend th:first-child;
@@ -114,7 +115,7 @@ body{
 	
 	td{
 		border-bottom: 1px solid $concrete;
-		line-height: 60px;
+		line-height: 70px;
 	}
 	
 	
