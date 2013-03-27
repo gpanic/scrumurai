@@ -1,4 +1,10 @@
 /* line 6, ../sass/main.scss */
+body {
+  font-family: Arial;
+  font-size: 20px;
+}
+
+/* line 11, ../sass/main.scss */
 #window {
   height: 800px;
   width: 480px;
@@ -6,14 +12,14 @@
   margin: 0 auto;
 }
 
-/* line 13, ../sass/main.scss */
+/* line 18, ../sass/main.scss */
 #androidtoolbar {
   height: 38px;
   width: 480px;
   background-color: black;
 }
 
-/* line 23, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 #menu {
   background-color: #19b99a;
   height: 70px;
@@ -21,7 +27,7 @@
   margin: 0px;
 }
 
-/* line 30, ../sass/main.scss */
+/* line 35, ../sass/main.scss */
 #menu a {
   float: left;
   display: inline-block;
@@ -29,23 +35,60 @@
   width: 70px;
 }
 
-/* line 37, ../sass/main.scss */
+/* line 42, ../sass/main.scss */
 #menu a:last-child {
   float: right;
 }
 
-/* line 41, ../sass/main.scss */
+/* line 46, ../sass/main.scss */
 #menu a:hover {
   background-color: #138c75;
 }
 
-/* line 45, ../sass/main.scss */
+/* line 50, ../sass/main.scss */
 #menu a img {
   padding: 15px;
 }
 
-/* line 49, ../sass/main.scss */
+/* line 54, ../sass/main.scss */
 #appname {
   background-color: #ecf0f1;
   height: 40px;
+}
+
+/* line 59, ../sass/main.scss */
+#projectname {
+  background-color: #ecf0f1;
+  height: 40px;
+}
+/* line 62, ../sass/main.scss */
+#projectname #namecontainer {
+  float: left;
+  position: relative;
+  left: 50%;
+}
+/* line 66, ../sass/main.scss */
+#projectname #namecontainer span.name {
+  float: left;
+  position: relative;
+  left: -50%;
+  line-height: 40px;
+  font-weight: bold;
+}
+/* line 73, ../sass/main.scss */
+#projectname #namecontainer .triangle {
+  position: relative;
+  left: -50%;
+  float: left;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 9px 7.5px 0 7.5px;
+  border-color: #000000 transparent transparent transparent;
+  margin: 16px 0 0 7px;
+}
+
+/* line 89, ../sass/main.scss */
+.clear {
+  clear: both;
 }
