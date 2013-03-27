@@ -1,0 +1,26 @@
+/* line 6, ../sass/main.scss */
+#window {
+  height: 800px;
+  width: 480px;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+/* line 13, ../sass/main.scss */
+#androidtoolbar {
+  height: 38px;
+  width: 480px;
+  background-color: black;
+}
+
+/* line 23, ../sass/main.scss */
+#menu {
+  background-color: #19b99a;
+  height: 70px;
+}
+
+/* line 28, ../sass/main.scss */
+#appname {
+  background-color: #ecf0f1;
+  height: 40px;
+}

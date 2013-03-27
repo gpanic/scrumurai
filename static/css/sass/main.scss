@@ -1,0 +1,31 @@
+@import 'compass';
+
+$turquoise: #19b99a;
+$clouds: #ECF0F1;
+ 
+#window{
+	height: 800px;
+	width: 480px;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+
+#androidtoolbar{
+	height: 38px;
+	width: 480px;
+	background-color: black;
+}
+
+#app{
+	
+}
+
+#menu{
+	background-color: $turquoise;
+	height: 70px;
+}
+
+#appname{
+	background-color: $clouds;
+	height: 40px;
+}
