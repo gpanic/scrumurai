@@ -142,14 +142,17 @@ body {
 
 /* line 142, ../sass/main.scss */
 .expanded_menu {
+  display: none;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   margin-top: -25px;
   left: 0%;
   width: 480px;
   color: white;
+  height: 60px;
+  padding-top: 5px;
 }
-/* line 150, ../sass/main.scss */
+/* line 153, ../sass/main.scss */
 .expanded_menu:after {
   /*arrow added to uparrowdiv DIV*/
   content: '';
@@ -164,4 +167,48 @@ body {
   /*border color should be same as div div background color*/
   border-style: solid;
   border-width: 10px;
+}
+/* line 166, ../sass/main.scss */
+.expanded_menu .quarter {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+/* line 170, ../sass/main.scss */
+.expanded_menu .quarter .icon {
+  height: 30px;
+}
+
+/* line 176, ../sass/main.scss */
+.formline {
+  padding: 10px 10px 0 10px;
+}
+
+/* line 186, ../sass/main.scss */
+input[type="text"], textarea {
+  font-size: 20px;
+  line-height: 50px;
+  border: 3px solid #19b99a;
+  border-radius: 5px;
+  width: 454px;
+  color: #34495e;
+}
+
+/* line 195, ../sass/main.scss */
+textarea {
+  width: 450px;
+}
+
+/* line 200, ../sass/main.scss */
+select {
+  font-size: 20px;
+  line-height: 50px;
+  border: 3px solid #19b99a;
+  border-radius: 5px;
+  width: 460px;
+  color: #34495e;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../../img/selectbg.png);
 }

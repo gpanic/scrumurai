@@ -88,11 +88,26 @@
 										<img src="static/img/menu_more/expand.png"/>
 									</a>
 									<div class="expanded_menu">
-										<a href="#"></a>
-										<a href="#"></a>
-										<a href="#"></a>
-										<a href="#"></a>
-										<a href="#"></a>
+										<div class="quarter">
+											<a href="#">
+												<img class="icon" src="static/img/menu_more/poker.png"/>
+											</a>
+										</div>	
+										<div class="quarter">
+											<a href="#">
+												<img class="icon" src="static/img/menu_more/move.png"/>
+											</a>
+										</div>	
+										<div class="quarter">	
+											<a href="#">
+												<img class="icon" src="static/img/menu_more/edit.png"/>
+											</a>
+										</div>	
+										<div class="quarter">
+											<a href="#">
+												<img class="icon" src="static/img/menu_more/bin.png"/>
+											</a>
+										</div>
 									</div>
 								</td>
 							</tr>
@@ -113,7 +128,12 @@
 		</div>
 		<script type="text/javascript">
 			$(function(){
-				
+				$(".expand").click(function(){
+					if($(".expanded_menu").css("display") == "none")
+						$(".expanded_menu").css("display","block");
+					else
+						$(".expanded_menu").css("display","none");
+				});
 			});
 		</script>
 	</body>
