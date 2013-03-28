@@ -8,19 +8,18 @@
 		<script type="text/javascript" src="static/js/jquery191.js"></script>
 	</head>
 	<body>
-		
 		<div id="window">
 			<div id="androidtoolbar"></div>
 			<div id="app">
 				<div id="menu">
 					<a href="index.html">
-						<img  class="selected" src="static/img/menu_top/icon_mytasks.png" />
+						<img src="static/img/menu_top/icon_mytasks.png" />
 					</a>
 					<a href="#">
 						<img src="static/img/menu_top/icon_burndown.png" />
 					</a>
 					<a href="productbacklog.html">
-						<img src="static/img/menu_top/icon_backlog.png" />
+						<img class="selected" src="static/img/menu_top/icon_backlog.png" />
 					</a>
 					<a href="#">
 						<img src="static/img/menu_top/icon_sprint.png" />
@@ -46,6 +45,7 @@
 								<th>User story</th>
 								<th class="centeralign">Effort</th>
 								<th>BV</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -53,31 +53,68 @@
 								<td>Task 1</td>
 								<td class="centeralign">8</td>
 								<td>Good</td>
+								<td>
+									<a href="#" class="expand">
+										<img src="static/img/menu_more/expand.png"/>
+									</a>
+								</td>
 							</tr>
 							<tr>
 								<td>Task 2</td>
 								<td class="centeralign">5</td>
 								<td>Must have</td>
+								<td>
+									<a href="#" class="expand">
+										<img src="static/img/menu_more/expand.png"/>
+									</a>
+								</td>
 							</tr>
 							<tr>
 								<td>Task 3</td>
 								<td class="centeralign">3</td>
 								<td>Good</td>
+								<td>
+									<a href="#" class="expand">
+										<img src="static/img/menu_more/expand.png"/>
+									</a>
+								</td>
 							</tr>
 							<tr>
 								<td>Task 4</td>
 								<td class="centeralign">8</td>
 								<td>Must have</td>
+								<td>
+									<a href="#" class="expand">
+										<img src="static/img/menu_more/expand.png"/>
+									</a>
+									<div class="expanded_menu">
+										<a href="#"></a>
+										<a href="#"></a>
+										<a href="#"></a>
+										<a href="#"></a>
+										<a href="#"></a>
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td>Task 5</td>
 								<td class="centeralign">3</td>
 								<td>Good</td>
+								<td>
+									<a href="#" class="expand">
+										<img src="static/img/menu_more/expand.png"/>
+									</a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			$(function(){
+				
+			});
+		</script>
 	</body>
 </html>

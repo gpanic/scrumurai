@@ -21,6 +21,7 @@ body{
 	width: 480px;
 	border: 1px solid black;
 	margin: 0 auto;
+	overflow:visible; position:relative;
 }
 
 #androidtoolbar{
@@ -38,25 +39,29 @@ body{
 	height: 70px;
 	padding: 0px;
 	margin: 0px;
-}
+	a{
+		margin-top: 15px;
+		float: left;
+		display: inline-block;
+		height: 40px;
+		border-left: 1px solid #00997B;
+		
+	}
 
-#menu a{
-	float: left;
-	display: inline-block;
-	height: 100%;
-	width: 70px;
-}
-
-#menu a:last-child {
-	float: right;
-}
-
-#menu a:hover{
-	background-color: darken($turquoise, 10%);
-}
-
-#menu a img{
-	padding: 15px;
+	a:last-child {
+		float: right;
+		border: 0px;
+	}
+	a:first-child{
+		border: 0px;
+	}
+	img{
+		padding: 0 13px 0 13px;
+	}
+	.selected{
+		padding-bottom: 5px;
+		border-bottom: 10px solid $clouds !important;
+	}
 }
 
 #appname{
@@ -119,6 +124,13 @@ body{
 		border-bottom: 1px solid #d5d5d5;
 		line-height: 70px;
 		color: #666666;
+		
+		.expand{
+			margin-bottom: -5px;
+			img{
+				margin-bottom: -5px;
+			}
+		}
 	}
 	
 	.centeralign{
@@ -126,3 +138,26 @@ body{
 	}
 	
 }
+
+.expanded_menu{
+	background-color: rgba(0,0,0,0.8);
+	position: absolute;
+	margin-top: -25px;
+	left: 0%;
+	width: 480px;
+	color: white;
+	
+	&:after{ /*arrow added to uparrowdiv DIV*/
+		content:'';
+		display:block;
+		position:absolute;
+		top:-20px; /*should be set to -border-width x 2 */
+		right:5%;
+		width:0;
+		height:0;
+		border-color: transparent transparent rgba(0,0,0,0.8) transparent; /*border color should be same as div div background color*/
+		border-style: solid;
+		border-width: 10px;
+	}
+}
+

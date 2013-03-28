@@ -15,66 +15,71 @@ body {
   width: 480px;
   border: 1px solid black;
   margin: 0 auto;
+  overflow: visible;
+  position: relative;
 }
 
-/* line 26, ../sass/main.scss */
+/* line 27, ../sass/main.scss */
 #androidtoolbar {
   height: 38px;
   width: 480px;
   background-color: black;
 }
 
-/* line 36, ../sass/main.scss */
+/* line 37, ../sass/main.scss */
 #menu {
   background-color: #19b99a;
   height: 70px;
   padding: 0px;
   margin: 0px;
 }
-
-/* line 43, ../sass/main.scss */
+/* line 42, ../sass/main.scss */
 #menu a {
+  margin-top: 15px;
   float: left;
   display: inline-block;
-  height: 100%;
-  width: 70px;
+  height: 40px;
+  border-left: 1px solid #00997B;
 }
-
-/* line 50, ../sass/main.scss */
+/* line 51, ../sass/main.scss */
 #menu a:last-child {
   float: right;
+  border: 0px;
 }
-
-/* line 54, ../sass/main.scss */
-#menu a:hover {
-  background-color: #138c75;
+/* line 55, ../sass/main.scss */
+#menu a:first-child {
+  border: 0px;
 }
-
 /* line 58, ../sass/main.scss */
-#menu a img {
-  padding: 15px;
+#menu img {
+  padding: 0 13px 0 13px;
+}
+/* line 61, ../sass/main.scss */
+#menu .selected {
+  padding-bottom: 5px;
+  border-bottom: 10px solid #ecf0f1 !important;
 }
 
-/* line 62, ../sass/main.scss */
+/* line 67, ../sass/main.scss */
 #appname {
   background-color: #ecf0f1;
   height: 40px;
 }
 
-/* line 67, ../sass/main.scss */
+/* line 72, ../sass/main.scss */
 #projectname {
   background-color: #ecf0f1;
   height: 40px;
   font-size: 20px;
 }
-/* line 71, ../sass/main.scss */
+/* line 76, ../sass/main.scss */
 #projectname #namecontainer {
   color: black;
   float: left;
   position: relative;
   left: 50%;
 }
-/* line 76, ../sass/main.scss */
+/* line 81, ../sass/main.scss */
 #projectname #namecontainer span.name {
   float: left;
   position: relative;
@@ -82,7 +87,7 @@ body {
   line-height: 40px;
   font-weight: bold;
 }
-/* line 83, ../sass/main.scss */
+/* line 88, ../sass/main.scss */
 #projectname #namecontainer .triangle {
   position: relative;
   left: -50%;
@@ -95,12 +100,12 @@ body {
   margin: 16px 0 0 7px;
 }
 
-/* line 100, ../sass/main.scss */
+/* line 105, ../sass/main.scss */
 .ttasks {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 103, ../sass/main.scss */
+/* line 108, ../sass/main.scss */
 .ttasks th {
   font-size: 20px;
   text-align: left;
@@ -108,21 +113,55 @@ body {
   color: #ecf0f1;
   line-height: 30px;
 }
-/* line 110, ../sass/main.scss */
+/* line 115, ../sass/main.scss */
 .ttasks th:first-child, .ttasks td:first-child {
   padding-left: 10px;
 }
-/* line 113, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .ttasks td:first-child {
   color: #34495e;
 }
-/* line 118, ../sass/main.scss */
+/* line 123, ../sass/main.scss */
 .ttasks td {
   border-bottom: 1px solid #d5d5d5;
   line-height: 70px;
   color: #666666;
 }
-/* line 124, ../sass/main.scss */
+/* line 128, ../sass/main.scss */
+.ttasks td .expand {
+  margin-bottom: -5px;
+}
+/* line 130, ../sass/main.scss */
+.ttasks td .expand img {
+  margin-bottom: -5px;
+}
+/* line 136, ../sass/main.scss */
 .ttasks .centeralign {
   text-align: center;
+}
+
+/* line 142, ../sass/main.scss */
+.expanded_menu {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  margin-top: -25px;
+  left: 0%;
+  width: 480px;
+  color: white;
+}
+/* line 150, ../sass/main.scss */
+.expanded_menu:after {
+  /*arrow added to uparrowdiv DIV*/
+  content: '';
+  display: block;
+  position: absolute;
+  top: -20px;
+  /*should be set to -border-width x 2 */
+  right: 5%;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  /*border color should be same as div div background color*/
+  border-style: solid;
+  border-width: 10px;
 }
