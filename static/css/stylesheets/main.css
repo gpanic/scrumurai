@@ -195,11 +195,30 @@ input[type="text"], textarea {
 }
 
 /* line 195, ../sass/main.scss */
+button[type="submit"] {
+  background-color: #19b99a;
+  border: none;
+  padding: 12px 50px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* line 207, ../sass/main.scss */
+.buttons {
+  text-align: center;
+  margin: 20px auto;
+}
+
+/* line 212, ../sass/main.scss */
 textarea {
   width: 450px;
 }
 
-/* line 200, ../sass/main.scss */
+/* line 217, ../sass/main.scss */
 select {
   font-size: 20px;
   line-height: 50px;

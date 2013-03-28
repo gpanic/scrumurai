@@ -192,6 +192,23 @@ input[type="text"]{
 	color: $wetasphalt;
 }
 
+button[type="submit"]{
+	background-color: $turquoise;
+	border: none;
+	padding: 12px 50px;
+	border-radius: 5px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.buttons{
+	text-align: center;
+	margin: 20px auto;
+}
+
 textarea{
 	@extend input[type="text"];
 	width: 450px;
