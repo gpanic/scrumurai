@@ -14,10 +14,10 @@
 			<div id="app">
 				<div id="menu">
 					<a href="index.html">
-						<img  class="selected" src="static/img/menu_top/icon_mytasks.png" />
+						<img src="static/img/menu_top/icon_mytasks.png" />
 					</a>
 					<a href="overview.html">
-						<img src="static/img/menu_top/icon_burndown.png" />
+						<img class="selected" src="static/img/menu_top/icon_burndown.png" />
 					</a>
 					<a href="productbacklog.html">
 						<img src="static/img/menu_top/icon_backlog.png" />
@@ -40,42 +40,25 @@
 					<div clear="both"></div>
 				</div>
 				<div id="content">
-					<table class="ttasks">
-						<thead>
-							<tr>
-								<th>User story</th>
-								<th class="centeralign">Effort</th>
-								<th>BV</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><a href="detail.html">Task 1</a></td>
-								<td class="centeralign">8</td>
-								<td>Good</td>
-							</tr>
-							<tr>
-								<td><a href="detail.html">Task 2</a></td>
-								<td class="centeralign">5</td>
-								<td>Must have</td>
-							</tr>
-							<tr>
-								<td><a href="detail.html">Task 3</a></td>
-								<td class="centeralign">3</td>
-								<td>Good</td>
-							</tr>
-							<tr>
-								<td><a href="detail.html">Task 4</a></td>
-								<td class="centeralign">8</td>
-								<td>Must have</td>
-							</tr>
-							<tr>
-								<td><a href="detail.html">Task 5</a></td>
-								<td class="centeralign">3</td>
-								<td>Good</td>
-							</tr>
-						</tbody>
-					</table>
+					<form>
+						<div class="formline">
+							<div class="label">Sprint</div>
+							<div class="input">
+								<select name="sprint">
+									<option>Sprint 3</option>
+									<option>Sprint 2</option>
+									<option>Sprint 1</option>
+								</select>
+							</div>
+							<div class="label">Date</div>
+							<div class="input">
+								<input type="date"value="2013-03-28" name="date"/>
+							</div>
+						</div>
+					</form>
+					<img style="width: 460px; padding: 10px;" src="static/img/sampleburndown.jpg"/>
+					<br/>
+					&nbsp;  Velocity: 13
 				</div>
 			</div>
 		</div>

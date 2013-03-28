@@ -2,14 +2,21 @@
 body {
   font-family: Arial;
   font-size: 24px;
+  color: #34495e;
 }
 
-/* line 15, ../sass/main.scss */
+/* line 16, ../sass/main.scss */
+h1 {
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+/* line 21, ../sass/main.scss */
 .clear {
   clear: both;
 }
 
-/* line 19, ../sass/main.scss */
+/* line 25, ../sass/main.scss */
 #window {
   height: 800px;
   width: 480px;
@@ -19,21 +26,26 @@ body {
   position: relative;
 }
 
-/* line 27, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 #androidtoolbar {
   height: 38px;
   width: 480px;
   background-color: black;
 }
 
-/* line 37, ../sass/main.scss */
+/* line 43, ../sass/main.scss */
+#contentpadding {
+  padding: 10px;
+}
+
+/* line 47, ../sass/main.scss */
 #menu {
   background-color: #19b99a;
   height: 70px;
   padding: 0px;
   margin: 0px;
 }
-/* line 42, ../sass/main.scss */
+/* line 52, ../sass/main.scss */
 #menu a {
   margin-top: 15px;
   float: left;
@@ -41,45 +53,45 @@ body {
   height: 40px;
   border-left: 1px solid #00997B;
 }
-/* line 51, ../sass/main.scss */
+/* line 61, ../sass/main.scss */
 #menu a:last-child {
   float: right;
   border: 0px;
 }
-/* line 55, ../sass/main.scss */
+/* line 65, ../sass/main.scss */
 #menu a:first-child {
   border: 0px;
 }
-/* line 58, ../sass/main.scss */
+/* line 68, ../sass/main.scss */
 #menu img {
   padding: 0 13px 0 13px;
 }
-/* line 61, ../sass/main.scss */
+/* line 71, ../sass/main.scss */
 #menu .selected {
   padding-bottom: 5px;
   border-bottom: 10px solid #ecf0f1 !important;
 }
 
-/* line 67, ../sass/main.scss */
+/* line 77, ../sass/main.scss */
 #appname {
   background-color: #ecf0f1;
   height: 40px;
 }
 
-/* line 72, ../sass/main.scss */
+/* line 82, ../sass/main.scss */
 #projectname {
   background-color: #ecf0f1;
   height: 40px;
   font-size: 20px;
 }
-/* line 76, ../sass/main.scss */
+/* line 86, ../sass/main.scss */
 #projectname #namecontainer {
   color: black;
   float: left;
   position: relative;
   left: 50%;
 }
-/* line 81, ../sass/main.scss */
+/* line 91, ../sass/main.scss */
 #projectname #namecontainer span.name {
   float: left;
   position: relative;
@@ -87,7 +99,7 @@ body {
   line-height: 40px;
   font-weight: bold;
 }
-/* line 88, ../sass/main.scss */
+/* line 98, ../sass/main.scss */
 #projectname #namecontainer .triangle {
   position: relative;
   left: -50%;
@@ -100,12 +112,12 @@ body {
   margin: 16px 0 0 7px;
 }
 
-/* line 105, ../sass/main.scss */
+/* line 115, ../sass/main.scss */
 .ttasks {
   width: 100%;
   border-collapse: collapse;
 }
-/* line 108, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .ttasks th {
   font-size: 20px;
   text-align: left;
@@ -113,34 +125,34 @@ body {
   color: #ecf0f1;
   line-height: 30px;
 }
-/* line 115, ../sass/main.scss */
+/* line 125, ../sass/main.scss */
 .ttasks th:first-child, .ttasks td:first-child {
   padding-left: 10px;
 }
-/* line 118, ../sass/main.scss */
+/* line 128, ../sass/main.scss */
 .ttasks td:first-child {
   color: #34495e;
 }
-/* line 123, ../sass/main.scss */
+/* line 133, ../sass/main.scss */
 .ttasks td {
   border-bottom: 1px solid #d5d5d5;
   line-height: 70px;
   color: #666666;
 }
-/* line 128, ../sass/main.scss */
+/* line 138, ../sass/main.scss */
 .ttasks td .expand {
   margin-bottom: -5px;
 }
-/* line 130, ../sass/main.scss */
+/* line 140, ../sass/main.scss */
 .ttasks td .expand img {
   margin-bottom: -5px;
 }
-/* line 136, ../sass/main.scss */
+/* line 146, ../sass/main.scss */
 .ttasks .centeralign {
   text-align: center;
 }
 
-/* line 142, ../sass/main.scss */
+/* line 152, ../sass/main.scss */
 .expanded_menu {
   display: none;
   background-color: rgba(0, 0, 0, 0.8);
@@ -152,7 +164,7 @@ body {
   height: 60px;
   padding-top: 5px;
 }
-/* line 153, ../sass/main.scss */
+/* line 163, ../sass/main.scss */
 .expanded_menu:after {
   /*arrow added to uparrowdiv DIV*/
   content: '';
@@ -168,59 +180,78 @@ body {
   border-style: solid;
   border-width: 10px;
 }
-/* line 166, ../sass/main.scss */
+/* line 176, ../sass/main.scss */
 .expanded_menu .quarter {
   width: 25%;
   float: left;
   text-align: center;
 }
-/* line 170, ../sass/main.scss */
+/* line 180, ../sass/main.scss */
 .expanded_menu .quarter .icon {
   height: 30px;
 }
 
-/* line 176, ../sass/main.scss */
+/* line 186, ../sass/main.scss */
+.tdetail {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* line 192, ../sass/main.scss */
 .formline {
   padding: 10px 10px 0 10px;
 }
 
-/* line 186, ../sass/main.scss */
-input[type="text"], textarea {
-  font-size: 20px;
-  line-height: 50px;
-  border: 3px solid #19b99a;
-  border-radius: 5px;
-  width: 454px;
+/* line 202, ../sass/main.scss */
+.row {
+  margin-top: 20px;
+}
+
+/* line 206, ../sass/main.scss */
+a {
+  text-decoration: none;
   color: #34495e;
 }
 
-/* line 195, ../sass/main.scss */
+/* line 210, ../sass/main.scss */
+input[type="text"], input[type="date"], textarea {
+  padding-left: 5px;
+  font-size: 24px;
+  line-height: 50px;
+  border: 3px solid #19b99a;
+  border-radius: 5px;
+  width: 449px;
+  color: #34495e;
+}
+
+/* line 224, ../sass/main.scss */
 button[type="submit"] {
   background-color: #19b99a;
   border: none;
   padding: 12px 50px;
   border-radius: 5px;
   color: white;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: bold;
   display: inline-block;
   cursor: pointer;
 }
 
-/* line 207, ../sass/main.scss */
+/* line 236, ../sass/main.scss */
 .buttons {
   text-align: center;
   margin: 20px auto;
 }
 
-/* line 212, ../sass/main.scss */
+/* line 241, ../sass/main.scss */
 textarea {
   width: 450px;
 }
 
-/* line 217, ../sass/main.scss */
+/* line 246, ../sass/main.scss */
 select {
-  font-size: 20px;
+  font-size: 24px;
   line-height: 50px;
   border: 3px solid #19b99a;
   border-radius: 5px;
