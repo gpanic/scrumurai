@@ -1,0 +1,375 @@
+/* line 17, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* SUSY */
+/* line 19, ../sass/main.scss */
+body {
+  font-family: Arial;
+  font-size: 24px;
+  color: #34495e;
+}
+
+/* line 25, ../sass/main.scss */
+h1 {
+  font-size: 30px;
+  margin-top: 0px;
+}
+
+/* line 30, ../sass/main.scss */
+.page {
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+/* line 38, C:/Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.page:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 35, ../sass/main.scss */
+.page header, .page footer {
+  clear: both;
+}
+/* line 38, ../sass/main.scss */
+.page nav {
+  width: 23.72881%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+/* line 40, ../sass/main.scss */
+.page .content {
+  width: 74.57627%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+/* line 45, ../sass/main.scss */
+.page .content .main {
+  width: 65.90909%;
+  float: left;
+  margin-right: 2.27273%;
+  display: inline;
+}
+/* line 48, ../sass/main.scss */
+.page .content .secondary {
+  width: 31.81818%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+/* line 52, ../sass/main.scss */
+.clear {
+  clear: both;
+}
+
+/* line 57, ../sass/main.scss */
+#androidtoolbar {
+  height: 38px;
+  width: 480px;
+  background-color: black;
+}
+
+/* line 67, ../sass/main.scss */
+#contentpadding {
+  padding: 10px;
+}
+
+/* line 71, ../sass/main.scss */
+#menu {
+  background-color: #19b99a;
+  min-height: 70px;
+  padding: 0px;
+  margin: 0px;
+}
+/* line 76, ../sass/main.scss */
+#menu a {
+  margin-top: 15px;
+  float: left;
+  display: inline-block;
+  height: 40px;
+  border-left: 1px solid #00997B;
+}
+/* line 85, ../sass/main.scss */
+#menu li:last-child {
+  float: right;
+}
+/* line 87, ../sass/main.scss */
+#menu li:last-child a {
+  border: 0px;
+}
+/* line 92, ../sass/main.scss */
+#menu li:first-child a {
+  border: 0px;
+}
+/* line 96, ../sass/main.scss */
+#menu img {
+  padding: 0 13px 0 13px;
+}
+/* line 99, ../sass/main.scss */
+#menu .selected {
+  padding-bottom: 5px;
+  border-bottom: 10px solid #ecf0f1 !important;
+}
+
+/* line 105, ../sass/main.scss */
+#appname {
+  background-color: #ecf0f1;
+  height: 40px;
+}
+
+/* line 110, ../sass/main.scss */
+#projectname {
+  background-color: #ecf0f1;
+  height: 40px;
+  font-size: 20px;
+}
+/* line 114, ../sass/main.scss */
+#projectname #namecontainer {
+  color: black;
+  float: left;
+  position: relative;
+  left: 50%;
+}
+/* line 119, ../sass/main.scss */
+#projectname #namecontainer span.name {
+  float: left;
+  position: relative;
+  left: -50%;
+  line-height: 40px;
+  font-weight: bold;
+}
+/* line 126, ../sass/main.scss */
+#projectname #namecontainer .triangle {
+  position: relative;
+  left: -50%;
+  float: left;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 9px 7.5px 0 7.5px;
+  border-color: #000000 transparent transparent transparent;
+  margin: 16px 0 0 7px;
+}
+
+/* line 143, ../sass/main.scss */
+.ttasks {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* line 146, ../sass/main.scss */
+.ttasks th {
+  font-size: 20px;
+  text-align: left;
+  background-color: #34495e;
+  color: #ecf0f1;
+  line-height: 30px;
+}
+/* line 153, ../sass/main.scss */
+.ttasks th:first-child, .ttasks td:first-child {
+  padding-left: 10px;
+}
+/* line 156, ../sass/main.scss */
+.ttasks td:first-child {
+  color: #34495e;
+}
+/* line 161, ../sass/main.scss */
+.ttasks td {
+  border-bottom: 1px solid #d5d5d5;
+  line-height: 70px;
+  color: #666666;
+}
+/* line 166, ../sass/main.scss */
+.ttasks td .expand {
+  margin-bottom: -5px;
+}
+/* line 168, ../sass/main.scss */
+.ttasks td .expand img {
+  margin-bottom: -5px;
+}
+/* line 174, ../sass/main.scss */
+.ttasks .centeralign {
+  text-align: center;
+}
+
+/* line 180, ../sass/main.scss */
+.expanded_menu {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  margin-top: -25px;
+  left: 0%;
+  width: 480px;
+  color: white;
+  height: 60px;
+  padding-top: 5px;
+}
+/* line 191, ../sass/main.scss */
+.expanded_menu:after {
+  /*arrow added to uparrowdiv DIV*/
+  content: '';
+  display: block;
+  position: absolute;
+  top: -20px;
+  /*should be set to -border-width x 2 */
+  right: 5%;
+  width: 0;
+  height: 0;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+  /*border color should be same as div div background color*/
+  border-style: solid;
+  border-width: 10px;
+}
+/* line 204, ../sass/main.scss */
+.expanded_menu .quarter {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+/* line 208, ../sass/main.scss */
+.expanded_menu .quarter .icon {
+  height: 30px;
+}
+
+/* line 214, ../sass/main.scss */
+.tdetail {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* line 220, ../sass/main.scss */
+.formline {
+  padding: 10px 10px 0 10px;
+}
+
+/* line 230, ../sass/main.scss */
+.row {
+  margin-top: 20px;
+}
+
+/* line 234, ../sass/main.scss */
+a {
+  text-decoration: none;
+  color: #34495e;
+}
+
+/* line 238, ../sass/main.scss */
+input[type="text"], input[type="date"], textarea {
+  padding-left: 5px;
+  font-size: 24px;
+  line-height: 50px;
+  border: 3px solid #19b99a;
+  border-radius: 5px;
+  width: 449px;
+  color: #34495e;
+}
+
+/* line 252, ../sass/main.scss */
+button[type="submit"] {
+  background-color: #19b99a;
+  border: none;
+  padding: 12px 50px;
+  border-radius: 5px;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* line 264, ../sass/main.scss */
+.buttons {
+  text-align: center;
+  margin: 20px auto;
+}
+
+/* line 269, ../sass/main.scss */
+textarea {
+  width: 450px;
+}
+
+/* line 274, ../sass/main.scss */
+select {
+  font-size: 24px;
+  line-height: 50px;
+  border: 3px solid #19b99a;
+  border-radius: 5px;
+  width: 460px;
+  color: #34495e;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(../../img/selectbg.png);
+}

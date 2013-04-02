@@ -1,0 +1,286 @@
+@import 'compass';
+@import 'susy';
+@import "compass/reset";
+
+$turquoise: #19b99a;
+$clouds: #ECF0F1;
+$concrete: #95A5A5;
+$wetasphalt: #34495E;
+$midnightblue: #2D3E50;
+$asphalt: #6084a8;
+
+/* SUSY */
+$total-columns  : 12;             // a 12-column grid
+$column-width   : 4em;            // each column is 4em wide
+$gutter-width   : 1em;            // 1em gutters between columns
+$grid-padding   : $gutter-width;
+
+
+body{
+	font-family: Arial;
+	font-size: 24px;
+	color: $wetasphalt;
+} 
+ 
+h1{
+	font-size: 30px;
+	margin-top: 0px;
+} 
+
+.page {
+  // page acts as a container for our grid.
+  @include container;
+	padding: 0;
+  // header and footer are full-width by default.
+  header, footer { clear: both; }
+
+  // nav spans 3 columns of total 12.
+  nav { @include span-columns(3,12); }
+
+  .content {
+    // content spans the final (omega) 9 columns of 12.
+    @include span-columns(9 omega,12);
+
+    // main content spans 6 of those 9 columns.
+    .main { @include span-columns(6,9); }
+
+    // secondary content spans the final 3 (omega) of 9 columns.
+    .secondary { @include span-columns(3 omega,9); }
+  }
+}
+
+.clear{
+    clear: both;
+}
+
+
+#androidtoolbar{
+	height: 38px;
+	width: 480px;
+	background-color: black;
+}
+
+#app{
+	
+}
+
+#contentpadding{
+	padding: 10px;
+}
+
+#menu{
+	background-color: $turquoise;
+	min-height: 70px;
+	padding: 0px;
+	margin: 0px;
+	a{
+		margin-top: 15px;
+		float: left;
+		display: inline-block;
+		height: 40px;
+		border-left: 1px solid #00997B;
+		
+	}
+
+	li:last-child {
+		float: right;
+		a{
+			border: 0px;
+		}
+	}
+	li:first-child{
+		a{
+			border: 0px;
+		}
+	}
+	img{
+		padding: 0 13px 0 13px;
+	}
+	.selected{
+		padding-bottom: 5px;
+		border-bottom: 10px solid $clouds !important;
+	}
+}
+
+#appname{
+	background-color: $clouds;
+	height: 40px;
+}
+
+#projectname{
+	background-color: $clouds;
+	height: 40px;
+	font-size: 20px;
+	#namecontainer{
+		color: black;
+		float: left; 
+		position: relative; 
+		left: 50%;
+		span.name {
+			float: left; 
+			position: relative; 
+			left: -50%;
+			line-height: 40px;
+			font-weight: bold;
+		}
+		.triangle{
+			position: relative; 
+			left: -50%;
+			float: left;
+			width: 0px;
+			height: 0px;
+			border-style: solid;
+			border-width: 9px 7.5px 0 7.5px;
+			border-color: #000000 transparent transparent transparent;
+			margin: 16px 0 0 7px;
+		}
+	}
+}
+
+#content{
+}
+
+.ttasks{
+	width: 100%;
+	border-collapse: collapse;
+	th{
+		font-size: 20px;
+		text-align: left;
+		background-color: $wetasphalt;
+		color: $clouds;
+		line-height: 30px;
+	}
+	th:first-child{
+		padding-left: 10px;
+	}
+	td:first-child{
+		@extend th:first-child;
+		color: $wetasphalt;
+	}
+	
+	td{
+		border-bottom: 1px solid #d5d5d5;
+		line-height: 70px;
+		color: #666666;
+		
+		.expand{
+			margin-bottom: -5px;
+			img{
+				margin-bottom: -5px;
+			}
+		}
+	}
+	
+	.centeralign{
+		text-align: center;
+	}
+	
+}
+
+.expanded_menu{
+	display: none;
+	background-color: rgba(0,0,0,0.8);
+	position: absolute;
+	margin-top: -25px;
+	left: 0%;
+	width: 480px;
+	color: white;
+	height: 60px;
+	padding-top: 5px;
+	
+	&:after{ /*arrow added to uparrowdiv DIV*/
+		content:'';
+		display:block;
+		position:absolute;
+		top:-20px; /*should be set to -border-width x 2 */
+		right:5%;
+		width:0;
+		height:0;
+		border-color: transparent transparent rgba(0,0,0,0.8) transparent; /*border color should be same as div div background color*/
+		border-style: solid;
+		border-width: 10px;
+	}
+	
+	.quarter{
+		width: 25%;
+		float: left;
+		text-align: center;
+		.icon{
+			height: 30px;
+		}	
+	}
+}
+
+.tdetail{
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.formline{
+	padding: 10px 10px 0 10px;
+	.label{
+	}
+	
+	.input{
+		
+	}
+}
+
+.row{
+	margin-top: 20px;
+}
+
+a{
+	text-decoration: none;
+	color: $wetasphalt;
+}
+input[type="text"]{
+	padding-left: 5px;
+	font-size: 24px;
+	line-height: 50px;
+	border: 3px solid $turquoise;
+	border-radius: 5px;
+	width: 449px;
+	color: $wetasphalt;
+}
+
+input[type="date"]{
+	@extend input[type="text"];
+}
+
+button[type="submit"]{
+	background-color: $turquoise;
+	border: none;
+	padding: 12px 50px;
+	border-radius: 5px;
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.buttons{
+	text-align: center;
+	margin: 20px auto;
+}
+
+textarea{
+	@extend input[type="text"];
+	width: 450px;
+}
+
+select{
+	font-size: 24px;
+	line-height: 50px;
+	border: 3px solid $turquoise;
+	border-radius: 5px;
+	width: 460px;
+	color: $wetasphalt;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	background: url(../../img/selectbg.png)
+	
+}
