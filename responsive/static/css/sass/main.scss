@@ -3,6 +3,7 @@
 @import "compass/reset";
 
 $turquoise: #19b99a;
+$greensea: #16A085;
 $clouds: #ECF0F1;
 $concrete: #95A5A5;
 $wetasphalt: #34495E;
@@ -67,40 +68,132 @@ h1{
 #contentpadding{
 	padding: 10px;
 }
+/*
+@import "menu_top/*.png"; 
+@include all-menu_top-sprites;
+*/
 
-#menu{
-	background-color: $turquoise;
-	min-height: 70px;
-	padding: 0px;
-	margin: 0px;
-	a{
-		margin-top: 15px;
-		float: left;
-		display: inline-block;
-		height: 40px;
-		border-left: 1px solid #00997B;
-		
-	}
+.menu_top-sprite, .menu_top-icon_backlog, .menu_top-icon_burndown, .menu_top-icon_logo, .menu_top-icon_menu, .menu_top-icon_mytasks, .menu_top-icon_release, .menu_top-icon_settings, .menu_top-icon_sprint {
+  background: url('../../img/menu_top-s93577edf00.png') no-repeat;
+}
 
-	li:last-child {
-		float: right;
-		a{
-			border: 0px;
+.menu_top-icon_backlog {
+  background-position: 0 -240px;
+}
+
+.menu_top-icon_burndown {
+  background-position: 0 -280px;
+}
+
+.menu_top-icon_logo {
+  background-position: 0 0;
+}
+
+.menu_top-icon_menu {
+  background-position: 0 -40px;
+}
+
+.menu_top-icon_mytasks {
+  background-position: 0 -160px;
+}
+
+.menu_top-icon_release {
+  background-position: 0 -200px;
+}
+
+.menu_top-icon_settings {
+  background-position: 0 -80px;
+}
+
+.menu_top-icon_sprint {
+  background-position: 0 -120px;
+}
+
+nav{ 
+	width: 100% !important;
+	ul{
+		background-color: $turquoise;
+		height: 70px;
+		display: block;
+		li{
+			float:left;
+			margin-top: 15px;
+			border-left: 1px solid $greensea;
+			padding: 0 13px 0 13px;
+			a{
+				color: #fff;
+				height: 40px;
+				width: 40px;
+				text-indent: -9999px;
+				display:inline-block;
+				@include box-sizing(border-box);
+			}
+			&:first-child{
+				border: 0px;
+			}
+			&:last-child{
+				float: right;
+				border: 0px;
+			}
+		}
+		.selected{
+			padding-bottom: 5px;
+			border-bottom: 10px solid $clouds !important;
 		}
 	}
-	li:first-child{
-		a{
-			border: 0px;
-		}
-	}
-	img{
-		padding: 0 13px 0 13px;
-	}
-	.selected{
-		padding-bottom: 5px;
-		border-bottom: 10px solid $clouds !important;
+	#pull{
+		display: none;
 	}
 }
+
+/* media */
+@media only screen and (max-width : 480px) {
+	nav{
+		ul{
+			display: none;
+			height: auto;
+			li{
+				height: 40px;
+				border: 0px;
+				margin: 0px;
+				padding: 18px 0 0 13px !important;
+				display: block;
+				float: none;
+				border-bottom: 1px solid $greensea !important;
+				a{
+					width: auto;
+					background-image: none !important;
+					text-indent: 0px !important;
+				}
+				&:last-child{
+					float: none;
+				}
+			}
+			.selected{
+				border-bottom: 1px solid $greensea !important;
+			}
+		}
+		#pull {
+			height: 55px;
+			background-color: $greensea;
+			display: block;
+			width: 100%;
+			text-indent: 13px;
+			position: relative;
+			padding-top: 15px;
+		}
+		#pull:after {
+			content:"";
+			background: url('../../img/menu_top/icon_menu.png') no-repeat;
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			position:absolute;
+			right: 13px;
+		}
+	}
+}
+/* /media */
 
 #appname{
 	background-color: $clouds;

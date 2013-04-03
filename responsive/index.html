@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title></title>
 		
 		<link rel="stylesheet" type="text/css" href="static/css/stylesheets/main.css" />
@@ -11,41 +12,30 @@
 		
 		<div class="page">
 			<div id="app">
-				<div id="menu">
-					<ul>
-						<li>
-							<a href="index.html">
-								<img  class="selected" src="static/img/menu_top/icon_mytasks.png" />
-							</a>
+				<nav>
+					<ul id="menutop">
+						<li class="selected">
+							<a class="menu_top-icon_mytasks" href="index.html">My Tasks</a>
 						</li>
 						<li>
-							<a href="overview.html">
-								<img src="static/img/menu_top/icon_burndown.png" />
-							</a>
+							<a class="menu_top-icon_burndown" href="index.html">Overview</a>
 						</li>
 						<li>
-							<a href="productbacklog.html">
-								<img src="static/img/menu_top/icon_backlog.png" />
-							</a>
+							<a class="menu_top-icon_backlog" href="index.html">Product backlog</a>
 						</li>
 						<li>
-							<a href="#">
-								<img src="static/img/menu_top/icon_sprint.png" />
-							</a>
+							<a class="menu_top-icon_sprint" href="index.html">Sprints</a>
 						</li>
 						<li>
-							<a href="#">
-								<img src="static/img/menu_top/icon_release.png" />
-							</a>
+							<a class="menu_top-icon_release" href="index.html">Releases</a>
 						</li>
 						<li>
-							<a href="#">
-								<img src="static/img/menu_top/icon_settings.png" />
-							</a>
+							<a class="menu_top-icon_settings" href="index.html">Settings</a>
 						</li>
 					</ul>
-					<div class="clear"></div>
-				</div>
+					<a href="" id="pull"><img src="static/img/menu_top/icon_logo.png"/></a>
+				</nav>
+				<div class="clear"></div>
 				<div id="projectname">
 					<div id="namecontainer">
 						<span class="name">My project</span>
@@ -93,5 +83,20 @@
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			$(function(){
+				$("#pull").on('click', function(e) {
+					e.preventDefault();
+					$("#menutop").slideToggle();
+				});
+				
+				$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 480 && $("#menutop").is(':hidden')) {
+        			$("#menutop").removeAttr('style');
+        		}
+    		});
+			});
+		</script>
 	</body>
 </html>
