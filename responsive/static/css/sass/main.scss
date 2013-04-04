@@ -192,6 +192,7 @@ nav{
 			right: 13px;
 		}
 	}
+	
 }
 /* /media */
 
@@ -231,6 +232,8 @@ nav{
 }
 
 #content{
+	max-width: 960px;
+	margin: 0px auto;
 }
 
 .ttasks{
@@ -242,6 +245,7 @@ nav{
 		background-color: $wetasphalt;
 		color: $clouds;
 		line-height: 30px;
+		padding: 8px 0px;
 	}
 	th:first-child{
 		padding-left: 10px;
