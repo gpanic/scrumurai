@@ -110,7 +110,11 @@ h1{
 }
 
 nav{ 
+	max-width: 960px !important;
 	width: 100% !important;
+	margin: 0px auto !important;
+	float: none !important;
+	display: block !important;
 	ul{
 		background-color: $turquoise;
 		height: 70px;
@@ -172,6 +176,7 @@ nav{
 /* media */
 @media only screen and (max-width : 480px) {
 	nav{
+		width: 100% !important;
 		ul{
 			display: none;
 			height: auto;
@@ -215,6 +220,15 @@ nav{
 			right: 13px;
 		}
 	}
+
+	#projectname{
+		width: 100%;
+	}
+
+	input[type="text"]{
+		max-width: 100% !important;
+		padding: 0px !important;
+	}
 	
 }
 /* /media */
@@ -225,6 +239,8 @@ nav{
 }
 
 #projectname{
+	max-width: 960px;
+	margin: 0px auto;
 	background-color: $clouds;
 	height: 40px;
 	font-size: 20px;
