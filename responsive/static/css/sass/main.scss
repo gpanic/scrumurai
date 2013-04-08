@@ -137,13 +137,36 @@ nav{
 			}
 		}
 		.selected{
+			/*
 			padding-bottom: 5px;
 			border-bottom: 10px solid $clouds !important;
+			*/
+			animation:myfirst 5s;
+		    -moz-animation:myfirst 5s infinite; /* Firefox */
+			-webkit-animation:myfirst 5s infinite; /* Safari and Chrome */
 		}
 	}
 	#pull{
 		display: none;
 	}
+}
+
+
+		
+@-moz-keyframes myfirst 
+{
+0%   {background:$turquoise;}
+25%  {background:darken($turquoise,10%);}
+50%   {background:darken($turquoise,20%);}
+75%   {background:darken($turquoise,10%);}
+}
+ 
+@-webkit-keyframes myfirst 
+{
+0%   {background:$turquoise;}
+25%  {background:darken($turquoise,10%);}
+50%   {background:darken($turquoise,20%);}
+75%   {background:darken($turquoise,10%);}
 }
 
 /* media */
