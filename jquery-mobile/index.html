@@ -17,11 +17,11 @@
 		<div data-role="header">
 			<div data-role="navbar">
                 <ul>
-                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
-                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
-                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                    <li><a href="#mytasks" data-transition="slide"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="#burndown" data-transition="slide"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog" data-transition="slide"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint" data-transition="slide"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="#release" data-transition="slide"><img src="img/menu_top/icon_release.png"/></a></li>
                 </ul>
             </div><!-- /navbar -->
 			<h2>Scrumurai</h2>
@@ -81,23 +81,39 @@
 		</div><!-- /content -->
 	</div><!-- /page -->
 
+    <!-- Start of second page -->
+    <div data-role="page" id="burndown">
 
-	<!-- Start of second page -->
-	<div data-role="page" id="bar">
+        <div data-role="header">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#mytasks" data-transition="slide"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="#burndown" data-transition="slide"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog" data-transition="slide"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint" data-transition="slide"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="#release" data-transition="slide"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+            </div><!-- /navbar -->
+            <h2>Scrumurai</h2>
+        </div><!-- /header -->
 
-		<div data-role="header">
-			<h1>Bar</h1>
-		</div><!-- /header -->
+        <div data-role="content">
+            <label for="select-choice-1" class="select"><strong>Sprint</strong></label>
+            <select name="select-choice-1" id="select-choice-1">
+                <option value="1">Sprint 1</option>
+                <option value="2">Sprint 2</option>
+                <option value="3">Sprint 3</option>
+            </select>
 
-		<div data-role="content">	
-			<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my ID is beeing clicked.</p>		
-			<p><a href="#foo">Back to foo</a></p>	
-		</div><!-- /content -->
+            <label for="date"><strong>Date</strong></label>
+            <input type="date" name="date" id="date" value="">
+            <br/>
+            <img src="img/sampleburndown.jpg" width="100%"/>
+            <br/>
+            Velocity: 13
+        </div><!-- /content -->
 
-		<div data-role="footer">
-			<h4>Page Footer</h4>
-		</div><!-- /footer -->
-	</div><!-- /page -->
+    </div><!-- /page -->
 
     <!-- Start of second page -->
     <div data-role="page" id="backlog">
@@ -105,11 +121,11 @@
         <div data-role="header">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
-                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
-                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                    <li><a href="#mytasks" data-transition="slide"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="#burndown" data-transition="slide"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog" data-transition="slide"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint" data-transition="slide"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="#release" data-transition="slide"><img src="img/menu_top/icon_release.png"/></a></li>
                 </ul>
             </div><!-- /navbar -->
             <h2>Scrumurai</h2>
@@ -178,11 +194,11 @@
         <div data-role="header">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
-                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
-                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
-                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                    <li><a href="#mytasks" data-transition="slide"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="#burndown" data-transition="slide"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog" data-transition="slide"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint" data-transition="slide"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="#release" data-transition="slide"><img src="img/menu_top/icon_release.png"/></a></li>
                 </ul>
             </div><!-- /navbar -->
             <h2>Scrumurai</h2>
@@ -220,6 +236,42 @@
                     <a href="#">
                         <h2>Sprint 5</h2>
                         <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="release">
+
+        <div data-role="header">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#mytasks" data-transition="slide"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="#burndown" data-transition="slide"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog" data-transition="slide"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint" data-transition="slide"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="#release" data-transition="slide"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+            </div><!-- /navbar -->
+            <h2>Scrumurai</h2>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="a">
+                <li data-role="list-divider">Current<span class="ui-li-count">25 Mar</span></li>
+                <li>
+                    <a href="#">
+                        <h2>Release 2</h2>
+                        <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
+                    </a>
+                </li>
+                <li data-role="list-divider">Done<span class="ui-li-count">10 Mar</span></li>
+                <li>
+                    <a href="#">
+                        <h2>Release 1</h2>
+                        <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
                     </a>
                 </li>
         </div><!-- /content -->
