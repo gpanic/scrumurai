@@ -13,17 +13,17 @@
 </head> 
 <body> 
 	<!-- Start of first page -->
-	<div data-role="page" id="foo">
+	<div data-role="page" id="mytasks">
 		<div data-role="header">
 			<div data-role="navbar">
-				<ul>
-					<li><a href="a.html"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-					<li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
-					<li><a href="a.html"><img src="img/menu_top/icon_backlog.png"/></a></li>
-					<li><a href="b.html"><img src="img/menu_top/icon_sprint.png"/></a></li>
-					<li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
-				</ul>
-			</div><!-- /navbar -->
+                <ul>
+                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+            </div><!-- /navbar -->
 			<h2>Scrumurai</h2>
 		</div><!-- /header -->
 
@@ -98,5 +98,132 @@
 			<h4>Page Footer</h4>
 		</div><!-- /footer -->
 	</div><!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="backlog">
+
+        <div data-role="header">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+            </div><!-- /navbar -->
+            <h2>Scrumurai</h2>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="a">
+                <li data-role="list-divider">To do <span class="ui-li-count">3</span></li>
+                <li>
+                    <a href="#">
+                        <h2>User story 1</h2>
+                        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+                        <p><strong>Effort:</strong> 9</p>
+                        <p><strong>Business Value:</strong> Good</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>User story 1</h2>
+                        <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
+                        <p><strong>Effort:</strong> 3</p>
+                        <p><strong>Business Value:</strong> Must have</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>User story 2</h2>
+                        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+                        <p><strong>Effort:</strong> 8</p>
+                        <p><strong>Business Value:</strong> Good</p>
+                    </a>
+                </li>
+                <li data-role="list-divider">Done <span class="ui-li-count">3</span></li>
+                <li>
+                    <a href="#">
+                        <h2>User story 3</h2>
+                        <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
+                        <p><strong>Effort:</strong> 2</p>
+                        <p><strong>Business Value:</strong> Must have</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>User story 4</h2>
+                        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+                        <p><strong>Effort:</strong> 5</p>
+                        <p><strong>Business Value:</strong> Good</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>User story 5</h2>
+                        <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        <p><strong>Effort:</strong> 6</p>
+                        <p><strong>Business Value:</strong> Good</p>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="sprint">
+
+        <div data-role="header">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#mytasks"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                    <li><a href="#backlog"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                    <li><a href="#sprint"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                    <li><a href="b.html"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+            </div><!-- /navbar -->
+            <h2>Scrumurai</h2>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <ul data-role="listview" data-divider-theme="a">
+                <li data-role="list-divider">Release 2 <span class="ui-li-count">25 Mar</span></li>
+                <li>
+                    <a href="#">
+                        <h2>Sprint 1</h2>
+                        <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>Sprint 2</h2>
+                        <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+                <li data-role="list-divider">Release 1 <span class="ui-li-count">10 Mar</span></li>
+                <li>
+                    <a href="#">
+                        <h2>Sprint 3</h2>
+                        <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>Sprint 4</h2>
+                        <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h2>Sprint 5</h2>
+                        <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+                    </a>
+                </li>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
 </body>
 </html>

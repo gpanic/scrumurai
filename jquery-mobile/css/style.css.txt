@@ -1,3 +1,0 @@
-.ui-btn-up-a {
-	background-image: none;
-}

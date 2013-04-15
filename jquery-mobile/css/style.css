@@ -1,13 +1,13 @@
-.ui-btn-up-a {
+.ui-navbar .ui-btn-up-a {
 	background: #19b99a;
 	background-image: none;
 }
 
-.ui-btn-hover-a {
+.ui-navbar .ui-btn-hover-a {
 	background: #16A085;
 	background-image: none;
 }
 
-.ui-btn-down-a {
+.ui-navbar .ui-btn-down-a {
 	background: #148c74;
 }
