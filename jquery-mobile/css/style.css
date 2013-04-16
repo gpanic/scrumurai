@@ -11,3 +11,7 @@
 .ui-navbar .ui-btn-down-a {
 	background: #148c74;
 }
+
+.ui-header .ui-title{
+	margin: .6em 30% .6em;
+}
