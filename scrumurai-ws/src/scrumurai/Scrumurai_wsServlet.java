@@ -1,6 +1,7 @@
 package scrumurai;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.*;
 
@@ -15,11 +16,11 @@ public class Scrumurai_wsServlet extends HttpServlet {
 		System.out.println("AAAAAAAAAAA");
 		User u = new User();
 		u.setEmail("dejan.svetec0@gmail.com");
-		u.setFirstName("Dejanaaaa");
+		u.setFirstName("sdsdsdsdsds");
 		u.setLastName("Svetec");
 		u.setPassword("pass");
 		u.setUsername("dejan");
-		DataMapper.create(u);
-		System.out.println("DONE");
+		DataMapper dm = new DataMapper(User.class);
+		dm.create(u);
 	}
 }
