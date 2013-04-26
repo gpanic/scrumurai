@@ -5,24 +5,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.google.appengine.api.datastore.Key;
 
 @Entity
-public class ProjectMember implements EntityObject {
+public class UserEffortVote implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key id;
-
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Project project;
-
+	private UserStory user_story;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
-
-	private String role;
+	private int effort;
 
 	public Key getId() {
 		return id;
@@ -32,12 +28,12 @@ public class ProjectMember implements EntityObject {
 		this.id = id;
 	}
 
-	public Project getProject() {
-		return project;
+	public UserStory getUser_story() {
+		return user_story;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setUser_story(UserStory user_story) {
+		this.user_story = user_story;
 	}
 
 	public User getUser() {
@@ -48,11 +44,11 @@ public class ProjectMember implements EntityObject {
 		this.user = user;
 	}
 
-	public String getRole() {
-		return role;
+	public int getEffort() {
+		return effort;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setEffort(int effort) {
+		this.effort = effort;
 	}
 }

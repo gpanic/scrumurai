@@ -5,16 +5,17 @@ import javax.persistence.*;
 import com.google.appengine.api.datastore.Key;
 
 @Entity
-public class Project implements EntityObject {
+public class Release implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key id;
-
+	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private User user;
+	private Project project;
+	private String version;
 	private String name;
 	private String description;
-	private int velocity;
+	private String change_log;
 
 	public Key getId() {
 		return id;
@@ -24,12 +25,20 @@ public class Project implements EntityObject {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public Project getProject() {
+		return project;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	public String getName() {
@@ -48,19 +57,18 @@ public class Project implements EntityObject {
 		this.description = description;
 	}
 
-	public int getVelocity() {
-		return velocity;
+	public String getChange_log() {
+		return change_log;
 	}
 
-	public void setVelocity(int velocity) {
-		this.velocity = velocity;
+	public void setChange_log(String change_log) {
+		this.change_log = change_log;
 	}
 
 	@Override
 	public String toString() {
-		return "Project [id=" + id + ", user=" + user + ", name=" + name
-				+ ", description=" + description + ", velocity=" + velocity
-				+ "]";
+		return "Release [id=" + id + ", project=" + project + ", version="
+				+ version + ", name=" + name + ", description=" + description
+				+ ", change_log=" + change_log + "]";
 	}
-
 }
