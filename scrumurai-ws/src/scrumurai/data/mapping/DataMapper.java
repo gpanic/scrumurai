@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import scrumurai.data.EMF;
 import scrumurai.data.entities.EntityObject;
 
-public class DataMapper {
+public class DataMapper<T> {
 	
 	private EntityManager em;
 	private Class<? extends EntityObject> c;
@@ -50,10 +50,10 @@ public class DataMapper {
 		em.close();
 	}
 	
-	public List<EntityObject> list() {
+	public List<? extends EntityObject> list() {
 		em = EMF.get().createEntityManager();
-		TypedQuery<EntityObject> query = em.createQuery("select e from User e", c);
-		List<EntityObject> rs = query.getResultList();
+		TypedQuery<? extends EntityObject> query = em.createQuery("select e from User e", c);
+		List<? extends EntityObject> rs = query.getResultList();
 		em.close();
 		return rs;
 	}

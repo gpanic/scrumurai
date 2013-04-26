@@ -14,6 +14,7 @@ public class Scrumurai_wsServlet extends HttpServlet {
 			throws IOException {
 		resp.setContentType("text/plain");
 		System.out.println("AAAAAAAAAAA");
+		/*
 		User u = new User();
 		u.setEmail("dejan.svetec0@gmail.com");
 		u.setFirstName("sdsdsdsdsds");
@@ -22,5 +23,9 @@ public class Scrumurai_wsServlet extends HttpServlet {
 		u.setUsername("dejan");
 		DataMapper dm = new DataMapper(User.class);
 		dm.create(u);
+		*/
+		DataMapper dm = new DataMapper(User.class);
+		System.out.println(dm.list().get(0).getClass().toString());
+		
 	}
 }
