@@ -16,5 +16,9 @@ public class DataMapper {
 		em.getTransaction().commit();
 		em.close();
 	}
+	
+	public static void update(User u) {
+		
+	}
 
 }
