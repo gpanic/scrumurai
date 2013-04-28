@@ -40,7 +40,11 @@ public class UserStory implements EntityObject {
 		this.id = id;
 	}
 	
-	public void setId(long id) {
+	public long getIdPrimitive() {
+		return id;
+	}
+	
+	public void setIdPrimitive(long id) {
 		this.id = id;
 	}
 

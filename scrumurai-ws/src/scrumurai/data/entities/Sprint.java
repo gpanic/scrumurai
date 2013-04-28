@@ -29,12 +29,12 @@ public class Sprint implements EntityObject {
 		this.id = id;
 	}
 	
-	public void setId(long id) {
-		this.id = id;
+	public long getIdPrimitive() {
+		return id;
 	}
-
-	public Project getProject() {
-		return project;
+	
+	public void setIdPrimitive(long id) {
+		this.id = id;
 	}
 
 	public void setProject(Project project) {
