@@ -6,12 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.datanucleus.api.jpa.annotations.Extension;
+
 @Entity
 public class User implements EntityObject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
+	private String id;
 	
 	@Basic(optional = false)
 	private String username;
@@ -28,19 +31,11 @@ public class User implements EntityObject {
 	public User() {
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public long getIdPrimitive() {
-		return id;
-	}
-	
-	public void setIdPrimitive(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

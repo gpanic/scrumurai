@@ -18,8 +18,8 @@ public class DataMapper {
 		this.c = c;
 	}
 	
-	public long create(EntityObject eo) {
-		long id = -1;
+	public String create(EntityObject eo) {
+		String id = null;
 		em = EMF.get().createEntityManager();
 		em.getTransaction().begin();
 		try {
@@ -34,7 +34,7 @@ public class DataMapper {
 		return id;
 	}
 	
-	public EntityObject read(long id) {
+	public EntityObject read(String id) {
 		em = EMF.get().createEntityManager();
 		EntityObject eo = em.find(c, id);
 		em.close();
@@ -55,7 +55,7 @@ public class DataMapper {
 		}
 	}
 	
-	public boolean delete(long id) {
+	public boolean delete(String id) {
 		em = EMF.get().createEntityManager();
 		EntityObject eo = em.find(c, id);
 		if (eo != null) {
@@ -71,7 +71,7 @@ public class DataMapper {
 	
 	public List<? extends EntityObject> list() {
 		em = EMF.get().createEntityManager();
-		TypedQuery<? extends EntityObject> query = em.createQuery("select e from User e", c);
+		TypedQuery<? extends EntityObject> query = em.createQuery("select e from " + c.getName() + " e", c);
 		List<? extends EntityObject> rs = query.getResultList();
 		em.close();
 		return rs;

@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Project implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
 	private String name;
 	private String description;
@@ -15,19 +15,11 @@ public class Project implements EntityObject {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public long getIdPrimitive() {
-		return id;
-	}
-	
-	public void setIdPrimitive(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
