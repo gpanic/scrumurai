@@ -22,8 +22,8 @@ public class User implements EntityObject {
 	@Basic(optional = false)
 	private String email;
 	
-	private String firstName;
-	private String lastName;
+	private String firstname;
+	private String lastname;
 
 	public User() {
 	}
@@ -60,20 +60,22 @@ public class User implements EntityObject {
 		this.email = email;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
+
+	 
 
 }

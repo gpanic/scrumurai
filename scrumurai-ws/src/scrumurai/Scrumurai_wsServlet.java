@@ -18,17 +18,17 @@ public class Scrumurai_wsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
-		/*
+		
 		System.out.println("WT3");
 		User u = new User();
 		u.setEmail("dejan.svetec0@gmail.com");
-		u.setFirstName("sdsdsdsdsds");
-		u.setLastName("Svetec");
+		u.setFirstname("sdsdsdsdsds");
+		u.setLastname("Svetec");
 		u.setPassword("pass");
 		u.setUsername("dejan");
 		DataMapper dm = new DataMapper(User.class);
 		dm.create(u);
-		*/
+		
 		
 		
 //		Release r = new Release();
