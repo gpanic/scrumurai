@@ -8,7 +8,7 @@ import javax.persistence.TypedQuery;
 import scrumurai.data.EMF;
 import scrumurai.data.entities.EntityObject;
 
-public class DataMapper<T> {
+public class DataMapper<T>{
 	
 	private EntityManager em;
 	private Class<? extends EntityObject> c;
