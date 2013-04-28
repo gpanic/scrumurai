@@ -3,6 +3,7 @@ package scrumurai.data.mapping;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import scrumurai.data.EMF;
@@ -18,12 +19,18 @@ public class DataMapper {
 	}
 	
 	public long create(EntityObject eo) {
+		long id = -1;
 		em = EMF.get().createEntityManager();
 		em.getTransaction().begin();
-		em.persist(eo);
-		em.getTransaction().commit();
+		try {
+			em.persist(eo);
+			em.getTransaction().commit();
+			id = eo.getId();
+		} catch (PersistenceException e) {
+			em.getTransaction().rollback();
+		}
 		em.close();
-		return eo.getId().getId();
+		return id;
 	}
 	
 	public EntityObject read(long id) {
@@ -33,21 +40,32 @@ public class DataMapper {
 		return eo;
 	}
 	
-	public void update(EntityObject eo) {
+	public boolean update(EntityObject eo) {
 		em = EMF.get().createEntityManager();
-		em.getTransaction().begin();
-		em.merge(eo);
-		em.getTransaction().commit();
-		em.close();
+		if (em.find(c, eo.getId()) != null)
+		{
+			em.getTransaction().begin();
+			em.merge(eo);
+			em.getTransaction().commit();
+			em.close();
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
-	public void delete(long id) {
+	public boolean delete(long id) {
 		em = EMF.get().createEntityManager();
 		EntityObject eo = em.find(c, id);
-		em.getTransaction().begin();
-		em.remove(eo);
-		em.getTransaction().commit();
-		em.close();
+		if (eo != null) {
+			em.getTransaction().begin();
+			em.remove(eo);
+			em.getTransaction().commit();
+			em.close();
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public List<? extends EntityObject> list() {

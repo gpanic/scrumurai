@@ -22,8 +22,12 @@ public class UserResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(User obj) {
 		long id = dm.create(obj);
-		URI uri = uriInfo.getAbsolutePathBuilder().path(Long.toString(id)).build();
-		return Response.created(uri).build();
+		if (id != -1) {
+			URI uri = uriInfo.getAbsolutePathBuilder().path(Long.toString(id)).build();
+			return Response.created(uri).build();
+		} else {
+			return Response.status(400).build();
+		}
 	}
 
 	@GET
@@ -32,29 +36,37 @@ public class UserResource {
 	public Response read(@PathParam("id") long id) {
 		User u = (User) dm.read(id);
 		if (u != null) {
-			return Response.ok().entity(dm.read(id)).build();
+			return Response.ok(dm.read(id)).build();
 		} else {
 			return Response.status(404).build();
 		}
 	}
 
 	@PUT
+	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(User obj) {
-		dm.update(obj);
-		return Response.ok("User updated.").build();
+	public Response update(@PathParam("id") long id, User obj) {
+		obj.setId(id);
+		if (dm.update(obj)) {
+			return Response.status(204).build();
+		} else {
+			return Response.status(404).build();
+		}
 	}
 
 	@DELETE
 	@Path("/{id}")
 	public Response delete(@PathParam("id") long id) {
-		dm.delete(id);
-		return Response.ok("User deleted.").build();
+		if (dm.delete(id)) {
+			return Response.status(204).build();
+		} else {
+			return Response.status(404).build();
+		}
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response list() {
-		return Response.ok().entity(dm.list()).build();
+		return Response.ok(dm.list()).build();
 	}
 }

@@ -6,14 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.google.appengine.api.datastore.Key;
-
 @Entity
 public class User implements EntityObject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private long id;
 	
 	@Basic(optional = false)
 	private String username;
@@ -30,11 +28,11 @@ public class User implements EntityObject {
 	public User() {
 	}
 
-	public Key getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Key id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

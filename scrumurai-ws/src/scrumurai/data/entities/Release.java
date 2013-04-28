@@ -2,13 +2,11 @@ package scrumurai.data.entities;
 
 import javax.persistence.*;
 
-import com.google.appengine.api.datastore.Key;
-
 @Entity
 public class Release implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private long id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Project project;
@@ -17,11 +15,11 @@ public class Release implements EntityObject {
 	private String description;
 	private String change_log;
 
-	public Key getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Key id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

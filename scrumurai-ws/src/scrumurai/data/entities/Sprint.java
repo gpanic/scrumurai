@@ -4,13 +4,11 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
-import com.google.appengine.api.datastore.Key;
-
 @Entity
 public class Sprint implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private long id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Project project;
@@ -22,11 +20,11 @@ public class Sprint implements EntityObject {
 	private int total_effort;
 	private int progress;
 
-	public Key getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Key id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

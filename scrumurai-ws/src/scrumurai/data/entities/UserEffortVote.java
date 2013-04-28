@@ -7,24 +7,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.google.appengine.api.datastore.Key;
-
 @Entity
 public class UserEffortVote implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private long id;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private UserStory user_story;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
 	private int effort;
 
-	public Key getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Key id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

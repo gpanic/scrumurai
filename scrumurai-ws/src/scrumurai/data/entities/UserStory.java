@@ -7,13 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import com.google.appengine.api.datastore.Key;
-
 @Entity
 public class UserStory implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private long id;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User author;
@@ -34,11 +32,11 @@ public class UserStory implements EntityObject {
 	private String business_value;
 	private String state;
 
-	public Key getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Key id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
