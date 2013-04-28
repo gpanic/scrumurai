@@ -1,5 +1,6 @@
 package scrumurai.data.entities;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,16 @@ public class User implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key id;
+	
+	@Basic(optional = false)
 	private String username;
+	
+	@Basic(optional = false)
 	private String password;
+	
+	@Basic(optional = false)
 	private String email;
+	
 	private String firstName;
 	private String lastName;
 

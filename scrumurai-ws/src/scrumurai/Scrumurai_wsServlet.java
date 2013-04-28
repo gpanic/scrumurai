@@ -18,8 +18,8 @@ public class Scrumurai_wsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		resp.setContentType("text/plain");
-		System.out.println("WT3");
 		/*
+		System.out.println("WT3");
 		User u = new User();
 		u.setEmail("dejan.svetec0@gmail.com");
 		u.setFirstName("sdsdsdsdsds");
