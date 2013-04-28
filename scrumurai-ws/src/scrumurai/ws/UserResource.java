@@ -4,12 +4,11 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import scrumurai.data.entities.EntityObject;
 import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
 
 @Path("/users")
-public class UserService {
+public class UserResource {
 
 	private DataMapper dm = new DataMapper(User.class);
 
