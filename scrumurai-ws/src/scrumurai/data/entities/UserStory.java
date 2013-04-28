@@ -11,7 +11,14 @@ import javax.persistence.ManyToOne;
 public class UserStory implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
+	
+	private String name;
+	private String description;
+	private int order;
+	private int effort;
+	private String business_value;
+	private String state;
 
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User author;
@@ -25,17 +32,14 @@ public class UserStory implements EntityObject {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Sprint sprint;
 
-	private String name;
-	private String description;
-	private int order;
-	private int effort;
-	private String business_value;
-	private String state;
-
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

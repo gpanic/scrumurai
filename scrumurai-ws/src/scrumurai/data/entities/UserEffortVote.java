@@ -11,17 +11,24 @@ import javax.persistence.ManyToOne;
 public class UserEffortVote implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	@ManyToOne(cascade = CascadeType.ALL)
-	private UserStory user_story;
+	private Long id;
+
+	private int effort;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private User user;
-	private int effort;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private UserStory user_story;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

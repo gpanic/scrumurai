@@ -6,19 +6,24 @@ import javax.persistence.*;
 public class Release implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Project project;
 	private String version;
 	private String name;
 	private String description;
 	private String change_log;
-
-	public long getId() {
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Project project;
+	
+	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

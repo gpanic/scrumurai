@@ -8,22 +8,27 @@ import javax.persistence.*;
 public class Sprint implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Project project;
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Release release;
+	private Long id;
+	
 	private String name;
 	private Date start;
 	private Date end;
 	private int total_effort;
 	private int progress;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Project project;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Release release;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}

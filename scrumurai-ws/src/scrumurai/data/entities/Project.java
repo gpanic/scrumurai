@@ -6,18 +6,23 @@ import javax.persistence.*;
 public class Project implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	private User user;
 	private String name;
 	private String description;
 	private int velocity;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	private User user;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public void setId(long id) {
 		this.id = id;
 	}
