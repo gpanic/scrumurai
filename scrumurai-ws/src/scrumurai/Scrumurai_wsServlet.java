@@ -20,25 +20,26 @@ public class Scrumurai_wsServlet extends HttpServlet {
 		resp.setContentType("text/plain");
 		
 		System.out.println("WT3");
-		User u = new User();
-		u.setEmail("dejan.svetec0@gmail.com");
-		u.setFirstname("sdsdsdsdsds");
-		u.setLastname("Svetec");
-		u.setPassword("pass");
-		u.setUsername("dejan");
-		DataMapper dm = new DataMapper(User.class);
-		dm.create(u);
+//		User u = new User();
+//		u.setId((long) 1);
+//		u.setEmail("dejan.svetec0@gmail.com");
+//		u.setFirstname("sdsdsdsdsds");
+//		u.setLastname("Svetec");
+//		u.setPassword("pass");
+//		u.setUsername("dejan");
+//		DataMapper dm = new DataMapper(User.class);
+//		dm.create(u);
 		
 		
 		
-//		Release r = new Release();
-//		r.setName("Nekaj13");
-//		
+		Release r = new Release();
+		r.setName("Nekaj13");
+	
 //		Project p = new Project();
-//		p.setName("Projekt");
+//		p.setName("Projekt1");
 //		r.setProject(p);
-//		DataMapper dm = new DataMapper(Release.class);
-//		dm.create(r);
+		DataMapper dm = new DataMapper(Release.class);
+		dm.create(r);
 		
 		
 //		DataMapper dm = new DataMapper(Release.class);

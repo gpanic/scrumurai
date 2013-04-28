@@ -28,6 +28,7 @@ public class DataMapper {
 			id = eo.getId();
 		} catch (PersistenceException e) {
 			em.getTransaction().rollback();
+			System.out.println(e.toString());
 		}
 		em.close();
 		return id;
