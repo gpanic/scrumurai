@@ -12,7 +12,7 @@ import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
 
 @Path("/users")
-public class UserResource {
+public class UserResource implements Resource<User> {
 
 	@Context
 	UriInfo uriInfo;
@@ -22,10 +22,9 @@ public class UserResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(User obj) {
-		long id = dm.create(obj);
-		if (id != -1) {
-			URI uri = uriInfo.getAbsolutePathBuilder().path(Long.toString(id))
-					.build();
+		String id = dm.create(obj);
+		if (id != null) {
+			URI uri = uriInfo.getAbsolutePathBuilder().path(id).build();
 			return Response.created(uri).build();
 		} else {
 			return Response.status(400).build();
@@ -35,7 +34,7 @@ public class UserResource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") long id) {
+	public Response read(@PathParam("id") String id) {
 		User u = (User) dm.read(id);
 		if (u != null) {
 			return Response.ok(dm.read(id)).build();
@@ -47,7 +46,7 @@ public class UserResource {
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") long id, User obj) {
+	public Response update(@PathParam("id") String id, User obj) {
 		obj.setId(id);
 		if (dm.update(obj)) {
 			return Response.status(204).build();
@@ -58,7 +57,7 @@ public class UserResource {
 
 	@DELETE
 	@Path("/{id}")
-	public Response delete(@PathParam("id") long id) {
+	public Response delete(@PathParam("id") String id) {
 		if (dm.delete(id)) {
 			return Response.status(204).build();
 		} else {
