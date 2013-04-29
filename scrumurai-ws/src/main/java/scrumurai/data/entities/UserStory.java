@@ -115,4 +115,11 @@ public class UserStory implements EntityObject {
     public void setState(String state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "UserStory{" + "id=" + id + ", name=" + name + ", description=" + description + ", arrangement=" + arrangement + ", effort=" + effort + ", business_value=" + business_value + ", state=" + state + ", author=" + author + ", project=" + project + ", assignee=" + assignee + ", sprint=" + sprint + '}';
+    }
+    
+    
 }

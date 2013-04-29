@@ -50,4 +50,11 @@ public class ProjectMember implements EntityObject {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public String toString() {
+        return "ProjectMember{" + "id=" + id + ", role=" + role + ", project=" + project + ", user=" + user + '}';
+    }
+    
+    
 }

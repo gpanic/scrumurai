@@ -55,4 +55,11 @@ public class Project implements EntityObject {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" + "id=" + id + ", name=" + name + ", description=" + description + ", velocity=" + velocity + ", product_owner=" + product_owner + '}';
+    }
+    
+    
 }

@@ -79,4 +79,11 @@ public class Sprint implements EntityObject {
     public void setProgress(int progress) {
         this.progress = progress;
     }
+
+    @Override
+    public String toString() {
+        return "Sprint{" + "id=" + id + ", name=" + name + ", start=" + start + ", end=" + end + ", total_effort=" + total_effort + ", progress=" + progress + ", project=" + project + ", release=" + release + '}';
+    }
+    
+    
 }

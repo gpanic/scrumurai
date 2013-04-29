@@ -50,4 +50,11 @@ public class UserEffortVote implements EntityObject {
     public void setEffort(int effort) {
         this.effort = effort;
     }
+
+    @Override
+    public String toString() {
+        return "UserEffortVote{" + "id=" + id + ", effort=" + effort + ", user=" + user + ", user_story=" + user_story + '}';
+    }
+    
+    
 }
