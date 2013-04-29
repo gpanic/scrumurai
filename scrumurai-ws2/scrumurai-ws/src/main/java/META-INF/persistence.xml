@@ -7,12 +7,12 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:sqlite:scrumurai.db" />
+                      value="jdbc:sqlite:scrumurai.sqlite" />
             <property name="javax.persistence.jdbc.user" value="scrumurai" />
             <property name="javax.persistence.jdbc.password" value="ninja" />
 
             <!-- EclipseLink should create the database schema automatically -->
-            <property name="eclipselink.ddl-generation" value="create-tables" />
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
             <property name="eclipselink.ddl-generation.output-mode"
                       value="database" />
         </properties>
