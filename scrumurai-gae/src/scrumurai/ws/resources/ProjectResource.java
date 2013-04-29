@@ -21,9 +21,9 @@ public class ProjectResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Project obj) {
-		long id = dm.create(obj);
-		if (id != -1) {
-			URI uri = uriInfo.getAbsolutePathBuilder().path(Long.toString(id))
+		String id = dm.create(obj);
+		if (id != null) {
+			URI uri = uriInfo.getAbsolutePathBuilder().path(id)
 					.build();
 			return Response.created(uri).build();
 		} else {
@@ -34,7 +34,7 @@ public class ProjectResource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") long id) {
+	public Response read(@PathParam("id") String id) {
 		Project u = (Project) dm.read(id);
 		if (u != null) {
 			return Response.ok(dm.read(id)).build();
@@ -46,7 +46,7 @@ public class ProjectResource {
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") long id, Project obj) {
+	public Response update(@PathParam("id") String id, Project obj) {
 		obj.setId(id);
 		if (dm.update(obj)) {
 			return Response.status(204).build();
@@ -57,7 +57,7 @@ public class ProjectResource {
 
 	@DELETE
 	@Path("/{id}")
-	public Response delete(@PathParam("id") long id) {
+	public Response delete(@PathParam("id") String id) {
 		if (dm.delete(id)) {
 			return Response.status(204).build();
 		} else {

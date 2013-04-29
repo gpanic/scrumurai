@@ -17,7 +17,7 @@ public class Release implements EntityObject {
 	private String description;
 	private String change_log;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	 private Project project;
 	
 	public String getId() {

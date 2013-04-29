@@ -10,19 +10,20 @@ import javax.persistence.ManyToOne;
 import org.datanucleus.api.jpa.annotations.Extension;
 
 @Entity
-public class UserEffortVote implements EntityObject {
+public class ProjectMember implements EntityObject {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
 	private String id;
 
-	private int effort;
+	private String role;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
+	private Project project;
+
+	@ManyToOne()
 	private User user;
-	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private UserStory user_story;
 
 	public String getId() {
 		return id;
@@ -32,12 +33,12 @@ public class UserEffortVote implements EntityObject {
 		this.id = id;
 	}
 
-	public UserStory getUser_story() {
-		return user_story;
+	public Project getProject() {
+		return project;
 	}
 
-	public void setUser_story(UserStory user_story) {
-		this.user_story = user_story;
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
 	public User getUser() {
@@ -48,11 +49,11 @@ public class UserEffortVote implements EntityObject {
 		this.user = user;
 	}
 
-	public int getEffort() {
-		return effort;
+	public String getRole() {
+		return role;
 	}
 
-	public void setEffort(int effort) {
-		this.effort = effort;
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

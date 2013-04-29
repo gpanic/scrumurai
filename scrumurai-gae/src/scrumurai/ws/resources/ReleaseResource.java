@@ -21,10 +21,9 @@ public class ReleaseResource {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Release obj) {
-		long id = dm.create(obj);
-		if (id != -1) {
-			URI uri = uriInfo.getAbsolutePathBuilder().path(Long.toString(id))
-					.build();
+		String id = dm.create(obj);
+		if (id != null) {
+			URI uri = uriInfo.getAbsolutePathBuilder().path(id).build();
 			return Response.created(uri).build();
 		} else {
 			return Response.status(400).build();
@@ -34,7 +33,7 @@ public class ReleaseResource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response read(@PathParam("id") long id) {
+	public Response read(@PathParam("id") String id) {
 		Release u = (Release) dm.read(id);
 		if (u != null) {
 			return Response.ok(dm.read(id)).build();
@@ -46,7 +45,7 @@ public class ReleaseResource {
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response update(@PathParam("id") long id, Release obj) {
+	public Response update(@PathParam("id") String id, Release obj) {
 		obj.setId(id);
 		if (dm.update(obj)) {
 			return Response.status(204).build();
@@ -57,7 +56,7 @@ public class ReleaseResource {
 
 	@DELETE
 	@Path("/{id}")
-	public Response delete(@PathParam("id") long id) {
+	public Response delete(@PathParam("id") String id) {
 		if (dm.delete(id)) {
 			return Response.status(204).build();
 		} else {

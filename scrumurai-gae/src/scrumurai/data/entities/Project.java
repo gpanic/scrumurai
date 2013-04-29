@@ -2,18 +2,21 @@ package scrumurai.data.entities;
 
 import javax.persistence.*;
 
+import org.datanucleus.api.jpa.annotations.Extension;
+
 @Entity
 public class Project implements EntityObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Extension(vendorName="datanucleus", key="gae.encoded-pk", value="true")
 	private String id;
 
 	private String name;
 	private String description;
 	private int velocity;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	private User user;
+	@ManyToOne()
+	private User product_owner;
 
 	public String getId() {
 		return id;
@@ -21,14 +24,6 @@ public class Project implements EntityObject {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getName() {
@@ -55,11 +50,13 @@ public class Project implements EntityObject {
 		this.velocity = velocity;
 	}
 
-	@Override
-	public String toString() {
-		return "Project [id=" + id + ", user=" + user + ", name=" + name
-				+ ", description=" + description + ", velocity=" + velocity
-				+ "]";
+	public User getProduct_owner() {
+		return product_owner;
 	}
+
+	public void setProduct_owner(User product_owner) {
+		this.product_owner = product_owner;
+	}
+
 
 }

@@ -19,9 +19,9 @@ public class Sprint implements EntityObject {
 	private int total_effort;
 	private int progress;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Project project;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Release release;
 
 	public String getId() {

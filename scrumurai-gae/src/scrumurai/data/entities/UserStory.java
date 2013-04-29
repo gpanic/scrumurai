@@ -23,16 +23,16 @@ public class UserStory implements EntityObject {
 	private String business_value;
 	private String state;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private User author;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Project project;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private User assignee;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	private Sprint sprint;
 
 	public String getId() {
