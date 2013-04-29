@@ -1,14 +1,18 @@
 package scrumurai.data.entities;
 
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="userdetials")
+@Table(name="tbl_user")
+@XmlRootElement
 public class User implements EntityObject {
 
     @Id
@@ -22,7 +26,7 @@ public class User implements EntityObject {
     private String email;
     private String firstname;
     private String lastname;
-
+    
     public User() {
     }
 

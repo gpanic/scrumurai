@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 
 @Entity
+@Table(name="tbl_release")
 public class Release implements EntityObject {
 	
 	@Id

@@ -32,7 +32,7 @@ public class DataMapper {
 		return eo.getId();
 	}
 	
-	public EntityObject read(String id) {
+	public EntityObject read(int id) {
 		em = EMF.get().createEntityManager();
 		EntityObject eo = em.find(c, id);
 		em.close();
@@ -53,7 +53,7 @@ public class DataMapper {
 		}
 	}
 	
-	public boolean delete(String id) {
+	public boolean delete(int id) {
 		em = EMF.get().createEntityManager();
 		EntityObject eo = em.find(c, id);
 		if (eo != null) {

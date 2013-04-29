@@ -3,6 +3,7 @@ package scrumurai.data.entities;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "tbl_project")
 public class Project implements EntityObject {
 
     @Id
@@ -11,10 +12,8 @@ public class Project implements EntityObject {
     private String name;
     private String description;
     private int velocity;
-    
-    @ManyToOne()
+    @ManyToOne
     private User product_owner;
-
 
     public String getName() {
         return name;
@@ -32,20 +31,20 @@ public class Project implements EntityObject {
         this.description = description;
     }
 
-    public int getVelocity() {
-        return velocity;
-    }
-
-    public void setVelocity(int velocity) {
-        this.velocity = velocity;
-    }
-
     public User getProduct_owner() {
         return product_owner;
     }
 
     public void setProduct_owner(User product_owner) {
         this.product_owner = product_owner;
+    }
+
+    public int getVelocity() {
+        return velocity;
+    }
+
+    public void setVelocity(int velocity) {
+        this.velocity = velocity;
     }
 
     public int getId() {

@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
+@Table(name="tbl_sprint")
 public class Sprint implements EntityObject {
 
     @Id
