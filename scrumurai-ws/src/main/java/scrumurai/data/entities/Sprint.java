@@ -5,10 +5,11 @@ import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
+@Table(name="tbl_sprint")
 public class Sprint implements EntityObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String name;
     private Date start;
