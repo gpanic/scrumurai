@@ -1,32 +1,29 @@
 package scrumurai.data.entities;
 
-import java.util.List;
-import javax.persistence.Basic;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="tbl_user")
-@XmlRootElement
-public class User implements EntityObject {
+@Table(name = "tbl_user")
+public class User implements EntityObject{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
-    @Basic(optional = false)
+    @NotNull
     private String username;
-    @Basic(optional = false)
+    @NotNull
     private String password;
-    @Basic(optional = false)
+    @NotNull
     private String email;
     private String firstname;
     private String lastname;
-    
+
     public User() {
     }
 
@@ -82,6 +79,4 @@ public class User implements EntityObject {
     public String toString() {
         return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", firstname=" + firstname + ", lastname=" + lastname + '}';
     }
-    
-    
 }

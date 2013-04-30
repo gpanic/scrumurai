@@ -9,7 +9,6 @@
             30
         </session-timeout>
     </session-config>
-    
     <servlet>
         <servlet-name>jersey-serlvet</servlet-name>
         <servlet-class>

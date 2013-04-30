@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Project implements EntityObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String name;
     private String description;

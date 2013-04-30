@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class UserEffortVote implements EntityObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private int effort;
     @ManyToOne()

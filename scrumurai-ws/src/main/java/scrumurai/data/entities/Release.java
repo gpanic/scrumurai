@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Release implements EntityObject {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	
 	private String version;

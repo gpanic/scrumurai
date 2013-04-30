@@ -1,16 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">   
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence">    
     <persistence-unit name="scrumurai" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>scrumurai.data.entities.User</class>
+        <class>scrumurai.data.entities.Project</class>
+        <class>scrumurai.data.entities.ProjectMember</class>
+        <class>scrumurai.data.entities.Release</class>
+        <class>scrumurai.data.entities.Sprint</class>
+        <class>scrumurai.data.entities.UserEffortVote</class>
+        <class>scrumurai.data.entities.UserStory</class>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver"/>
-            <property name="hibernate.connection.username" value="sa"/>
-            <property name="hibernate.connection.password" value=""/>
-            <property name="hibernate.connection.url" value="jdbc:hsqldb:file:db/testdb;shutdown=true;hsqldb.write_delay=false"/>
-            <property name="hibernate.showSql" value="true"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/D:/scrumurai.sqlite" />
+            <property name="javax.persistence.jdbc.user" value="scrumurai"/>
+            <property name="javax.persistence.jdbc.password" value="ninja"/>
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+            
+            <property name="eclipselink.ddl-generation" value="create-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
         </properties>
     </persistence-unit>
 </persistence>
