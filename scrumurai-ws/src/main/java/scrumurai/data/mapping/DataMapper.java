@@ -69,7 +69,7 @@ public class DataMapper {
 
     public List<? extends EntityObject> list() {
         em = EMF.get().createEntityManager();
-        TypedQuery<? extends EntityObject> query = em.createQuery("select e from " + c.getName() + " e", c);
+        TypedQuery<? extends EntityObject> query = em.createQuery("select e from " + c.getSimpleName() + " e", c);
         List<? extends EntityObject> rs = query.getResultList();
         em.close();
         return rs;

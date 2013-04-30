@@ -8,19 +8,19 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import scrumurai.data.entities.User;
+import scrumurai.data.entities.Sprint;
 import scrumurai.data.mapping.DataMapper;
 
-@Path("/users")
-public class UserResource implements Resource<User> {
+@Path("/sprints")
+public class SprintResource implements Resource<Sprint> {
 
     @Context
     UriInfo uriInfo;
-    private DataMapper dm = new DataMapper(User.class);
+    private DataMapper dm = new DataMapper(Sprint.class);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(User obj) {
+    public Response create(Sprint obj) {
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
@@ -34,8 +34,8 @@ public class UserResource implements Resource<User> {
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response read(@PathParam("id") int id) {
-        User u = (User) dm.read(id);
-        if (u != null) {
+        Sprint obj = (Sprint) dm.read(id);
+        if (obj != null) {
             return Response.ok(dm.read(id)).build();
         } else {
             return Response.status(404).build();
@@ -45,7 +45,7 @@ public class UserResource implements Resource<User> {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") int id, User obj) {
+    public Response update(@PathParam("id") int id, Sprint obj) {
         obj.setId(id);
         if (dm.update(obj)) {
             return Response.status(204).build();

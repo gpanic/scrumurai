@@ -1,9 +1,11 @@
 package scrumurai.data.entities;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "tbl_project")
+@XmlRootElement
 public class Project implements EntityObject {
 
     @Id

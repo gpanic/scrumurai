@@ -3,21 +3,25 @@ package scrumurai.data.entities;
 import java.sql.Date;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="tbl_sprint")
+@XmlRootElement
 public class Sprint implements EntityObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
     private String name;
-    private Date start;
-    private Date end;
+    private Date start_date;
+    private Date end_date;
     private int total_effort;
     private int progress;
+    
     @ManyToOne()
     private Project project;
+    
     @ManyToOne()
     private Release release;
 
@@ -27,6 +31,10 @@ public class Sprint implements EntityObject {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public Project getProject() {
+        return project;
     }
 
     public void setProject(Project project) {
@@ -49,20 +57,20 @@ public class Sprint implements EntityObject {
         this.name = name;
     }
 
-    public Date getStart() {
-        return start;
+    public Date getStart_date() {
+        return start_date;
     }
 
-    public void setStart(Date start) {
-        this.start = start;
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getEnd() {
-        return end;
+    public Date getEnd_date() {
+        return end_date;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
     public int getTotal_effort() {
@@ -83,7 +91,7 @@ public class Sprint implements EntityObject {
 
     @Override
     public String toString() {
-        return "Sprint{" + "id=" + id + ", name=" + name + ", start=" + start + ", end=" + end + ", total_effort=" + total_effort + ", progress=" + progress + ", project=" + project + ", release=" + release + '}';
+        return "Sprint{" + "id=" + id + ", name=" + name + ", start=" + start_date + ", end=" + end_date + ", total_effort=" + total_effort + ", progress=" + progress + ", project=" + project + ", release=" + release + '}';
     }
     
     
