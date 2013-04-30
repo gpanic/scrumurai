@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -17,10 +18,16 @@ public class UserEffortVote implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    
+    @NotNull
     private int effort;
+    
     @ManyToOne()
+    @NotNull
     private User user;
+    
     @ManyToOne()
+    @NotNull
     private UserStory user_story;
 
     public int getId() {

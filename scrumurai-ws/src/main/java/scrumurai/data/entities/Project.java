@@ -1,6 +1,7 @@
 package scrumurai.data.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -11,10 +12,14 @@ public class Project implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    
+    @NotNull
     private String name;
     private String description;
     private int velocity;
+    
     @ManyToOne
+    @NotNull
     private User product_owner;
 
     public String getName() {

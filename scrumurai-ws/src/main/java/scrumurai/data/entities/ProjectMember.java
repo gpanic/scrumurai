@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -17,10 +18,16 @@ public class ProjectMember implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    
+    @NotNull
     private String role;
+    
     @ManyToOne()
+    @NotNull
     private Project project;
+    
     @ManyToOne()
+    @NotNull
     private User user;
 
     public int getId() {

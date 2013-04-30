@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -17,18 +18,25 @@ public class UserStory implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    @NotNull
     private String name;
     private String description;
     private int arrangement;
     private int effort;
     private String business_value;
     private String state;
+    
     @ManyToOne()
+    @NotNull
     private User author;
+    
     @ManyToOne()
+    @NotNull
     private Project project;
+    
     @ManyToOne()
     private User assignee;
+    
     @ManyToOne()
     private Sprint sprint;
 

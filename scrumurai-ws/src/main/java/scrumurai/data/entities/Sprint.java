@@ -3,6 +3,7 @@ package scrumurai.data.entities;
 import java.sql.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -13,8 +14,11 @@ public class Sprint implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
+    @NotNull
     private String name;
+    @NotNull
     private Date start_date;
+    @NotNull
     private Date end_date;
     private int total_effort;
     private int progress;
