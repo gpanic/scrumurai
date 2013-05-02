@@ -43,11 +43,11 @@
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <filter>
-        <filter-name>CorsFilter</filter-name>
-        <filter-class>scrumurai.ws.filter.CORSFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>CorsFilter</filter-name>
-        <url-pattern>/rest/*</url-pattern>
-    </filter-mapping>
+       <filter-name>CORSFilter</filter-name>
+       <filter-class>scrumurai.cors.CORSFilter</filter-class>
+   </filter>
+   <filter-mapping>
+       <filter-name>CORSFilter</filter-name>
+       <url-pattern>/rest/*</url-pattern>
+   </filter-mapping>
 </web-app>
