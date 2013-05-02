@@ -1,12 +1,19 @@
 package scrumurai.ws.resources;
 
+import com.sun.jersey.api.core.InjectParam;
+import com.sun.jersey.api.json.JSONWithPadding;
 import java.net.URI;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import scrumurai.data.EMF;
 
 import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
@@ -21,6 +28,7 @@ public class UserResource implements Resource<User> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(User obj) {
+        System.out.println("žalost");
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
@@ -64,9 +72,35 @@ public class UserResource implements Resource<User> {
         }
     }
 
+//    @GET
+//    @Produces({"application/javascript"})
+//    public JSONWithPadding list2(@QueryParam("callback") String callback) {
+//        System.out.println("nekaj");
+//        return new JSONWithPadding((List<User>) dm.list());
+//    }
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    public List<User> list2() {
+        System.out.println("Nekaj");
+        return (List<User>) dm.list();
+    }
+
+//    @GET
+//    @Path("/login")
+//    @Consumes(MediaType.APPLICATION_JSON)
+//    public Response login(User u) {
+//        EntityManager em = EMF.get().createEntityManager();
+//        TypedQuery<User> query = em.createQuery("SELECT id,username,lastname,firstname,email FROM c WHERE username = :uname AND password = :pw", User.class);
+//        List<User> rs = query.getResultList();
+//        em.close();
+//        if (rs.size() == 1)
+//            return Response.ok(rs.get(0)).build();
+//        else
+//            return Response.status(404).build();
+//            
+//    }
     public Response list() {
-        return Response.ok(dm.list()).build();
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
