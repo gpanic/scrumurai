@@ -24,7 +24,7 @@ public class UserResource implements Resource<User> {
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
-            return Response.created(uri).build();
+            return Response.created(uri).entity(Integer.toString(id)).build();
         } else {
             return Response.status(400).build();
         }
