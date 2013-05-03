@@ -19,7 +19,6 @@ public class Project implements EntityObject {
     private int velocity;
     
     @ManyToOne
-    @NotNull
     private User product_owner;
 
     public String getName() {

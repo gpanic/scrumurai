@@ -12,7 +12,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        DataMapper dm = new DataMapper(User.class);
+//        DataMapper dm = new DataMapper(User.class);
 //        User u = new User();
 //        u.setEmail("nekaj");
 //        u.setFirstname("nekaj");
@@ -23,6 +23,7 @@ public class App {
 //        
 //        dm.create(u);
 
+        /*
         List<User> l = (List<User>) dm.list();
         for (User ud : l)
             System.out.println(ud);
@@ -39,6 +40,14 @@ public class App {
         List<Project> l2 = (List<Project>) dm2.list();
         for (Project ud : l2)
             System.out.println(ud);
-
+*/
+        Project p = new Project();
+        p.setName("Project 1");
+        User u = new User();
+        u.setId(4);
+        p.setProduct_owner(u);
+        DataMapper dm = new DataMapper(Project.class);
+        dm.create(p);
+        System.out.println("DONE");
     }
 }

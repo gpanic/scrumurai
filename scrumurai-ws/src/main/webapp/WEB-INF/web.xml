@@ -10,7 +10,7 @@
         </session-timeout>
     </session-config>
     <servlet>
-        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-name>jersey-servlet</servlet-name>
         <servlet-class>
             com.sun.jersey.spi.container.servlet.ServletContainer
         </servlet-class>
@@ -39,7 +39,7 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-name>jersey-servlet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <filter>
