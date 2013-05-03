@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "tbl_user")
 @XmlRootElement
-public class User implements EntityObject{
+public class User implements EntityObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
@@ -25,6 +25,7 @@ public class User implements EntityObject{
     private String email;
     private String firstname;
     private String lastname;
+    private String number;
 
     public User() {
     }
@@ -73,12 +74,21 @@ public class User implements EntityObject{
         return lastname;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", firstname=" + firstname + ", lastname=" + lastname + '}';
+        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", firstname=" + firstname + ", lastname=" + lastname + ", number=" + number + '}';
     }
+
 }
