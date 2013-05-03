@@ -21,6 +21,7 @@ public class ProjectResource implements Resource<Project> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Project obj) {
+        System.err.println(obj);
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
