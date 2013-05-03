@@ -1,4 +1,4 @@
-var _ws = "http://localhost:8080/scrumurai-ws/rest";
+var _ws = "http://localhost:7659/scrumurai-ws/rest";
 
 $(document).on("pagebeforeshow", "#mytasks", function() {
 	populateProjectsPopup();
