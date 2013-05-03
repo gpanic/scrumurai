@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
   <head> 
-    <title>Page Title</title> 
+    <title>Scrumurai</title> 
 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -100,7 +100,7 @@
               <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
               <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
             </ul>
-          </div><!-- /navbar -->          <h1>
+            </div><!-- /navbar -->          <h1>
             My Tasks
             <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
               data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right">
@@ -172,7 +172,7 @@
       </div>
       <!-- /MY TASKS -->
 
-      <!-- BURNDOWN PAGE -->
+      <!-- BURNDOWN -->
       <div data-role="page" id="burndown">
 
         <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
@@ -218,9 +218,10 @@
           Velocity: 13
         </div><!-- /content -->
 
-      </div><!-- /page -->
+      </div>
+      <!-- /BURNDOWN -->
 
-      <!-- Start of second page -->
+      <!-- BACKLOG -->
       <div data-role="page" id="backlog">
 
         <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
@@ -291,9 +292,10 @@
           </ul>
         </div><!-- /content -->
 
-      </div><!-- /page -->
+      </div>
+      <!-- /BACKLOG -->
 
-      <!-- SPRINT PAGE -->
+      <!-- SPRINT -->
       <div data-role="page" id="sprint">
 
         <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
@@ -345,9 +347,10 @@
             </li>
           </div><!-- /content -->
 
-        </div><!-- /page -->
+        </div>
+        <!-- /SPRINT -->
 
-        <!-- RELEASE PAGE -->
+        <!-- RELEASE -->
         <div data-role="page" id="release">
 
           <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
@@ -381,7 +384,8 @@
               </li>
             </div><!-- /content -->
 
-          </div><!-- /page -->
+          </div>
+          <!-- /RELEASE -->
 
           <!-- MY PROJECTS -->
           <div data-role="page" id="myprojects">
@@ -403,12 +407,56 @@
               <ul data-role="listview" data-split-theme="c" data-split-icon="delete">
               </ul>
             </div><!-- /content -->
-			
-			<div data-role="footer", class="ui-bar" data-position="fixed">
-				<a href="#" data-icon="plus">New</a>
-			</div>
+
+            <div data-role="footer", class="ui-bar" data-position="fixed">
+              <a href="#addproject" data-icon="plus">New</a>
+            </div>
           </div>
           <!-- /MY PROJECTS -->
+
+          <!-- ADD PROJECT -->
+          <div data-role="page" id="addproject">
+
+            <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+              <div data-role="navbar">
+                <ul>
+                  <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+                  <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+                  <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+                  <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+                  <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+                </ul>
+              </div><!-- /navbar -->
+              <h1 style="height:30px;padding-top:10px">Add Project</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+              <form id="addProjectForm">
+                <ul data-role="listview">
+                  <li data-role="fieldcontain">
+	                  <label for="add_project_name">Name:</label>
+	                  <input type="text" name="add_project_name" id="add_project_name" value="" data-clear-btn="true">
+                  </li>
+                  <li data-role="fieldcontain">
+	                  <label for="add_project_description">Description:</label>
+	                  <input type="text" name="add_project_description" id="add_project_description" value="" data-clear-btn="true">
+                  </li>
+                  <li data-role="fieldcontain">
+	                  <label for="add_project_velocity">Starting velocity:</label>
+	                  <input type="range" name="add_project_velocity" id="add_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true">
+                  </li>
+                  <li class="ui-body ui-body-b">
+            		<fieldset class="ui-grid-a">
+	                    <div class="ui-block-a"><button type="submit" data-theme="c">Create</button></div>
+	                    <div class="ui-block-b"><a href="#myprojects" type="submit" data-theme="c">Cancel</a></div>
+		            </fieldset>
+	        	  </li>
+                </ul>
+              </form>
+            </div><!-- /content -->
+            
+          </div>
+          <!-- /ADD PROJECT -->
 
         </body>
       </html>
