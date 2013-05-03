@@ -1,4 +1,3 @@
-var _restusers = "http://localhost:7659/scrumurai-ws/rest/users";
 var _user;
 
 $(document).ready(function() {
@@ -6,7 +5,7 @@ $(document).ready(function() {
 	var loginData = window.localStorage.getItem("login");
 	if(notEmpty(loginData)){
 		$.ajax({
-			url: _restusers+"/loginremember",
+			url: _ws+"/users/loginremember",
 			type: "POST",
 			contentType: "text/plain; charset=utf-8",
 			data: JSON.stringify(loginData)
@@ -32,7 +31,7 @@ $(function(){
 
 		if(notEmpty(user.username) && notEmpty(user.password)){
 			$.ajax({
-				url: _restusers+"/login",
+				url: _ws+"/users/login",
 				type: "POST",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify(user),
@@ -68,7 +67,7 @@ $(function(){
 		var user = $("#registerForm").serializeObject();
 		if(notEmpty(user.username) && notEmpty(user.password) && notEmpty(user.email)){
 			$.ajax({
-				url: _restusers,
+				url: _ws+"/users",
 				type: "POST",
 				contentType: "application/json; charset=utf-8",
 				data: JSON.stringify(user),
