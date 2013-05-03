@@ -2,8 +2,12 @@ package scrumurai.ws.resources;
 
 import com.sun.jersey.api.core.InjectParam;
 import com.sun.jersey.api.json.JSONWithPadding;
+import java.math.BigInteger;
 import java.net.URI;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -27,12 +31,17 @@ public class UserResource implements Resource<User> {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response create(User obj) {
-        System.out.println("žalost");
+        System.out.println("create");
+        obj.setPassword(sha1(obj.getPassword()));
+        obj.setNumber(uuid());
+        
         int id = dm.create(obj);
         if (id > -1) {
+            String[] send = {Integer.toString(id), obj.getNumber()};
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
-            return Response.created(uri).entity(Integer.toString(id)).build();
+            return Response.created(uri).entity(send).build();
         } else {
             return Response.status(400).build();
         }
@@ -81,26 +90,74 @@ public class UserResource implements Resource<User> {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> list2() {
-        System.out.println("Nekaj");
-        return (List<User>) dm.list();
-    }
-
-//    @GET
-//    @Path("/login")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    public Response login(User u) {
-//        EntityManager em = EMF.get().createEntityManager();
-//        TypedQuery<User> query = em.createQuery("SELECT id,username,lastname,firstname,email FROM c WHERE username = :uname AND password = :pw", User.class);
-//        List<User> rs = query.getResultList();
-//        em.close();
-//        if (rs.size() == 1)
-//            return Response.ok(rs.get(0)).build();
-//        else
-//            return Response.status(404).build();
-//            
-//    }
     public Response list() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        System.out.println("LIST");
+        return Response.ok(dm.list()).build();
+    }
+    
+    @POST
+    @Path("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(User u) {
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<User> query = em.createQuery("SELECT e FROM " + User.class.getSimpleName() + " e WHERE e.username = :uname AND e.password = :pw", User.class);
+        query.setParameter("uname", u.getUsername());
+        query.setParameter("pw", sha1(u.getPassword()));
+        List<User> rs = query.getResultList();
+        System.out.println(rs.get(0).getNumber());
+        em.close();
+        if (rs.size() == 1) {
+            rs.get(0).setPassword("");
+            return Response.ok().entity(rs.get(0)).build();
+        } else
+            return Response.status(404).build();
+    }
+    
+    @POST
+    @Path("/loginremember")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response loginRemember(String loginData) {
+        loginData = loginData.substring(1,loginData.length()-1);
+        String[] loginsplit = loginData.split("[|]");
+        //ker doda nulo na konec??
+        System.out.println(loginsplit[1]);
+        if (loginsplit.length < 2)
+            return Response.status(404).build();
+        else {
+            EntityManager em = EMF.get().createEntityManager();
+            TypedQuery<User> query = em.createQuery("SELECT e FROM " + User.class.getSimpleName() + " e WHERE e.username = :uname AND e.number = :number", User.class);
+            query.setParameter("uname", loginsplit[0]);
+            query.setParameter("number", loginsplit[1]);
+            List<User> rs = query.getResultList();
+            em.close();
+            if (rs.size() == 1){
+                rs.get(0).setPassword("");
+                rs.get(0).setNumber("");
+                return Response.ok().entity(rs.get(0)).build();
+            }else
+                return Response.status(404).build();
+        }
+    }
+    
+    private String sha1(String pw) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.reset();
+            byte[] pwByte = pw.getBytes();
+            md.update(pwByte, 0, pwByte.length);
+            
+            pw = new BigInteger(1, md.digest()).toString(2);
+        } catch (NoSuchAlgorithmException ex) {
+            ex.printStackTrace();
+        }
+        return pw;
+    }
+    
+    private String uuid() {
+        String sud = UUID.randomUUID().toString();
+        sud = sud.replaceAll("-", "");
+        return new BigInteger(sud, 16).toString();
     }
 }
