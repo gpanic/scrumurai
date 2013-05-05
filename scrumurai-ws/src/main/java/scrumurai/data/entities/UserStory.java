@@ -1,5 +1,6 @@
 package scrumurai.data.entities;
 
+import java.sql.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class UserStory implements EntityObject {
     private int effort;
     private String business_value;
     private String state;
+    private Date end_date;
     
     @ManyToOne()
     @NotNull
@@ -62,6 +64,14 @@ public class UserStory implements EntityObject {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Date getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
     public User getAssignee() {

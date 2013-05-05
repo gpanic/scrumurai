@@ -105,7 +105,6 @@ public class UserResource implements Resource<User> {
         query.setParameter("uname", u.getUsername());
         query.setParameter("pw", sha1(u.getPassword()));
         List<User> rs = query.getResultList();
-        System.out.println(rs.get(0).getNumber());
         em.close();
         if (rs.size() == 1) {
             rs.get(0).setPassword("");
