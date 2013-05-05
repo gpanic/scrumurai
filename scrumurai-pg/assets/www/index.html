@@ -101,11 +101,11 @@
               <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
               <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
             </ul>
-            </div><!-- /navbar -->          <h1>
+            </div><!-- /navbar -->
+            <h1>
             My Tasks
             <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
-              data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right">
-              Scrumurai
+              data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right" class="selectedProject">
             </a>
             <div data-role="popup" id="projectPopup" data-theme="c">
               <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
@@ -405,7 +405,7 @@
             </div><!-- /header -->
 
             <div data-role="content">
-              <ul data-role="listview" data-split-theme="c" data-split-icon="delete">
+              <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="myProjectsList">
               </ul>
             </div><!-- /content -->
 
@@ -440,7 +440,7 @@
                   </li>
                   <li data-role="fieldcontain">
 	                  <label for="add_project_description">Description:</label>
-	                  <input type="text" name="add_project_description" id="add_project_description" value="" data-clear-btn="true">
+	                  <textarea name="add_project_description" id="add_project_description" data-clear-btn="true" style="height:7em;"></textarea>
                   </li>
                   <li data-role="fieldcontain">
 	                  <label for="add_project_velocity">Starting velocity:</label>

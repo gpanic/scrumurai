@@ -58,6 +58,7 @@ public class ProjectResource implements Resource<Project> {
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") int id) {
+        System.err.println("DELETE PROJECT");
         if (dm.delete(id)) {
             return Response.status(204).build();
         } else {
