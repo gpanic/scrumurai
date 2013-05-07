@@ -1,12 +1,17 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import scrumurai.data.EMF;
+import scrumurai.data.entities.Release;
 
 import scrumurai.data.entities.Sprint;
 import scrumurai.data.mapping.DataMapper;
@@ -68,5 +73,23 @@ public class SprintResource implements Resource<Sprint> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         return Response.ok(dm.list()).build();
+    }
+    
+    @GET
+    @Path("/rls/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response list(@PathParam("id") int id) {
+        System.out.println("LIST RLS");
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<Sprint> query = em.createQuery("SELECT e FROM " + Sprint.class.getSimpleName() + " e WHERE e.release.id = :release_id", Sprint.class);
+        query.setParameter("sprint_id", id);
+        List<Sprint> rs = query.getResultList();
+        em.close();
+
+        if (rs.size() > 0) {
+            return Response.ok(rs).build();
+        } else {
+            return Response.status(404).build();
+        }
     }
 }

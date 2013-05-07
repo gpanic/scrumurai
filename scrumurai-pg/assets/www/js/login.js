@@ -1,98 +1,120 @@
 var _user;
 
 $(document).ready(function() {
+	autoLogin();
+
+	$(document).on("pagebeforeshow",  function() {
+		if(!_user && location.hash != "#register"){
+			console.log("pagebeforeshow");
+			$.mobile.changePage("#login");
+		}
+	});
+
+	$(document).on("pagebeforeshow","#login",  function() {
+		console.log("pagebeforeshow #login");
+		autoLogin();
+		return false;
+	});
+	
+	$("#loginForm").submit(function(){
+		login();
+		return false;
+	});
+
+	$("#registerForm").submit(function(){
+		register();
+		return false;
+	});
+});
+
+
+var autoLogin = function(){
+	if(location.hash != "#login" && location.hash != ""){
+		return false;
+	}
 	$.mobile.loading('show');
 	var loginData = window.localStorage.getItem("login");
-	if(notEmpty(loginData)){
+	if(!isEmpty(loginData)){
 		$.ajax({
 			url: _ws+"/users/loginremember",
 			type: "POST",
 			contentType: "text/plain; charset=utf-8",
 			data: JSON.stringify(loginData)
 		}).done(function(data){
-			if(data.id > 0){
-				$.mobile.loading('hide');
-				_user = data;
-				window.location = "#mytasks";
-			}
+			_user = data;
+			$.mobile.changePage("#mytasks");
 		}).fail(function(){
 			$.mobile.loading('hide');
 			$("#login_logo").removeClass("centered").addClass("login_logo");
 			$("#loginPage").show();
-		})
+		});
 	}
-});
+}
 
-$(function(){
-	$("#loginForm").submit(function(){
-		$("#submitLogin").button("disable");
+var login = function(){
+	$("#submitLogin").button("disable");
+	var user = $("#loginForm").serializeObject();
 
-		var user = $("#loginForm").serializeObject();
-
-		if(notEmpty(user.username) && notEmpty(user.password)){
-			$.ajax({
-				url: _ws+"/users/login",
-				type: "POST",
-				contentType: "application/json; charset=utf-8",
-				data: JSON.stringify(user),
-				beforeSend: function ( xhr ) {
-					$.mobile.loading('show');
-				}
-			}).done(function(data){
-				window.localStorage.setItem("login", data.username+"|"+data.number);
-				delete data.number;
-				_user = data;
-				window.location = "#mytasks";
-			}).fail(function(xhr, textStatus, errorThrown){
-				failedLogin();
-			}).always(function(){
-				$.mobile.loading('hide');
-			});
-		}else{
-			failedLogin();
-		}
-
+	if(isEmpty(user.username) || isEmpty(user.password)){
+		failedLogin();
 		return false;
-	});
-
-	function failedLogin(){
-		$("#login_fail").show();
-		enableButton("#submitLogin");
 	}
 
-
-	$("#registerForm").submit(function(){
-		$("#submitRegister").prop("disabled", true);
-
-		var user = $("#registerForm").serializeObject();
-		if(notEmpty(user.username) && notEmpty(user.password) && notEmpty(user.email)){
-			$.ajax({
-				url: _ws+"/users",
-				type: "POST",
-				contentType: "application/json; charset=utf-8",
-				data: JSON.stringify(user),
-				beforeSend: function ( xhr ) {
-					$.mobile.loading('show');
-				}
-			}).done(function(data){
-				window.localStorage.setItem("login", user.username+"|"+data[1]);
-				loginNewUser(user,data[0]);
-				window.location = "#mytasks";
-			}).fail(function(xhr, textStatus, errorThrown){
-				enableButton("#submitRegister");
-			}).always(function(){
-				$.mobile.loading('hide');
-			});
-		}else{
-			enableButton("#submitRegister");
+	$.ajax({
+		url: _ws+"/users/login",
+		type: "POST",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(user),
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
 		}
-
-		return false;
+	}).done(function(data){
+		window.localStorage.setItem("login", data.username+"|"+data.number);
+		delete data.number;
+		_user = data;
+		$.mobile.changePage("#mytasks");
+	}).fail(function(xhr, textStatus, errorThrown){
+		failedLogin();
+	}).always(function(){
+		$.mobile.loading('hide');
 	});
+}
 
-	function loginNewUser(user,id){
-		user.id = id;
-		_user = user;
+function failedLogin(){
+	$("#login_fail").show();
+	enableButton("#submitLogin");
+}
+
+var register = function(){
+	$("#submitRegister").button("disabled");
+	var user = $("#registerForm").serializeObject();
+
+	if(isEmpty(user.username) || isEmpty(user.password) || isEmpty(user.email)){
+		enableButton("#submitRegister");
+		return false;
 	}
 
-});
+	$.ajax({
+		url: _ws+"/users",
+		type: "POST",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(user),
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(data){
+		alert("novi uporabnik");
+		window.localStorage.setItem("login", user.username+"|"+data[1]);
+		loginNewUser(user,data[0]);
+		$.mobile.changePage("#mytasks");
+	}).fail(function(xhr, textStatus, errorThrown){
+		enableButton("#submitRegister");
+	}).always(function(){
+		$.mobile.loading('hide');
+	});
+}
+
+function loginNewUser(user,id){
+	user.id = id;
+	_user = user;
+}

@@ -24,9 +24,11 @@ public class Sprint implements EntityObject {
     private int progress;
     
     @ManyToOne()
+    @NotNull
     private Project project;
     
     @ManyToOne()
+    @NotNull
     private Release release;
 
     public int getId() {

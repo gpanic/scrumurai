@@ -40,3 +40,9 @@
 .login_logo{
 	display: block; margin-left: auto; margin-right: auto;
 }
+
+#errorpage_msg{
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+}

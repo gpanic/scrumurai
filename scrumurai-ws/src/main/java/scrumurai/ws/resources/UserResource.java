@@ -80,13 +80,6 @@ public class UserResource implements Resource<User> {
             return Response.status(404).build();
         }
     }
-
-//    @GET
-//    @Produces({"application/javascript"})
-//    public JSONWithPadding list2(@QueryParam("callback") String callback) {
-//        System.out.println("nekaj");
-//        return new JSONWithPadding((List<User>) dm.list());
-//    }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -118,10 +111,9 @@ public class UserResource implements Resource<User> {
     @Consumes(MediaType.TEXT_PLAIN)
     @Produces(MediaType.APPLICATION_JSON)
     public Response loginRemember(String loginData) {
+        System.out.println("autologin");
         loginData = loginData.substring(1,loginData.length()-1);
         String[] loginsplit = loginData.split("[|]");
-        //ker doda nulo na konec??
-        System.out.println(loginsplit[1]);
         if (loginsplit.length < 2)
             return Response.status(404).build();
         else {

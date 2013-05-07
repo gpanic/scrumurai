@@ -1,0 +1,61 @@
+path {
+  stroke-width: 1;
+  fill: none;
+}
+
+.data1 {
+  stroke: #19b99a;
+  stroke-width: 2px;
+}
+
+.data2 {
+  stroke: #b83c38;
+  stroke-width: 2px;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line, .x.axis path, .y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis text, .y.axis text {
+  font-size: 24px;
+}
+
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.7;
+}
+.grid path {
+  stroke-width: 0;
+}
+
+@media only screen and (max-width : 500px) {
+  .x.axis text, .y.axis text {
+    font-size: 30px;
+  }
+  .data1, .data2{
+    stroke-width: 5px;
+  }
+}
+
+#graph_container{
+  width: 800px; 
+  height: 600px;
+}
+
+@media only screen and (max-width : 800px) {
+  #graph_container{
+    width: auto; 
+    height: auto;
+  }
+}

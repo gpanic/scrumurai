@@ -1,414 +1,497 @@
 <!DOCTYPE html> 
 <html> 
-  <head> 
-    <title>Page Title</title> 
+<head> 
+  <title>Scrumurai</title> 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="js/jquery.mobile-1.3.1.min.js"></script>
-    <script src="js/scrumurai.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/helper.js">
-      <script src="js/cordova-2.6.0.js"></script>
-      <script src="js/serializeObjectSorcery.js"></script>
-    </head> 
-    <body> 
+  <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/burndown.css"/>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery.mobile-1.3.1.min.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="js/scrumurai.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="js/cordova-2.6.0.js"></script>
+  <script src="js/serializeObjectSorcery.js"></script>
+  <script src="js/d3.v3.min.js"></script>
+  <script src="js/burndown.js"></script>
+</head> 
+<body> 
 
-      <!-- LOGIN -->
-      <div data-role="page" id="login">
-        <div data-role="content">  
-          <p class="centeredImage">  
-          <img src="img/logo.png" id="login_logo" class="centered" max-height="140" max-width="150"/>
-          </p>
-          <div id="loginPage">
-            <form id="loginForm" method="post">
-              <div data-role="fieldcontain" class="ui-hide-label">
-                <label for="login_username">Username:</label>
-                <input type="text" name="username" id="login_username" pattern="^[a-zA-Z0-9]+$" maxlength="12" placeholder="Username" required/>
-              </div>
-
-              <div data-role="fieldcontain" class="ui-hide-label">
-                <label for="login_password">Password:</label>
-                <input type="password" name="password" id="login_password" pattern="^[a-zA-Z0-9]+$" maxlength="12" placeholder="Password" required/>
-              </div>
-
-              <input type="submit" value="Login" id="submitLogin">
-            </form>
-            <p id="login_fail">
-            Login failed! Check if your username and password are correct.
-            </p>
-            <p align="center">
-            Or, if you don't have an account
-            <a href="#register" data-role="button">Register</a>
-            </p>
+  <!-- LOGIN -->
+  <div data-role="page" id="login">
+    <div data-role="content">  
+      <p class="centeredImage">  
+        <img src="img/logo.png" id="login_logo" class="centered" max-height="140" max-width="150"/>
+      </p>
+      <div id="loginPage">
+        <form id="loginForm" method="post">
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="login_username">Username:</label>
+            <input type="text" name="username" id="login_username" pattern="^[a-zA-Z0-9]+$" maxlength="12" placeholder="Username" required/>
           </div>
-        </div>
+
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="login_password">Password:</label>
+            <input type="password" name="password" id="login_password" pattern="^[a-zA-Z0-9]+$" maxlength="12" placeholder="Password" required/>
+          </div>
+
+          <input type="submit" value="Login" id="submitLogin">
+        </form>
+        <p id="login_fail">
+          Login failed! Check if your username and password are correct.
+        </p>
+        <p align="center">
+          Or, if you don't have an account
+          <a href="#register" data-role="button">Register</a>
+        </p>
       </div>
-      <!-- /LOGIN -->
+    </div>
+  </div>
+  <!-- /LOGIN -->
 
-      <!-- /REGISTER -->
-      <div data-role="page" id="register">
+  <!-- /REGISTER -->
+  <div data-role="page" id="register">
 
-        <div data-role="header">
-          <h1>Register</h1>
+    <div data-role="header">
+      <h1>Register</h1>
+    </div>
+
+    <div data-role="content">    
+      <form id="registerForm" method="post">
+        <div data-role="fieldcontain">
+          <label for="register_username">Username:</label>
+          <input type="text" name="username" id="register_username" pattern="^[a-zA-Z0-9]+$" maxlength="12" required>
+        </div>
+        <div data-role="fieldcontain">
+          <label for="register_password">Password:</label>
+          <input type="password" name="password" id="register_password" pattern="^[a-zA-Z0-9]+$" maxlength="12" required>
         </div>
 
-        <div data-role="content">    
-          <form id="registerForm" method="post">
-            <div data-role="fieldcontain">
-              <label for="register_username">Username:</label>
-              <input type="text" name="username" id="register_username" pattern="^[a-zA-Z0-9]+$" maxlength="12" required>
-            </div>
-            <div data-role="fieldcontain">
-              <label for="register_password">Password:</label>
-              <input type="password" name="password" id="register_password" pattern="^[a-zA-Z0-9]+$" maxlength="12" required>
-            </div>
-
-            <div data-role="fieldcontain">
-              <label for="register_email">Email:</label>
-              <input type="email" name="email" id="register_email" required>
-            </div>
-
-            <div data-role="fieldcontain">
-              <label for="register_firstname">First name:</label>
-              <input type="text" name="firstname" id="register_firstname">
-            </div>
-
-            <div data-role="fieldcontain">
-              <label for="register_lastname">Last name:</label>
-              <input type="text" name="lastname" id="register_lastname">
-            </div>
-
-            <input type="submit" value="Register" id="submitRegister">
-          </form>
+        <div data-role="fieldcontain">
+          <label for="register_email">Email:</label>
+          <input type="email" name="email" id="register_email" required>
         </div>
-      </div>
-      <!-- /REGISTER -->
 
-      <!-- MY TASKS -->
-      <div data-role="page" id="mytasks">
+        <div data-role="fieldcontain">
+          <label for="register_firstname">First name:</label>
+          <input type="text" name="firstname" id="register_firstname">
+        </div>
 
-        <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-          <div data-role="navbar">
-            <ul>
-              <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-              <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-              <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-              <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-              <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-            </ul>
-          </div><!-- /navbar -->          <h1>
-            My Tasks
-            <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
-              data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right">
-              Scrumurai
-            </a>
-            <div data-role="popup" id="projectPopup" data-theme="c">
-              <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
-                <li data-role="divider" data-theme="a" class="projectPopupDivider">Projects</li>
-                <li data-icon="bars" data-theme="c"><a href="#myprojects" >Manage projects</a></li>
-              </ul>
-            </div>
-          </h1>
+        <div data-role="fieldcontain">
+          <label for="register_lastname">Last name:</label>
+          <input type="text" name="lastname" id="register_lastname">
+        </div>
 
-        </div><!-- /header -->
+        <input type="submit" value="Register" id="submitRegister">
+      </form>
+    </div>
+  </div>
+  <!-- /REGISTER -->
 
-        <div data-role="content">
-          <ul data-role="listview">
-            <li>
-            <a href="#">
-              <h2>Task 1</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 9</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Task 1</h2>
-              <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
-              <p><strong>Effort:</strong> 3</p>
-              <p><strong>Business Value:</strong> Must have</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Task 2</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 8</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Task 3</h2>
-              <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
-              <p><strong>Effort:</strong> 2</p>
-              <p><strong>Business Value:</strong> Must have</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Task 4</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 5</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Task 5</h2>
-              <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-              <p><strong>Effort:</strong> 6</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
+  <!-- MY TASKS -->
+  <div data-role="page" id="mytasks">
+
+    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->          <h1>
+      My Tasks
+      <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
+      data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right">
+      Scrumurai
+    </a>
+    <div data-role="popup" id="projectPopup" data-theme="c">
+      <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
+        <li data-role="divider" data-theme="a" class="projectPopupDivider">Projects</li>
+        <li data-icon="bars" data-theme="c"><a href="#myprojects" >Manage projects</a></li>
+      </ul>
+    </div>
+  </h1>
+
+</div><!-- /header -->
+
+<div data-role="content">
+  <ul data-role="listview">
+    <li>
+      <a href="#">
+        <h2>Task 1</h2>
+        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+        <p><strong>Effort:</strong> 9</p>
+        <p><strong>Business Value:</strong> Good</p>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <h2>Task 1</h2>
+        <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
+        <p><strong>Effort:</strong> 3</p>
+        <p><strong>Business Value:</strong> Must have</p>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <h2>Task 2</h2>
+        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+        <p><strong>Effort:</strong> 8</p>
+        <p><strong>Business Value:</strong> Good</p>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <h2>Task 3</h2>
+        <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
+        <p><strong>Effort:</strong> 2</p>
+        <p><strong>Business Value:</strong> Must have</p>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <h2>Task 4</h2>
+        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+        <p><strong>Effort:</strong> 5</p>
+        <p><strong>Business Value:</strong> Good</p>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <h2>Task 5</h2>
+        <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <p><strong>Effort:</strong> 6</p>
+        <p><strong>Business Value:</strong> Good</p>
+      </a>
+    </li>
+  </ul>
+</div><!-- /content -->
+
+</div>
+<!-- /MY TASKS -->
+
+<!-- BURNDOWN -->
+<div data-role="page" id="burndown">
+
+  <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    <h2>
+      <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="c"
+      data-iconpos="right" data-shadow="false" data-transition="pop" data-position-to="origin">
+      Scrumurai
+    </a>
+    <div data-role="popup" id="projectPopup" data-theme="c">
+      <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false">
+        <li data-role="divider" data-theme="a" class="projectPopup">Projects</li>
+        <li><a href="#">Project 1</a></li>
+        <li><a href="#">Project 2</a></li>
+        <li><a href="#">Project 3</a></li>
+        <li data-icon="bars" data-theme="c"><a href="#" >Manage projects</a></li>
+      </ul>
+    </div>
+  </h2>
+</div><!-- /header -->
+
+<div data-role="content">
+
+  <div data-role="fieldcontain">
+    <label for="burndown_select_release" class="select">Release</label>
+    <select name="burndown_select_release" id="burndown_select_release">
+    </select>
+  </div>
+
+  <div data-role="fieldcontain">
+    <label for="burndown_select_sprint" class="select">Sprint</label>
+    <select name="burndown_select_sprint" id="burndown_select_sprint">
+    </select>
+  </div>
+
+  <br/>
+
+  <div id="graph_container">
+    <div id="graph" class="aGraph"></div>
+  </div>
+
+  <br/>
+  Velocity: 13
+</div><!-- /content -->
+
+</div>
+<!-- /BURNDOWN -->
+
+<!-- BACKLOG -->
+<div data-role="page" id="backlog">
+
+  <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    <h2>Scrumurai</h2>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <ul data-role="listview" data-divider-theme="a">
+      <li data-role="list-divider">To do <span class="ui-li-count">3</span></li>
+      <li>
+        <a href="#">
+          <h2>User story 1</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 9</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>User story 1</h2>
+          <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
+          <p><strong>Effort:</strong> 3</p>
+          <p><strong>Business Value:</strong> Must have</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>User story 2</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 8</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li data-role="list-divider">Done <span class="ui-li-count">3</span></li>
+      <li>
+        <a href="#">
+          <h2>User story 3</h2>
+          <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
+          <p><strong>Effort:</strong> 2</p>
+          <p><strong>Business Value:</strong> Must have</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>User story 4</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 5</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>User story 5</h2>
+          <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <p><strong>Effort:</strong> 6</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+    </ul>
+  </div><!-- /content -->
+
+</div>
+<!-- /BACKLOG -->
+
+<!-- SPRINT -->
+<div data-role="page" id="sprint">
+
+  <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    <h2>Scrumurai</h2>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <ul data-role="listview" data-divider-theme="a">
+      <li data-role="list-divider">Release 2 <span class="ui-li-count">25 Mar</span></li>
+      <li>
+        <a href="#">
+          <h2>Sprint 1</h2>
+          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Sprint 2</h2>
+          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+        </a>
+      </li>
+      <li data-role="list-divider">Release 1 <span class="ui-li-count">10 Mar</span></li>
+      <li>
+        <a href="#">
+          <h2>Sprint 3</h2>
+          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Sprint 4</h2>
+          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Sprint 5</h2>
+          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+        </a>
+      </li>
+    </div><!-- /content -->
+
+  </div>
+  <!-- /SPRINT -->
+
+  <!-- RELEASE -->
+  <div data-role="page" id="release">
+
+    <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <h2>Scrumurai</h2>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <ul data-role="listview" data-divider-theme="a">
+        <li data-role="list-divider">Current</li>
+        <li>
+          <a href="#">
+            <h2>Release 2</h2>
+            <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
+          </a>
+        </li>
+        <li data-role="list-divider">Done</li>
+        <li>
+          <a href="#">
+            <h2>Release 1</h2>
+            <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
+          </a>
+        </li>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /RELEASE -->
+
+    <!-- MY PROJECTS -->
+    <div data-role="page" id="myprojects">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
           </ul>
-        </div><!-- /content -->
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">My Projects</h1>
+      </div><!-- /header -->
 
-      </div>
-      <!-- /MY TASKS -->
+      <div data-role="content">
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete">
+        </ul>
+      </div><!-- /content -->
 
-      <!-- BURNDOWN PAGE -->
-      <div data-role="page" id="burndown">
-
-        <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-          <div data-role="navbar">
-            <ul>
-              <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-              <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-              <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-              <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-              <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-            </ul>
-          </div><!-- /navbar -->
-          <h2>
-            <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="c"
-              data-iconpos="right" data-shadow="false" data-transition="pop" data-position-to="origin">
-              Scrumurai
-            </a>
-            <div data-role="popup" id="projectPopup" data-theme="c">
-              <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false">
-                <li data-role="divider" data-theme="a" class="projectPopup">Projects</li>
-                <li><a href="#">Project 1</a></li>
-                <li><a href="#">Project 2</a></li>
-                <li><a href="#">Project 3</a></li>
-                <li data-icon="bars" data-theme="c"><a href="#" >Manage projects</a></li>
-              </ul>
-            </div>
-          </h2>
-        </div><!-- /header -->
-
-        <div data-role="content">
-          <label for="select-choice-1" class="select"><strong>Sprint</strong></label>
-          <select name="select-choice-1" id="select-choice-1" data-native-menu="false">
-            <option value="1">Sprint 1</option>
-            <option value="2">Sprint 2</option>
-            <option value="3">Sprint 3</option>
-          </select>
-
-          <label for="date"><strong>Date</strong></label>
-          <input type="date" name="date" id="date" value="">
-          <br/>
-          <img src="img/sampleburndown.jpg" width="100%"/>
-          <br/>
-          Velocity: 13
-        </div><!-- /content -->
-
-      </div><!-- /page -->
-
-      <!-- Start of second page -->
-      <div data-role="page" id="backlog">
-
-        <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-          <div data-role="navbar">
-            <ul>
-              <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-              <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-              <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-              <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-              <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-            </ul>
-          </div><!-- /navbar -->
-          <h2>Scrumurai</h2>
-        </div><!-- /header -->
-
-        <div data-role="content">
-          <ul data-role="listview" data-divider-theme="a">
-            <li data-role="list-divider">To do <span class="ui-li-count">3</span></li>
-            <li>
-            <a href="#">
-              <h2>User story 1</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 9</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>User story 1</h2>
-              <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
-              <p><strong>Effort:</strong> 3</p>
-              <p><strong>Business Value:</strong> Must have</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>User story 2</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 8</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li data-role="list-divider">Done <span class="ui-li-count">3</span></li>
-            <li>
-            <a href="#">
-              <h2>User story 3</h2>
-              <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
-              <p><strong>Effort:</strong> 2</p>
-              <p><strong>Business Value:</strong> Must have</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>User story 4</h2>
-              <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-              <p><strong>Effort:</strong> 5</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>User story 5</h2>
-              <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-              <p><strong>Effort:</strong> 6</p>
-              <p><strong>Business Value:</strong> Good</p>
-            </a>
-            </li>
-          </ul>
-        </div><!-- /content -->
-
-      </div><!-- /page -->
-
-      <!-- SPRINT PAGE -->
-      <div data-role="page" id="sprint">
-
-        <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-          <div data-role="navbar">
-            <ul>
-              <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-              <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-              <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-              <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-              <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-            </ul>
-          </div><!-- /navbar -->
-          <h2>Scrumurai</h2>
-        </div><!-- /header -->
-
-        <div data-role="content">
-          <ul data-role="listview" data-divider-theme="a">
-            <li data-role="list-divider">Release 2 <span class="ui-li-count">25 Mar</span></li>
-            <li>
-            <a href="#">
-              <h2>Sprint 1</h2>
-              <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Sprint 2</h2>
-              <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-            </a>
-            </li>
-            <li data-role="list-divider">Release 1 <span class="ui-li-count">10 Mar</span></li>
-            <li>
-            <a href="#">
-              <h2>Sprint 3</h2>
-              <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Sprint 4</h2>
-              <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-            </a>
-            </li>
-            <li>
-            <a href="#">
-              <h2>Sprint 5</h2>
-              <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-            </a>
-            </li>
-          </div><!-- /content -->
-
-        </div><!-- /page -->
-
-        <!-- RELEASE PAGE -->
-        <div data-role="page" id="release">
-
-          <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-            <div data-role="navbar">
-              <ul>
-                <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-                <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-                <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-                <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-                <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-              </ul>
-            </div><!-- /navbar -->
-            <h2>Scrumurai</h2>
-          </div><!-- /header -->
-
-          <div data-role="content">
-            <ul data-role="listview" data-divider-theme="a">
-              <li data-role="list-divider">Current</li>
-              <li>
-              <a href="#">
-                <h2>Release 2</h2>
-                <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
-              </a>
-              </li>
-              <li data-role="list-divider">Done</li>
-              <li>
-              <a href="#">
-                <h2>Release 1</h2>
-                <p><strong>Length:</strong> 13 Mar - 29 Mar (16 days)</p>
-              </a>
-              </li>
-            </div><!-- /content -->
-
-          </div><!-- /page -->
-
-          <!-- MY PROJECTS -->
-          <div data-role="page" id="myprojects">
-
-            <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-              <div data-role="navbar">
-                <ul>
-                  <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-                  <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-                  <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-                  <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-                  <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-                </ul>
-              </div><!-- /navbar -->
-              <h1 style="height:30px;padding-top:10px">My Projects</h1>
-            </div><!-- /header -->
-
-            <div data-role="content">
-              <ul data-role="listview" data-split-theme="c" data-split-icon="delete">
-              </ul>
-            </div><!-- /content -->
-      
       <div data-role="footer", class="ui-bar" data-position="fixed">
-        <a href="#" data-icon="plus">New</a>
+        <a href="#addproject" data-icon="plus">New</a>
       </div>
-          </div>
-          <!-- /MY PROJECTS -->
+    </div>
+    <!-- /MY PROJECTS -->
 
-        </body>
-      </html>
+    <!-- ADD PROJECT -->
+    <div data-role="page" id="addproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Add Project</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <form id="addProjectForm">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="add_project_name">Name:</label>
+              <input type="text" name="add_project_name" id="add_project_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="add_project_description">Description:</label>
+              <input type="text" name="add_project_description" id="add_project_description" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="add_project_velocity">Starting velocity:</label>
+              <input type="range" name="add_project_velocity" id="add_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
+            </li>
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddProject">Create</button></div>
+                <div class="ui-block-b"><a href="#myprojects" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+      
+    </div>
+    <!-- /ADD PROJECT -->
+
+    <!-- ERROR PAGE -->
+    <div data-role="page" id="errorpage">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">ERROR ERROR ERROR</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <p id="errorpage_msg"></p>
+      </div><!-- /content -->
+      
+    </div>
+    <!-- /ERROR PAGE -->
+
+  </body>
+  </html>

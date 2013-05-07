@@ -3,8 +3,8 @@ function enableButton(btn){
 	$(btn).parent().removeClass("ui-btn-active");
 }
 
-function notEmpty(str){
+function isEmpty(str){
 	if(str || str.length > 0)
-		return true;
-	return false;
+		return false;
+	return true;
 }

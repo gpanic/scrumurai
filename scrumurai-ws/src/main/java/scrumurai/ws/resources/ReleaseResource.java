@@ -1,14 +1,19 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import scrumurai.data.EMF;
 
 import scrumurai.data.entities.Release;
+import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
 
 @Path("/releases")
@@ -68,5 +73,22 @@ public class ReleaseResource implements Resource<Release> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         return Response.ok(dm.list()).build();
+    }
+
+    @GET
+    @Path("/proj/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response list(@PathParam("id") int id) {
+        System.out.println("LIST PROJ");
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<Release> query = em.createQuery("SELECT e FROM " + Release.class.getSimpleName() + " e WHERE e.project.id = :project_id", Release.class);
+        query.setParameter("project_id", id);
+        List<Release> rs = query.getResultList();
+        em.close();
+        if (rs.size() > 0) {
+            return Response.ok(rs).build();
+        } else {
+            return Response.status(404).build();
+        }
     }
 }
