@@ -1,12 +1,17 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import scrumurai.data.EMF;
+import scrumurai.data.entities.Sprint;
 
 import scrumurai.data.entities.UserStory;
 import scrumurai.data.mapping.DataMapper;
@@ -68,5 +73,23 @@ public class UserStoryResource implements Resource<UserStory> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         return Response.ok(dm.list()).build();
+    }
+    
+    @GET
+    @Path("/sprint/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response list(@PathParam("id") int id) {
+        System.out.println("LIST USER STORY");
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id = :sprint_id ORDER BY e.end_date", UserStory.class);
+        query.setParameter("sprint_id", id);
+        List<UserStory> rs = query.getResultList();
+        em.close();
+        rs.get(0).toString();
+        if (rs.size() > 0) {
+            return Response.ok(rs).build();
+        } else {
+            return Response.status(404).build();
+        }
     }
 }

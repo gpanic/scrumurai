@@ -12,7 +12,8 @@ $(document).ready(function() {
 
 	$(document).on("pagebeforeshow","#login",  function() {
 		console.log("pagebeforeshow #login");
-		autoLogin();
+		if(!_user)
+			autoLogin();
 		return false;
 	});
 	

@@ -8,3 +8,9 @@ function isEmpty(str){
 		return false;
 	return true;
 }
+
+function redirectError(msg){
+  $("#errorpage_msg").text(msg);
+  $.mobile.changePage("#errorpage");
+  return false;
+}

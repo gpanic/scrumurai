@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="tbl_userstory")
+@Table(name = "tbl_userstory")
 @XmlRootElement
 public class UserStory implements EntityObject {
 
@@ -27,18 +27,14 @@ public class UserStory implements EntityObject {
     private String business_value;
     private String state;
     private Date end_date;
-    
     @ManyToOne()
     @NotNull
     private User author;
-    
     @ManyToOne()
     @NotNull
     private Project project;
-    
     @ManyToOne()
     private User assignee;
-    
     @ManyToOne()
     private Sprint sprint;
 
@@ -142,6 +138,5 @@ public class UserStory implements EntityObject {
     public String toString() {
         return "UserStory{" + "id=" + id + ", name=" + name + ", description=" + description + ", arrangement=" + arrangement + ", effort=" + effort + ", business_value=" + business_value + ", state=" + state + ", author=" + author + ", project=" + project + ", assignee=" + assignee + ", sprint=" + sprint + '}';
     }
-    
     
 }

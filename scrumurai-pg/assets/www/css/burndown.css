@@ -28,7 +28,7 @@ path {
 }
 
 .x.axis text, .y.axis text {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .grid .tick {
@@ -51,6 +51,7 @@ path {
 #graph_container{
   width: 800px; 
   height: 600px;
+  margin:0 auto;
 }
 
 @media only screen and (max-width : 800px) {

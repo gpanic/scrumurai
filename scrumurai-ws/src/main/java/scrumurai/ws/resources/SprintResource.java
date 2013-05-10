@@ -82,7 +82,7 @@ public class SprintResource implements Resource<Sprint> {
         System.out.println("LIST RLS");
         EntityManager em = EMF.get().createEntityManager();
         TypedQuery<Sprint> query = em.createQuery("SELECT e FROM " + Sprint.class.getSimpleName() + " e WHERE e.release.id = :release_id", Sprint.class);
-        query.setParameter("sprint_id", id);
+        query.setParameter("release_id", id);
         List<Sprint> rs = query.getResultList();
         em.close();
 
