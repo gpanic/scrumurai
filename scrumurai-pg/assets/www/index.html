@@ -7,13 +7,11 @@
 
   <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/burndown.css"/>
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="js/jquery.mobile-1.3.1.min.js"></script>
   <script src="js/helper.js"></script>
   <script src="js/scrumurai.js"></script>
   <script src="js/login.js"></script>
-  <script src="js/helper.js"></script>
   <script src="js/cordova-2.6.0.js"></script>
   <script src="js/serializeObjectSorcery.js"></script>
   <script src="js/d3.v3.min.js"></script>
@@ -104,74 +102,74 @@
           <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
           <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
         </ul>
-      </div><!-- /navbar -->          <h1>
-      My Tasks
-      <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
-      data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right">
-      Scrumurai
-    </a>
-    <div data-role="popup" id="projectPopup" data-theme="c">
-      <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
-        <li data-role="divider" data-theme="a" class="projectPopupDivider">Projects</li>
-        <li data-icon="bars" data-theme="c"><a href="#myprojects" >Manage projects</a></li>
-      </ul>
-    </div>
-  </h1>
+      </div><!-- /navbar -->
+      <h1>
+        My Tasks
+        <a href="#projectPopup" data-rel="popup" data-role="button" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a"
+        data-shadow="false" data-transition="pop" data-position-to="origin" data-iconpos="right" class="selectedProject">
+      </a>
+      <div data-role="popup" id="projectPopup" data-theme="c">
+        <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
+          <li data-role="divider" data-theme="a" class="projectPopupDivider">Projects</li>
+          <li data-icon="bars" data-theme="c"><a href="#myprojects" >Manage projects</a></li>
+        </ul>
+      </div>
+    </h1>
 
-</div><!-- /header -->
+  </div><!-- /header -->
 
-<div data-role="content">
-  <ul data-role="listview">
-    <li>
-      <a href="#">
-        <h2>Task 1</h2>
-        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-        <p><strong>Effort:</strong> 9</p>
-        <p><strong>Business Value:</strong> Good</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Task 1</h2>
-        <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
-        <p><strong>Effort:</strong> 3</p>
-        <p><strong>Business Value:</strong> Must have</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Task 2</h2>
-        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-        <p><strong>Effort:</strong> 8</p>
-        <p><strong>Business Value:</strong> Good</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Task 3</h2>
-        <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
-        <p><strong>Effort:</strong> 2</p>
-        <p><strong>Business Value:</strong> Must have</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Task 4</h2>
-        <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-        <p><strong>Effort:</strong> 5</p>
-        <p><strong>Business Value:</strong> Good</p>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <h2>Task 5</h2>
-        <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <p><strong>Effort:</strong> 6</p>
-        <p><strong>Business Value:</strong> Good</p>
-      </a>
-    </li>
-  </ul>
-</div><!-- /content -->
+  <div data-role="content">
+    <ul data-role="listview">
+      <li>
+        <a href="#">
+          <h2>Task 1</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 9</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Task 1</h2>
+          <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
+          <p><strong>Effort:</strong> 3</p>
+          <p><strong>Business Value:</strong> Must have</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Task 2</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 8</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Task 3</h2>
+          <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
+          <p><strong>Effort:</strong> 2</p>
+          <p><strong>Business Value:</strong> Must have</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Task 4</h2>
+          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+          <p><strong>Effort:</strong> 5</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h2>Task 5</h2>
+          <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+          <p><strong>Effort:</strong> 6</p>
+          <p><strong>Business Value:</strong> Good</p>
+        </a>
+      </li>
+    </ul>
+  </div><!-- /content -->
 
 </div>
 <!-- /MY TASKS -->
@@ -413,7 +411,7 @@
       </div><!-- /header -->
 
       <div data-role="content">
-        <ul data-role="listview" data-split-theme="c" data-split-icon="delete">
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="myProjectsList">
         </ul>
       </div><!-- /content -->
 
@@ -422,6 +420,45 @@
       </div>
     </div>
     <!-- /MY PROJECTS -->
+
+    <!-- VIEW PROJECT -->
+    <div data-role="page" id="viewproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px"></h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <ul data-role="listview">
+          <div class="ui-grid-a" data-theme="a" id="viewProjectGrid">
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Id:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectId"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Name:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectName"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Description:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectDescription"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Velocity:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectVelocity"></div></div>
+          </div>
+          <div data-role="footer", class="ui-bar" data-position="fixed">
+            <a href="#myprojects" data-icon="back">Back</a>
+            <a href="#" data-icon="edit" class="editProjectLink">Edit</a>
+            <a href="#" data-icon="delete" class="removeProjectLink">Delete</a>
+          </div>
+        </ul>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /VIEW PROJECT -->
 
     <!-- ADD PROJECT -->
     <div data-role="page" id="addproject">
@@ -448,7 +485,7 @@
             </li>
             <li data-role="fieldcontain">
               <label for="add_project_description">Description:</label>
-              <input type="text" name="add_project_description" id="add_project_description" value="" data-clear-btn="true">
+              <textarea name="add_project_description" id="add_project_description" data-clear-btn="true" style="height:7em;"></textarea>
             </li>
             <li data-role="fieldcontain">
               <label for="add_project_velocity">Starting velocity:</label>
@@ -463,11 +500,55 @@
           </ul>
         </form>
       </div><!-- /content -->
-      
+
     </div>
     <!-- /ADD PROJECT -->
 
-    <!-- ERROR PAGE -->
+    <!-- EDIT PROJECT -->
+    <div data-role="page" id="editproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Edit Project</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <form id="editProjectForm">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="edit_project_name">Name:</label>
+              <input type="text" name="edit_project_name" id="edit_project_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="edit_project_description">Description:</label>
+              <textarea name="edit_project_description" id="edit_project_description" data-clear-btn="true" style="height:7em;"></textarea>
+            </li>
+            <li data-role="fieldcontain">
+              <label for="edit_project_velocity">Velocity:</label>
+              <input type="range" name="edit_project_velocity" id="edit_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
+            </li>
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditProject">Edit</button></div>
+                <div class="ui-block-b"><a href="#viewproject" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /EDIT PROJECT -->
+
+     <!-- ERROR PAGE -->
     <div data-role="page" id="errorpage">
 
       <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
@@ -489,6 +570,5 @@
       
     </div>
     <!-- /ERROR PAGE -->
-
   </body>
   </html>
