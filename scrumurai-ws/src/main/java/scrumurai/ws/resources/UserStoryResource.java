@@ -85,7 +85,6 @@ public class UserStoryResource implements Resource<UserStory> {
         query.setParameter("sprint_id", id);
         List<UserStory> rs = query.getResultList();
         em.close();
-        rs.get(0).toString();
         if (rs.size() > 0) {
             return Response.ok(rs).build();
         } else {

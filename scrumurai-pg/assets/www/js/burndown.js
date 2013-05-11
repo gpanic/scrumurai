@@ -12,6 +12,8 @@ $(function () {
     if(!fillSelectRelease(project_id))
       redirectError("You have no releases.");
 
+    fillVelocity(project_id);
+
     fillSprints($("#burndown_select_release").val());
 
     if($("#burndown_select_sprint").val())
@@ -23,6 +25,13 @@ $(function () {
 
   $("#burndown_select_release").change(function(){
     fillSprints($("#burndown_select_release").val());
+
+    if($("#burndown_select_sprint").val())
+      generateGraph($("#burndown_select_sprint").val());
+  });
+
+  $("#burndown_select_sprint").change(function(){
+    generateGraph($("#burndown_select_sprint").val());
   });
 
 });
@@ -90,6 +99,10 @@ var fillSprints = function(release_id){
 return found_sprints;
 }
 
+var fillVelocity = function(project_id){
+
+}
+
 var getSprint = function(sprint_id){
   var d;
   $.ajax({
@@ -140,7 +153,8 @@ var getData = function(sprint_id, data_top){
   var json = [];
   json.push(data_top);
   total_effort = data_top.effort;
-
+  if(!userstories)
+    return false;
   for(var a = 0;a < userstories.length;a++){
    if(userstories[a].end_date){
     total_effort -= userstories[a].effort;
@@ -160,6 +174,7 @@ var generateGraph = function(sprint_id){
         var format = d3.time.format("%Y-%m-%d");
 
         function getDate(d) {
+          console.log(d);
           return format.parse(d.date);
         }
 
@@ -176,9 +191,10 @@ var generateGraph = function(sprint_id){
         
         var data = getData(sprint_id,data_total[0]);
 
-        if(!data)
+        if(!data){
+          $("#graph").html("<p id='errorpage_msg'>Your sprint does not have any finished user stories.</p>");
           return false;
-
+        }
         //grid lines
         function make_x_axis() {
           return d3.svg.axis()
@@ -194,8 +210,13 @@ var generateGraph = function(sprint_id){
           .ticks(5)
         }
 
+        var end_date;
+        if(data[data.length-1].date > data_total[1].date)
+          end_date = data[data.length-1];
+        else
+          end_date = data_total[1];
         // X scale starts at epoch time 1335035400000, ends at 1335294600000 with 300s increments
-        var x = d3.time.scale().domain([getDate(data_total[0]), getDate(data_total[1])]).range([0, w]);
+        var x = d3.time.scale().domain([getDate(data[0]), getDate(end_date)]).range([0, w]);
 
         // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
         var y = d3.scale.linear().domain([data_total[1].effort, data_total[0].effort]).range([h, 0]);
