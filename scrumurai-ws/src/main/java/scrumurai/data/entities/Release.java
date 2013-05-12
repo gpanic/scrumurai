@@ -1,5 +1,6 @@
 package scrumurai.data.entities;
 
+import java.sql.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,6 +18,7 @@ public class Release implements EntityObject {
     private String name;
     private String description;
     private String change_log;
+    
     @ManyToOne()
     @NotNull
     private Project project;

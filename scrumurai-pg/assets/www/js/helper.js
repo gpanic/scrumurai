@@ -4,7 +4,7 @@ function enableButton(btn){
 }
 
 function isEmpty(str){
-	if(str || str.length > 0)
+	if(str == null || str || str.length > 0)
 		return false;
 	return true;
 }
