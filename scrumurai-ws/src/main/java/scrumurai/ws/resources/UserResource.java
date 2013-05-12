@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
@@ -20,6 +21,7 @@ import javax.ws.rs.core.UriInfo;
 import scrumurai.data.EMF;
 
 import scrumurai.data.entities.User;
+import scrumurai.data.entities.Project;
 import scrumurai.data.mapping.DataMapper;
 
 @Path("/users")
@@ -28,6 +30,7 @@ public class UserResource implements Resource<User> {
     @Context
     UriInfo uriInfo;
     private DataMapper dm = new DataMapper(User.class);
+    private DataMapper pdm = new DataMapper(Project.class);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -150,5 +153,38 @@ public class UserResource implements Resource<User> {
         String sud = UUID.randomUUID().toString();
         sud = sud.replaceAll("-", "");
         return new BigInteger(sud, 16).toString();
+    }
+    
+    @GET
+    @Path("/{id}/projects")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listProjects(@PathParam("id") int id) {
+        List<Project> projects = (List<Project>) pdm.list();
+        List<Project> selection = new ArrayList<Project>();
+        for(Project p: projects) {
+            if(p.getProduct_owner().getId() == id) {
+                selection.add(p);
+            }
+        }
+        return Response.ok(selection).build();
+    }
+    
+    @GET
+    @Path("/by-username/{username}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listProjects(@PathParam("username") String username) {
+        List<User> list = (List<User>) dm.list();
+        User selection = null;
+        for(User u: list) {
+            if(u.getUsername().equals(username)) {
+                selection = u;
+                break;
+            }
+        }
+        if(selection != null) {
+            return Response.ok(selection).build();
+        } else {
+            return Response.status(404).build();
+        }
     }
 }
