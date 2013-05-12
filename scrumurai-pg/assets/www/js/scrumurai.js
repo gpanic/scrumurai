@@ -1,5 +1,6 @@
 var _ws = "http://localhost:7659/scrumurai-ws/rest";
 var _selectedProject = [-1, "No projects yet"];
+var _currentProject = null;
 
 $(document).ready(function() {
 	
@@ -41,7 +42,7 @@ $(document).ready(function() {
 	$("#myProjectsList").on("tap", "a.viewProjectLink", function() {
 		var pid = $(this).attr("data-projectid");
 		$.mobile.changePage("#viewproject");
-		populateViewProjectDrig(pid);
+		populateViewProjectGrid(pid);
 	});
 	
 	$(".editProjectLink").tap(function() {
@@ -59,6 +60,24 @@ $(document).ready(function() {
 	$("#editProjectForm").submit(function() {
 		editProject();
 		return false;
+	});
+
+	$(".projectMembersLink").tap(function() {
+		var pid = $(".viewProjectId").text();
+		var pname = $(".viewProjectName").text();
+		$.mobile.changePage("#projectmembers");
+		populateProjectMembers(pid, pname);
+	});
+
+	$("#addProjectMemberForm").submit(function() {
+		var pid = $(".viewProjectId").text();
+		createProjectMember();
+		return false;
+	});
+
+	$("#projectMembersList").on("tap", "a.removeProjectMemberLink", function() {
+		var uid = $(this).attr("data-memberid");
+		deleteProjectMember(uid);
 	});
 
 });
@@ -110,7 +129,7 @@ var populateProjects = function() {
 					"<h2>" + project.name + "</h2>" +
 					"<p><strong>Description:</strong> " + project.description + "</p>" +
 					"<p><strong>Velocity:</strong> " + project.velocity + "</p>" +
-					"<p><strong>Owner:</strong> " + project.product_owner + "</p>" +
+					"<p><strong>Owner:</strong> " + project.product_owner.username + "</p>" +
 					"</a><a href=# class='removeProjectLink' data-projectid='" + project.id + "'>Remove</a></li>"
 			);
 		});
@@ -125,8 +144,9 @@ var populateProjects = function() {
 	});
 }
 
-var populateViewProjectDrig = function(id) {
+var populateViewProjectGrid = function(id) {
 	var project = getProject(id);
+	_currentProject = project;
 	if(project != null) {
 		$(".viewProjectId").text(project.id);
 		$(".viewProjectName").text(project.name);
@@ -253,11 +273,131 @@ var editProject = function() {
 		});
 		enableButton("#submitEditProject");
 		$.mobile.changePage("#viewproject");
-		populateViewProjectDrig(id);
+		populateViewProjectGrid(id);
 	}).fail(function() {
 		alert("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
 
+}
+
+var populateProjectMembers = function(project_id, name) {
+	$.ajax({
+	url: _ws + "/project-members/by-project/" + project_id,
+	type: "GET",
+	dataType: "json",
+	beforeSend: function ( xhr ) {
+		$.mobile.loading('show');
+	}
+	}).done(function(json) {
+		$("#projectMembersTitle").html("Members of project" + name);
+		var projectMembers = [];
+		$("#projectMembersList").empty();
+		$.each(json, function(i, member) {
+			projectMembers.push(
+					"<li><a href='#' class='' data-memberid='" + member.user.id + "'>" +
+					"<h2>" + member.user.username + "</h2>" +
+					"<p><strong>Name:</strong> " + member.firstname + " " + member.lastname + "</p>" +
+					"<p><strong>Role:</strong> " + member.role + "</p>" +
+					"<p><strong>Email:</strong> " + member.user.email + "</p>" +
+					"</a><a href=# class='removeProjectMemberLink' data-memberid='" + member.user.id + "'>Remove</a></li>"
+			);
+		});
+		$.each(projectMembers.reverse(), function(i, project_html) {
+			$("#projectMembersList").append(project_html);
+		});
+		$("#projectMembersList").listview("refresh");
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+}
+
+var getUserByUsername = function(username) {	
+	var user = null;
+	$.ajax({
+	url: _ws + "/users/by-username/" + username,
+	type: "GET",
+	async: false,
+	dataType: "json",
+	beforeSend: function ( xhr ) {
+		$.mobile.loading('show');
+	}
+	}).done(function( json 	) {
+		user = json;
+	}).fail(function() {
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+	return user;
+}
+
+var createProjectMember = function() {
+	$("#submitAddProjectMemberForm").button("disable");
+
+	var formResult = $("#addProjectMemberForm").serializeObject();
+	if(!formResult.add_project_member_username) {
+		enableButton("#submitAddProjectMemberForm");
+		$("#addProjectMemberError").html("<strong>Error:</strong> Username was empty!");
+		return false;
+	}
+
+	var user = getUserByUsername(formResult.add_project_member_username);
+	if (user == null) {
+		enableButton("#submitAddProjectMemberForm");
+		$("#add_project_member_username").val("");
+		$("#addProjectMemberError").html("<strong>Error:</strong> User does not exist!");
+		return false;
+	}
+
+	var projectMember = {
+		project: {
+			id: _currentProject.id
+		},
+		user: {
+			id: user.id
+		},
+		role: "member"
+	};
+
+	$.ajax({
+		url: _ws + "/project-members",
+		type: "POST",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(projectMember),
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		$("#add_project_member_username").val("");;
+		enableButton("#submitAddProjectMemberForm");
+		$('#addprojectmember').dialog('close')
+		populateProjectMembers(_currentProject.id, _currentProject.name);
+	}).fail(function() {
+		enableButton("#submitAddProjectMemberForm");
+		$("#add_project_member_username").val("");
+		$("#addProjectMemberError").html("<strong>Error:</strong> User is already a member!");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+
+
+}
+
+var deleteProjectMember = function(user_id) {
+	$.ajax({
+		url: _ws + "/project-members/project/" + _currentProject.id + "/user/" + user_id,
+		type: "DELETE",
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function() {
+		populateProjectMembers(_currentProject.id, _currentProject.name);
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
 }

@@ -502,6 +502,7 @@
           <div data-role="footer", class="ui-bar" data-position="fixed">
             <a href="#myprojects" data-icon="back">Back</a>
             <a href="#" data-icon="edit" class="editProjectLink">Edit</a>
+            <a href="#" data-icon="bars" class="projectMembersLink">Members</a>
             <a href="#" data-icon="delete" class="removeProjectLink">Delete</a>
           </div>
         </ul>
@@ -598,7 +599,52 @@
     </div>
     <!-- /EDIT PROJECT -->
 
-    <!-- ERROR PAGE -->
+    <!-- PROJECT MEMBERS -->
+    <div data-role="page" id="projectmembers">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px" id="projectMembersTitle"></h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="projectMembersList">
+        </ul>
+      </div><!-- /content -->
+
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#" data-icon="back">Back</a>
+        <a href="#addprojectmember" data-rel="dialog" data-icon="plus">Add member</a>
+      </div>
+    </div>
+    <!-- /PROJECT MEMBERS -->
+
+      <!-- ADD PROJECT MEMBER DIALOG -->
+    <div data-role="page" id="addprojectmember">
+      <div data-role="header">
+        <h1>Add member</h1>
+      </div>
+      <div data-role="content">
+        <div id="addProjectMemberError">
+        </div>
+        <form id="addProjectMemberForm">
+          <label for="text-basic">Username:</label>
+          <input type="text" name="add_project_member_username" id="add_project_member_username" value="">
+          <button type="submit" data-theme="c" id="submitAddProjectMemberForm">Add</button>
+        </form>
+      </div>
+    </div>
+    <!-- /ADD PROJECT MEMBER DIALOG -->
+
+     <!-- ERROR PAGE -->
     <div data-role="page" id="errorpage">
 
       <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
