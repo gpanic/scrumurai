@@ -147,7 +147,7 @@ var populateProjects = function() {
 					"</a><a href=# class='removeProjectLink' data-projectid='" + project.id + "'>Remove</a></li>"
 			);
 		});
-		$.each(projects.reverse(), function(i, project_html) {
+		$.each(projects, function(i, project_html) {
 			$("#myProjectsList").append(project_html);
 		});
 		$("#myProjectsList").listview("refresh");
@@ -318,7 +318,7 @@ var populateProjectMembers = function(project_id, name) {
 					"</a><a href=# class='removeProjectMemberLink' data-memberid='" + member.user.id + "'>Remove</a></li>"
 			);
 		});
-		$.each(projectMembers.reverse(), function(i, project_html) {
+		$.each(projectMembers, function(i, project_html) {
 			$("#projectMembersList").append(project_html);
 		});
 		$("#projectMembersList").listview("refresh");

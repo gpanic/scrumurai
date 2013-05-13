@@ -262,9 +262,28 @@
   </div><!-- /header -->
 
   <div data-role="content">
-    <ul data-role="listview" data-divider-theme="a" data-split-theme="c" data-split-icon="delete" id="userstoriesList">
-      <!--<li data-role="list-divider">To do <span class="ui-li-count">3</span></li> -->
-    </ul>
+    <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="#userstoriesList" data-inset="false">
+      <div data-role="collapsible" data-collapsed="false">
+        <h2>To do<span id="userstoriesToDoCount"style="float:right;"></span></h2>
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesToDoList">
+        </ul>
+      </div>
+      <div data-role="collapsible" id="userstoriesAssignedCollapsible">
+        <h2>Assigned<span id="userstoriesAssignedCount"style="float:right;"></span></h2>
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesAssignedList">
+        </ul>
+      </div>
+      <div data-role="collapsible" id="userstoriesInProgressCollapsible">
+        <h2>In progress<span id="userstoriesInProgressCount"style="float:right;"></span></h2>
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesInProgressList">
+        </ul>
+      </div>
+      <div data-role="collapsible" id="userstoriesCompletedCollapsible">
+        <h2>Completed<span id="userstoriesCompletedCount"style="float:right;"></span></h2>
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesCompletedList">
+        </ul>
+      </div>
+    </div>
   </div><!-- /content -->
 
 </div>
