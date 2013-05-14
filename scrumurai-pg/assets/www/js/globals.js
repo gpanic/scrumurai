@@ -6,3 +6,6 @@ var _ws = "http://localhost:7659/scrumurai-ws/rest";
 var _selectedProject = [-1, "No projects yet"];
 // Currently viewed project, set when user views the details of a project
 var _currentProject = null;
+
+//is set when user is logged in
+var _user;

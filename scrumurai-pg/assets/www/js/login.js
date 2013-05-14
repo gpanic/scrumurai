@@ -1,4 +1,4 @@
-var _user;
+
 
 $(document).ready(function() {
 	autoLogin();

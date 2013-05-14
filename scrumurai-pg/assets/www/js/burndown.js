@@ -8,12 +8,12 @@ $(function () {
     if (_selectedProject[0] == -1)
       redirectError("You have no selected project.");
 
-    if(!fillSelectRelease(_selectedProject[0]))
+    if(!fillBurndownSelectRelease(_selectedProject[0]))
       redirectError("You have no releases.");
 
     fillVelocity(_selectedProject[0]);
 
-    fillSprints($("#burndown_select_release").val());
+    fillBurndownSelectSprints($("#burndown_select_release").val());
 
     if($("#burndown_select_sprint").val())
       generateGraph($("#burndown_select_sprint").val());
@@ -23,7 +23,7 @@ $(function () {
 
 
   $("#burndown_select_release").change(function(){
-    fillSprints($("#burndown_select_release").val());
+    fillBurndownSelectSprints($("#burndown_select_release").val());
 
     if($("#burndown_select_sprint").val())
       generateGraph($("#burndown_select_sprint").val());
@@ -35,7 +35,7 @@ $(function () {
 
 });
 
-var fillSelectRelease = function (project_id) {
+var fillBurndownSelectRelease = function (project_id) {
   $('#burndown_select_release').find('option').remove().end();
   var found_releases = false;
   $.ajax({
@@ -51,7 +51,7 @@ var fillSelectRelease = function (project_id) {
     var select_release = $("#burndown_select_release");
     //dodamo fielde
     $.each(data, function () {
-      select_release.append($("<option />").val(this.id).text(this.name));
+      select_release.append($("<option />").val(this.id).text(this.name+" "+this.version));
     });
 
   //nastavimo zadnjega kot izbranega
@@ -67,7 +67,7 @@ var fillSelectRelease = function (project_id) {
 return found_releases;
 }
 
-var fillSprints = function(release_id){
+var fillBurndownSelectSprints = function(release_id){
   $('#burndown_select_sprint').find('option').remove().end();
   var found_sprints = false;
   $.ajax({

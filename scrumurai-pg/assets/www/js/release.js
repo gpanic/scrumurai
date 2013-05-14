@@ -6,6 +6,10 @@ $(document).ready(function() {
 			redirectError("First you need to create a project.");
 	});
 	
+	$(document).on("pageshow", "#release", function() {
+		populateReleases();
+	});
+
 	$("#addReleaseForm").submit(function(){
 		console.log("addrelease");
 		addRelease();
@@ -45,4 +49,45 @@ var addRelease = function(){
 function failedAddRelease(){
 	$("#addRelease_fail").show();
 	enableButton("#submitAddRelease");
+}
+
+var populateReleases = function() {
+	$.ajax({
+		url: _ws + "/releases/currentdone/" + _selectedProject[0],
+		type: "GET",
+		dataType: "json",
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		var releasesCurrent = 0;
+		var releasesDone = 0;
+		$("#release_coll_current_list").empty();
+		$("#release_coll_done_list").empty();
+		$.each(json, function(i, release) {
+			var release_html = "<li><a href='#' class='' data-releaseid='" + release.id + "'>" +
+								"<h2>" + release.name + "</h2>" +
+								"<p><strong>Version:</strong> " + release.version + "</p>" +
+								"<p><strong>Start date:</strong> " + release.start_date + "</p>" +
+								"<p><strong>End date:</strong> " + release.end_date + "</p>";
+								console.log(release.current);
+			if(release.current) {
+				$("#release_coll_current_list").append(release_html);
+				releasesCurrent++;
+			} else {
+				$("#release_coll_done_list").append(release_html);
+				releasesDone++;
+			} 
+		});
+
+		$("#release_coll_current_count").html(releasesCurrent);
+		$("#release_coll_done_count").html(releasesDone);
+
+		$("#release_coll_current_list").listview("refresh");
+		$("#release_coll_done_list").listview("refresh");
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
 }
