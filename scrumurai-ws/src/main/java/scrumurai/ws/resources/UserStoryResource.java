@@ -26,6 +26,7 @@ public class UserStoryResource implements Resource<UserStory> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(UserStory obj) {
+        System.err.println(obj);
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
@@ -90,5 +91,17 @@ public class UserStoryResource implements Resource<UserStory> {
         } else {
             return Response.status(404).build();
         }
+    }
+    
+    @GET
+    @Path("/project/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listByProject(@PathParam("id") int id) {
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<UserStory> query = em.createQuery("SELECT x FROM UserStory x WHERE x.project.id = :project_id", UserStory.class);
+        query.setParameter("project_id", id);
+        List<UserStory> rs = query.getResultList();
+        em.close();
+        return Response.ok(rs).build();
     }
 }
