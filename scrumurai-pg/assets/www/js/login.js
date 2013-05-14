@@ -40,7 +40,8 @@ var autoLogin = function(){
 			url: _ws+"/users/loginremember",
 			type: "POST",
 			contentType: "text/plain; charset=utf-8",
-			data: JSON.stringify(loginData)
+			data: JSON.stringify(loginData),
+			async: false
 		}).done(function(data){
 			_user = data;
 			$.mobile.changePage("#mytasks");
@@ -87,7 +88,7 @@ function failedLogin(){
 }
 
 var register = function(){
-	$("#submitRegister").button("disabled");
+	$("#submitRegister").button("disable");
 	var user = $("#registerForm").serializeObject();
 
 	if(isEmpty(user.username) || isEmpty(user.password) || isEmpty(user.email)){
@@ -104,7 +105,6 @@ var register = function(){
 			$.mobile.loading('show');
 		}
 	}).done(function(data){
-		alert("novi uporabnik");
 		window.localStorage.setItem("login", user.username+"|"+data[1]);
 		loginNewUser(user,data[0]);
 		$.mobile.changePage("#mytasks");

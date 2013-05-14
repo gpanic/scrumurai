@@ -18,6 +18,7 @@
   <script src="js/d3.v3.min.js"></script>
   <script src="js/burndown.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/datePickerPlugin.js"></script>
+  <script src="js/release.js"></script>
 </head> 
 <body> 
 
@@ -41,7 +42,7 @@
 
           <input type="submit" value="Login" id="submitLogin">
         </form>
-        <p id="login_fail">
+        <p id="login_fail" class="form_fail">
           Login failed! Check if your username and password are correct.
         </p>
         <p align="center">
@@ -412,11 +413,14 @@
             <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
           </ul>
         </div><!-- /navbar -->
-        <h1 style="height:30px;padding-top:10px">Add Project</h1>
+        <h1 style="height:30px;padding-top:10px">Add Release</h1>
       </div><!-- /header -->
 
       <div data-role="content">
-        <form id="addReleaseForm">
+        <p id="addRelease_fail" class="form_fail">
+          Name must not be empty.
+        </p>
+        <form id="addReleaseForm" type="post">
           <ul data-role="listview">
             <li data-role="fieldcontain">
               <label for="add_release_name">Name:</label>
@@ -433,7 +437,7 @@
 
             <li class="ui-body ui-body-b">
               <fieldset class="ui-grid-a" >
-                <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddProject">Create</button></div>
+                <div class="ui-block-a"><input type="submit" value="Create" id="submitAddRelease"></div>
                 <div class="ui-block-b"><a href="#release" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
               </fieldset>
             </li>
@@ -627,7 +631,7 @@
     </div>
     <!-- /PROJECT MEMBERS -->
 
-      <!-- ADD PROJECT MEMBER DIALOG -->
+    <!-- ADD PROJECT MEMBER DIALOG -->
     <div data-role="page" id="addprojectmember">
       <div data-role="header">
         <h1>Add member</h1>
@@ -644,7 +648,7 @@
     </div>
     <!-- /ADD PROJECT MEMBER DIALOG -->
 
-     <!-- ERROR PAGE -->
+    <!-- ERROR PAGE -->
     <div data-role="page" id="errorpage">
 
       <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
