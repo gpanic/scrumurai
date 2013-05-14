@@ -92,4 +92,21 @@ public class SprintResource implements Resource<Sprint> {
             return Response.status(404).build();
         }
     }
+    
+    @GET
+    @Path("/project/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listByProject(@PathParam("id") int id) {
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<Sprint> query = em.createQuery("SELECT e FROM Sprint e WHERE e.project.id = :project_id", Sprint.class);
+        query.setParameter("project_id", id);
+        List<Sprint> rs = query.getResultList();
+        em.close();
+
+        if (rs.size() > 0) {
+            return Response.ok(rs).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
 }

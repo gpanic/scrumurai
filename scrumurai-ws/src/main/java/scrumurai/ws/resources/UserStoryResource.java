@@ -26,6 +26,7 @@ public class UserStoryResource implements Resource<UserStory> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(UserStory obj) {
+        System.err.println(obj);
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
