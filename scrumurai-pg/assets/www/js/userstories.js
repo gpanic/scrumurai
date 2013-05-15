@@ -18,6 +18,18 @@ $(document).ready(function() {
 		createUserStory();
 		return false;
 	});
+
+	$(document).on("pagebeforeshow", "#userstorystatedialog", function() {
+		var userstory = getUserstory(_selectedUserstory);
+		console.log(userstory.state);
+		$("#userStoryStateDialogList li").show();
+		$("#userStoryStateDialogList li").each(function() {
+			var child = $(this).find("a");
+			if(userstory.state == child.html().toLowerCase()) {
+				$(this).hide();
+			}
+		});
+	});
 });
 
 var populateUserStories = function() {
@@ -158,10 +170,59 @@ var createUserStory = function () {
 }
 
 var selectUserstory = function(id) {
-	$("#userstoriesList>div>div>ul>li").each(function() {
-		$(this).attr("data-theme", "d").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-d").addClass('ui-btn-hover-d	');
+	if (id != _selectedUserstory) {
+		$("#userstoriesList>div>div>ul>li").each(function() {
+			$(this).attr("data-theme", "d").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-d").addClass('ui-btn-hover-d');
+		});
+		$("#userstoriesList>div>div>ul>li[data-userstoryid=" + id + "]").attr("data-theme", "b").removeClass("ui-btn-up-d").removeClass('ui-btn-hover-d').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+		_selectedUserstory = id;
+		$(".userstory-menu-options").show();
+	} else {
+		$("#userstoriesList>div>div>ul>li[data-userstoryid=" + id + "]").attr("data-theme", "d").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-d").addClass('ui-btn-hover-d');
+		_selectedUserstory = -1;
+		$(".userstory-menu-options").hide();
+	}
+}
+
+var getUserstory = function(id) {
+	var userstory = null;
+	$.ajax({
+	url: _ws + "/userstories/" + id,
+	type: "GET",
+	async: false,
+	dataType: "json",
+	beforeSend: function ( xhr ) {
+		$.mobile.loading('show');
+	}
+	}).done(function( json 	) {
+		userstory = json;
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
 	});
-	$("#userstoriesList>div>div>ul>li[data-userstoryid=" + id + "]").attr("data-theme", "b").removeClass("ui-btn-up-d").removeClass('ui-btn-hover-d').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
-	_selectedUSerstory = id;
-	$(".userstory-menu-options").show();
+	return userstory;
+}
+
+var updateUserstoryState = function(state_new) {
+	if(_selectedUserstory != -1) {
+		$.ajax({
+			url: _ws + "/userstories/" + _selectedUserstory + "/state",
+			type: "PUT",
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify({
+				state: state_new
+			}),
+			beforeSend: function ( xhr ) {
+				$.mobile.loading('show');
+			}
+		}).done(function() {
+			_selectedUserstory = -1;
+			$("#userstorystatedialog").dialog("close");
+		}).fail(function() {
+			alert("fail");
+		}).always(function() {
+			$.mobile.loading('hide');
+		});
+	}
 }

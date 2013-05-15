@@ -64,8 +64,6 @@ public class UserStoryResource implements Resource<UserStory> {
     @Path("/{id}/state")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response updateState(@PathParam("id") int id, UserStory obj) {
-        System.err.println("AAAAAAAAAA");
-        System.err.println(obj);
         EntityManager em = EMF.get().createEntityManager();
         UserStory us;
         if ((us = em.find(UserStory.class, id)) != null) {
