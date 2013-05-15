@@ -1,4 +1,5 @@
 var userid = "1";
+var _selectedUserstory = -1;
 
 $(document).ready(function() {
 
@@ -7,6 +8,9 @@ $(document).ready(function() {
 	});
 
 	$(document).on("pageshow", "#adduserstory", function() {
+		$("#addUserstoryForm").each (function() {
+			this.reset();
+		});
 		populateSprintSelect();
 	});
 
@@ -14,7 +18,6 @@ $(document).ready(function() {
 		createUserStory();
 		return false;
 	});
-
 });
 
 var populateUserStories = function() {
@@ -43,7 +46,7 @@ var populateUserStories = function() {
 			if(userstory.sprint != null) {
 				sprint = userstory.sprint.name;
 			}
-			var userstory_html = "<li><a href='#' class='' data-userstoryid='" + userstory.id + "'>" +
+			var userstory_html = "<li data-userstoryid='" + userstory.id + "'><a href='javascript:selectUserstory(" + userstory.id + ")' class=''>" +
 								"<h2>" + userstory.name + "</h2>" +
 								"<p><strong>Business value:</strong> " + userstory.business_value + "</p>" +
 								"<p><strong>Requested by:</strong> " + userstory.author.username + "</p>" +
@@ -95,9 +98,13 @@ var populateSprintSelect = function() {
 		$.each(json, function(i, sprint) {
 			$("#add_userstory_sprint").append("<option value='" + sprint.id + "'>" + sprint.name + "</option>");
 		});
+		$("#add_userstory_sprint").selectmenu("enable");
 		$("#add_userstory_sprint").selectmenu("refresh");
 	}).fail(function() {
-		alert("fail");
+		$("#add_userstory_sprint").empty();
+		$("#add_userstory_sprint").append("<option value='-1	'>No sprints</option>");
+		$("#add_userstory_sprint").selectmenu("disable");
+		$("#add_userstory_sprint").selectmenu("refresh");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -105,10 +112,9 @@ var populateSprintSelect = function() {
 
 var createUserStory = function () {
 	$("#submitAddUserstory").button("disable");
-	
+
 	var formResult = $("#addUserstoryForm").serializeObject();
-	
-	if (!formResult.add_userstory_name) {
+	if (!formResult.add_userstory_name || formResult.add_userstory_sprint == null) {
 		enableButton("#submitAddUserstory");
 		return false;
 	}
@@ -149,4 +155,13 @@ var createUserStory = function () {
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
+}
+
+var selectUserstory = function(id) {
+	$("#userstoriesList>div>div>ul>li").each(function() {
+		$(this).attr("data-theme", "d").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-d").addClass('ui-btn-hover-d	');
+	});
+	$("#userstoriesList>div>div>ul>li[data-userstoryid=" + id + "]").attr("data-theme", "b").removeClass("ui-btn-up-d").removeClass('ui-btn-hover-d').addClass("ui-btn-up-b").addClass('ui-btn-hover-b');
+	_selectedUSerstory = id;
+	$(".userstory-menu-options").show();
 }

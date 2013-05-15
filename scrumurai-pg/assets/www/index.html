@@ -263,7 +263,7 @@
 </div><!-- /header -->
 
 <div data-role="content">
-  <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="#userstoriesList" data-inset="false">
+  <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="userstoriesList" data-inset="false">
     <div data-role="collapsible" data-collapsed="false">
       <h2>To do<span id="userstoriesToDoCount"style="float:right;"></span></h2>
       <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesToDoList">
@@ -287,11 +287,30 @@
   </div>
   <div data-role="footer", class="ui-bar" data-position="fixed">
     <a href="#adduserstory" data-icon="plus">New</a>
+    <a href="#adduserstory" data-icon="edit" style="display:none;" class="userstory-menu-options">Edit</a>
+    <a href="#userstorystatedialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Change state</a>
+    <a href="#adduserstory" data-icon="remove" style="display:none;" class="userstory-menu-options">Delete</a>
   </div>
 </div><!-- /content -->
 
 </div>
 <!-- /BACKLOG -->
+
+<!-- USERSTORY STATE DIALOG -->
+<div data-role="page" id="userstorystatedialog">
+  <div data-role="header">
+    <h1>Change the state</h1>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" class="projectPopupList">
+      <li><a href="#">To do</a></li>
+      <li><a href="#">Assigned</a></li>
+      <li><a href="#">In progress</a></li>
+      <li><a href="#">Completed</a></li>
+    </ul>
+  </div>
+</div>
+<!-- /USERSTORY STATE DIALOG -->
 
 <!-- ADD USERSTORY -->
 <div data-role="page" id="adduserstory">

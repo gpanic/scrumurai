@@ -59,6 +59,25 @@ public class UserStoryResource implements Resource<UserStory> {
             return Response.status(404).build();
         }
     }
+    
+    @PUT
+    @Path("/{id}/state")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateState(@PathParam("id") int id, UserStory obj) {
+        System.err.println("AAAAAAAAAA");
+        System.err.println(obj);
+        EntityManager em = EMF.get().createEntityManager();
+        UserStory us;
+        if ((us = em.find(UserStory.class, id)) != null) {
+            em.getTransaction().begin();
+            us.setState(obj.getState());
+            em.getTransaction().commit();
+            em.close();
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
 
     @DELETE
     @Path("/{id}")
