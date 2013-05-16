@@ -266,30 +266,31 @@
   <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="userstoriesList" data-inset="false">
     <div data-role="collapsible" data-collapsed="false">
       <h2>To do<span id="userstoriesToDoCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesToDoList">
+      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesToDoList">
       </ul>
     </div>
     <div data-role="collapsible" id="userstoriesAssignedCollapsible">
       <h2>Assigned<span id="userstoriesAssignedCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesAssignedList">
+      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesAssignedList">
       </ul>
     </div>
     <div data-role="collapsible" id="userstoriesInProgressCollapsible">
       <h2>In progress<span id="userstoriesInProgressCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesInProgressList">
+      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesInProgressList">
       </ul>
     </div>
     <div data-role="collapsible" id="userstoriesCompletedCollapsible">
       <h2>Completed<span id="userstoriesCompletedCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="userstoriesCompletedList">
+      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesCompletedList">
       </ul>
     </div>
   </div>
   <div data-role="footer", class="ui-bar" data-position="fixed">
     <a href="#adduserstory" data-icon="plus">New</a>
-    <a href="#adduserstory" data-icon="edit" style="display:none;" class="userstory-menu-options">Edit</a>
+    <a href="#edituserstory" data-icon="edit" style="display:none;" class="userstory-menu-options">Edit</a>
     <a href="#userstorystatedialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Change state</a>
-    <a href="#adduserstory" data-icon="remove" style="display:none;" class="userstory-menu-options">Delete</a>
+    <a href="#assignuserstorydialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Assign</a>
+    <a href="#" id="deleteuserstory" data-icon="delete" style="display:none;" class="userstory-menu-options">Delete</a>
   </div>
 </div><!-- /content -->
 
@@ -311,6 +312,18 @@
   </div>
 </div>
 <!-- /USERSTORY STATE DIALOG -->
+
+<!-- ASSIGN USERSTORY DIALOG -->
+<div data-role="page" id="assignuserstorydialog">
+  <div data-role="header">
+    <h1>Assign user story to</h1>
+  </div>
+  <div data-role="content">
+    <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" id="assignUserstoryMembers">
+    </ul>
+  </div>
+</div>
+<!-- /ASSIGN USERSTORY DIALOG -->
 
 <!-- ADD USERSTORY -->
 <div data-role="page" id="adduserstory">
@@ -377,6 +390,72 @@
 
 </div>
 <!-- /ADD USERSTORY -->
+
+<!-- EDIT USERSTORY -->
+<div data-role="page" id="edituserstory">
+
+  <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+      </ul>
+    </div><!-- /navbar -->
+    <h1 style="height:30px;padding-top:10px">Edit User Story</h1>
+  </div><!-- /header -->
+
+  <div data-role="content">
+    <form id="editUserstoryForm">
+      <ul data-role="listview">
+        <li data-role="fieldcontain">
+          <label for="edit_userstory_name">Name:</label>
+          <input type="text" name="edit_userstory_name" id="edit_userstory_name" value="" data-clear-btn="true">
+        </li>
+        <li data-role="fieldcontain">
+          <label for="edit_userstory_description">Description:</label>
+          <input type="text" name="edit_userstory_description" id="edit_userstory_description" value="" data-clear-btn="true">
+        </li>
+        <li data-role="fieldcontain">
+          <label for="edit_userstory_effort" class="select">Effort:</label>
+          <select name="edit_userstory_effort" id="edit_userstory_effort">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="8">8</option>
+          </select>
+        </li>
+        <li data-role="fieldcontain">
+          <label for="edit_userstory_bv" class="select">Business value:</label>
+          <select name="edit_userstory_bv" id="edit_userstory_bv">
+            <option value="must have">Must have</option>
+            <option value="great">Great</option>
+            <option value="good">Good</option>
+            <option value="average">Average</option>
+            <option value="nice to have">Nice to have</option>
+          </select>
+        </li>
+        <li data-role="fieldcontain">
+          <label for="edit_userstory_sprint" class="select">Sprint:</label>
+          <select name="edit_userstory_sprint" id="edit_userstory_sprint">
+          </select>
+        </li>
+        <li class="ui-body ui-body-b">
+          <fieldset class="ui-grid-a" >
+            <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditUserstory">Edit</button></div>
+            <div class="ui-block-b"><a href="#backlog" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+          </fieldset>
+        </li>
+      </ul>
+    </form>
+  </div><!-- /content -->
+
+</div>
+<!-- /EDIT USERSTORY -->
 
 <!-- SPRINT -->
 <div data-role="page" id="sprint">

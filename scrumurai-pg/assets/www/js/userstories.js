@@ -11,11 +11,28 @@ $(document).ready(function() {
 		$("#addUserstoryForm").each (function() {
 			this.reset();
 		});
-		populateSprintSelect();
+		populateSprintSelect("#add_userstory_sprint");
+	});
+
+	$(document).on("pageshow", "#edituserstory", function() {
+		$("#editUserstoryForm").each (function() {
+			this.reset("#add_userstory_sprint");
+		});
+		populateSprintSelect("#edit_userstory_sprint");
+		populateEditForm();
+	});
+
+	$(document).on("pageinit", "#assignuserstorydialog", function() {
+		populateAssignableMembers();
 	});
 
 	$("#addUserstoryForm").submit(function () {
 		createUserStory();
+		return false;
+	});
+
+	$("#editUserstoryForm").submit(function () {
+		updateUserStory();
 		return false;
 	});
 
@@ -29,6 +46,10 @@ $(document).ready(function() {
 				$(this).hide();
 			}
 		});
+	});
+
+	$("#deleteuserstory").tap(function() {
+		deleteUserStory();
 	});
 });
 
@@ -65,7 +86,7 @@ var populateUserStories = function() {
 								"<p><strong>Asigned to:</strong> " + assignee + "</p>" +
 								"<p><strong>Sprint:</strong> " + sprint + "</p>" +
 								"<span class='ui-li-count'>" + userstory.effort + "</span>" +
-								"</a><a href=# class='' data-userstoryid='" + userstory.id + "'>Remove</a></li>";
+								"</a></li>";
 			if(userstory.state == "to do") {
 				$("#userstoriesToDoList").append(userstory_html);
 				userstoriesToDo++;
@@ -97,26 +118,27 @@ var populateUserStories = function() {
 	});
 }
 
-var populateSprintSelect = function() {
+var populateSprintSelect = function(field) {
 	$.ajax({
 		url: _ws + "/sprints/project/" + _selectedProject[0],
 		type: "GET",
 		dataType: "json",
+		async: false,
 		beforeSend: function ( xhr ) {
 			$.mobile.loading('show');
 		}
 	}).done(function(json) {
-		$("#add_userstory_sprint").empty();
+		$(field).empty();
 		$.each(json, function(i, sprint) {
-			$("#add_userstory_sprint").append("<option value='" + sprint.id + "'>" + sprint.name + "</option>");
+			$(field).append("<option value='" + sprint.id + "'>" + sprint.name + "</option>");
 		});
-		$("#add_userstory_sprint").selectmenu("enable");
-		$("#add_userstory_sprint").selectmenu("refresh");
+		$(field).selectmenu("enable");
+		$(field).selectmenu("refresh");
 	}).fail(function() {
-		$("#add_userstory_sprint").empty();
-		$("#add_userstory_sprint").append("<option value='-1	'>No sprints</option>");
-		$("#add_userstory_sprint").selectmenu("disable");
-		$("#add_userstory_sprint").selectmenu("refresh");
+		$(field).empty();
+		$(field).append("<option value='-1'>No sprints</option>");
+		$(field).selectmenu("disable");
+		$(field).selectmenu("refresh");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -225,4 +247,123 @@ var updateUserstoryState = function(state_new) {
 			$.mobile.loading('hide');
 		});
 	}
+}
+
+var populateEditForm = function() {
+	var userstory = getUserstory(_selectedUserstory);
+	$("#edit_userstory_name").val(userstory.name);
+	$("#edit_userstory_description").val(userstory.description);
+	$('#edit_userstory_effort').val($("#edit_userstory_effort option[value=" + userstory.effort + "]").val());
+	$('#edit_userstory_bv').val($("#edit_userstory_bv option[value=" + userstory.business_value + "]").val());
+	$('#edit_userstory_sprint').val($("#edit_userstory_sprint option[value=" + userstory.sprint.id + "]").val());
+}
+
+var updateUserStory = function() {
+	$("#submitEditUserstory").button("disable");
+
+	var formResult = $("#editUserstoryForm").serializeObject();
+	if (!formResult.edit_userstory_name || formResult.edit_userstory_sprint == null) {
+		enableButton("#submitEditUserstory");
+		return false;
+	}
+
+	var userstory = {
+		name: formResult.edit_userstory_name,
+		description: formResult.edit_userstory_description,
+		effort: formResult.edit_userstory_effort,
+		business_value: formResult.edit_userstory_bv,
+		sprint: {
+			id: formResult.edit_userstory_sprint
+		}
+	};
+
+	$.ajax({
+		url: _ws + "/userstories/" + _selectedUserstory + "/details",
+		type: "PUT",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(userstory),
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		$("#editUserstoryForm").each (function() {
+			this.reset();
+		});
+		enableButton("#submitEditUserstory");
+		_selectedUserstory = -1;
+		$.mobile.changePage("#backlog");
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+}
+
+var deleteUserStory = function() {
+	$.ajax({
+		url: _ws + "/userstories/" + _selectedUserstory,
+		type: "DELETE",
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function() {
+		populateUserStories();
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+}
+
+var populateAssignableMembers = function() {
+	$.ajax({
+		url: _ws + "/project-members/by-project/" +_selectedProject[0],
+		type: "GET",
+		dataType: "json",
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		var projectMembers = [];
+		$("#assignUserstoryMembers").empty();
+		$.each(json, function(i, member) {
+			projectMembers.push(
+					"<li><a href='javascript:assignMember(" + member.user.id + ")'>" + member.user.username + "</a></li>"
+			);
+		});
+		$.each(projectMembers, function(i, project_html) {
+			$("#assignUserstoryMembers").append(project_html);
+		});
+		$("#assignUserstoryMembers").listview("refresh");
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
+}
+
+var assignMember = function(user_id) {
+	var userstory = {
+		assignee: {
+			id: user_id
+		}
+	}
+
+	$.ajax({
+		url: _ws + "/userstories/" + _selectedUserstory + "/assignee",
+		type: "PUT",
+		contentType: "application/json; charset=utf-8",
+		data: JSON.stringify(userstory),
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		$.mobile.changePage("#backlog");
+		_selectedUserstory = -1;
+		$("#assignuserstorydialog").dialog("close");
+	}).fail(function() {
+		alert("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
 }
