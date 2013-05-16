@@ -13,6 +13,7 @@ import javax.ws.rs.core.UriInfo;
 import scrumurai.data.EMF;
 import scrumurai.data.entities.Sprint;
 
+import scrumurai.data.entities.User;
 import scrumurai.data.entities.UserStory;
 import scrumurai.data.mapping.DataMapper;
 
@@ -54,6 +55,63 @@ public class UserStoryResource implements Resource<UserStory> {
     public Response update(@PathParam("id") int id, UserStory obj) {
         obj.setId(id);
         if (dm.update(obj)) {
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
+    
+    @PUT
+    @Path("/{id}/state")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateState(@PathParam("id") int id, UserStory obj) {
+        EntityManager em = EMF.get().createEntityManager();
+        UserStory us;
+        if ((us = em.find(UserStory.class, id)) != null) {
+            em.getTransaction().begin();
+            us.setState(obj.getState());
+            em.getTransaction().commit();
+            em.close();
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
+    
+    @PUT
+    @Path("/{id}/details")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDetail(@PathParam("id") int id, UserStory obj) {
+        EntityManager em = EMF.get().createEntityManager();
+        UserStory us;
+        if ((us = em.find(UserStory.class, id)) != null) {
+            em.getTransaction().begin();
+            us.setName(obj.getName());
+            us.setDescription(obj.getDescription());
+            us.setEffort(obj.getEffort());
+            us.setBusiness_value(obj.getBusiness_value());
+            Sprint s = em.find(Sprint.class, obj.getSprint().getId());
+            us.setSprint(s);
+            em.getTransaction().commit();
+            em.close();
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
+    
+    @PUT
+    @Path("/{id}/assignee")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateAssignee(@PathParam("id") int id, UserStory obj) {
+        EntityManager em = EMF.get().createEntityManager();
+        UserStory us;
+        if ((us = em.find(UserStory.class, id)) != null) {
+            em.getTransaction().begin();
+            User u = em.find(User.class, obj.getAssignee().getId());
+            us.setAssignee(u);
+            em.getTransaction().commit();
+            em.close();
             return Response.status(204).build();
         } else {
             return Response.status(404).build();

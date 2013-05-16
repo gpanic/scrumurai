@@ -312,7 +312,7 @@ var populateProjectMembers = function(project_id, name) {
 			projectMembers.push(
 					"<li><a href='#' class='' data-memberid='" + member.user.id + "'>" +
 					"<h2>" + member.user.username + "</h2>" +
-					"<p><strong>Name:</strong> " + member.firstname + " " + member.lastname + "</p>" +
+					"<p><strong>Name:</strong> " + member.user.firstname + " " + member.user.lastname + "</p>" +
 					"<p><strong>Role:</strong> " + member.role + "</p>" +
 					"<p><strong>Email:</strong> " + member.user.email + "</p>" +
 					"</a><a href=# class='removeProjectMemberLink' data-memberid='" + member.user.id + "'>Remove</a></li>"
