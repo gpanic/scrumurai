@@ -77,13 +77,13 @@ public class UserStoryResource implements Resource<UserStory> {
     }
     
     @GET
-    @Path("/sprint/{id}")
+    @Path("/release/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response list(@PathParam("id") int id) {
         System.out.println("LIST USER STORY");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id = :sprint_id ORDER BY e.end_date", UserStory.class);
-        query.setParameter("sprint_id", id);
+        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id IN (SELECT s.id FROM Sprint s WHERE s.release.id = :release_id) ORDER BY e.end_date", UserStory.class);
+        query.setParameter("release_id", id);
         List<UserStory> rs = query.getResultList();
         em.close();
         if (rs.size() > 0) {

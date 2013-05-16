@@ -13,24 +13,16 @@ $(function () {
 
     fillVelocity(_selectedProject[0]);
 
-    fillBurndownSelectSprints($("#burndown_select_release").val());
-
-    if($("#burndown_select_sprint").val())
-      generateGraph($("#burndown_select_sprint").val());
+    if($("#burndown_select_release").val())
+      generateGraph($("#burndown_select_release").val());
 
     return false;
   });
 
 
   $("#burndown_select_release").change(function(){
-    fillBurndownSelectSprints($("#burndown_select_release").val());
-
-    if($("#burndown_select_sprint").val())
-      generateGraph($("#burndown_select_sprint").val());
-  });
-
-  $("#burndown_select_sprint").change(function(){
-    generateGraph($("#burndown_select_sprint").val());
+    if($("#burndown_select_release").val())
+      generateGraph($("#burndown_select_release").val());
   });
 
 });
@@ -67,46 +59,18 @@ var fillBurndownSelectRelease = function (project_id) {
 return found_releases;
 }
 
-var fillBurndownSelectSprints = function(release_id){
-  $('#burndown_select_sprint').find('option').remove().end();
-  var found_sprints = false;
-  $.ajax({
-    url: _ws + "/sprints/rls/" + release_id,
-    type: "GET",
-    dataType: "json",
-    async: false,
-    beforeSend: function (xhr) {
-      $.mobile.loading('show');
-    }
-  }).done(function (data) {
-    found_sprints = true;
-    var select_sprint = $("#burndown_select_sprint");
-    //dodamo fielde
-    $.each(data, function () {
-      select_sprint.append($("<option />").val(this.id).text(this.name));
-    });
 
-  //nastavimo zadnjega kot izbranega
-  $('#burndown_select_sprint option:last-child').prop("selected", true);
-  //posodobimo select, da se prikaže izbrana vrednost
-  select_sprint.selectmenu('refresh',true);
-}).fail(function (xhr, textStatus, errorThrown) {
-  console.log("releases_proj_fail");
-}).always(function () {
-  $.mobile.loading('hide');
-});
-return found_sprints;
-}
 
 var fillVelocity = function(project_id){
   var project = getProject(project_id);
   $("#burndown_velocity").text("Velocity: "+project.velocity);
 }
 
-var getSprint = function(sprint_id){
+
+var getUserStories = function(release_id){
   var d;
   $.ajax({
-    url: _ws + "/sprints/" + sprint_id,
+    url: _ws + "/userstories/release/" + release_id,
     type: "GET",
     dataType: "json",
     async: false,
@@ -116,17 +80,17 @@ var getSprint = function(sprint_id){
   }).done(function (data) {
     d = data;
   }).fail(function (xhr, textStatus, errorThrown) {
-    console.log("get sprint fail");
+    console.log("get user stories based on release fail");
   }).always(function () {
     $.mobile.loading('hide');
   });
   return d;
 }
 
-var getUserStories = function(sprint_id){
+var getReleaseDataTotal = function(release_id){
   var d;
   $.ajax({
-    url: _ws + "/userstories/sprint/" + sprint_id,
+    url: _ws + "/releases/datatotal/" + release_id,
     type: "GET",
     dataType: "json",
     async: false,
@@ -136,20 +100,23 @@ var getUserStories = function(sprint_id){
   }).done(function (data) {
     d = data;
   }).fail(function (xhr, textStatus, errorThrown) {
-    console.log("get user stories based on sprint fail");
+    console.log("get release data total fail");
   }).always(function () {
     $.mobile.loading('hide');
   });
   return d;
 }
 
-var getDataTotal = function(sprint_id){
-  var sprint = getSprint(sprint_id);
-  return [{"date": sprint.start_date, "effort": sprint.total_effort },{"date": sprint.end_date , "effort": 0 }];
+var getDataTotal = function(release_id){
+  var release = getReleaseDataTotal(release_id);
+  if(release)
+    return [{"date": release.start_date, "effort": release.total_effort },{"date": release.end_date , "effort": 0 }];
+  else
+    return null;
 }
 
-var getData = function(sprint_id, data_top){
-  var userstories = getUserStories(sprint_id);
+var getData = function(release_id, data_top){
+  var userstories = getUserStories(release_id);
   var json = [];
   json.push(data_top);
   total_effort = data_top.effort;
@@ -164,7 +131,7 @@ var getData = function(sprint_id, data_top){
 return json;
 }
 
-var generateGraph = function(sprint_id){
+var generateGraph = function(release_id){
   $("#graph").html("");
   // define dimensions of graph
   var m = [20, 5, 160, 75]; // margins
@@ -184,11 +151,12 @@ var generateGraph = function(sprint_id){
   }
 
   // create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
-  var data_total = getDataTotal(sprint_id);
-  if(!data_total)
+  var data_total = getDataTotal(release_id);
+  if(!data_total){
+    console.log("dt false");
     return false;
-  
-  var data = getData(sprint_id,data_total[0]);
+  }
+  var data = getData(release_id,data_total[0]);
 
   if(!data){
     $("#graph").html("<p id='errorpage_msg'>Your sprint does not have any finished user stories.</p>");
@@ -247,7 +215,11 @@ var generateGraph = function(sprint_id){
   .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
   // create yAxis
-  var xAxis = d3.svg.axis().scale(x).ticks(d3.time.days, 1).tickFormat(d3.time.format("%d.%m.%Y"));
+  var xAxis;
+  if(daydiff(data[0], end_date) > 10)
+    xAxis = d3.svg.axis().scale(x).ticks(d3.time.days, 2).tickFormat(d3.time.format("%d.%m.%Y"));
+  else
+    xAxis = d3.svg.axis().scale(x).ticks(d3.time.days, 1).tickFormat(d3.time.format("%d.%m.%Y"));
 
   //grid lines
   graph.append("g")
@@ -303,12 +275,12 @@ var generateGraph = function(sprint_id){
 
   setTimeout(function(){
    var the_chart = $("#chart"),
-  aspect = the_chart.width() / the_chart.height(),
-  container = the_chart.parent();
+   aspect = the_chart.width() / the_chart.height(),
+   container = the_chart.parent();
 
-  var targetWidth = container.width();
-  the_chart.attr("width", targetWidth);
-  the_chart.attr("height", Math.round(targetWidth / aspect));}, 500);
+   var targetWidth = container.width();
+   the_chart.attr("width", targetWidth);
+   the_chart.attr("height", Math.round(targetWidth / aspect));}, 500);
 }
 
 $(window).on("resize", function () {

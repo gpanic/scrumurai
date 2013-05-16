@@ -1,21 +1,30 @@
-
 package scrumurai.data.queryobjects;
 
 import java.sql.Date;
 
 public class ReleaseStartEnd {
+
     private int id;
     private String name;
     private String version;
     private Date start_date;
     private Date end_date;
-    private boolean current;
+    private Boolean current;
+    private Long total_effort;
 
     public ReleaseStartEnd() {
     }
 
-    
-    public ReleaseStartEnd(int id, String name, String version, Date start_date, Date end_date, boolean current) {
+    public ReleaseStartEnd(int id, String name, String version, Date start_date, Date end_date, Long total_effort) {
+        this.id = id;
+        this.name = name;
+        this.version = version;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.total_effort = total_effort;
+    }
+
+    public ReleaseStartEnd(int id, String name, String version, Date start_date, Date end_date, Boolean current) {
         this.id = id;
         this.name = name;
         this.version = version;
@@ -29,19 +38,23 @@ public class ReleaseStartEnd {
         this.name = name;
         this.version = version;
     }
-    
-    
 
-    public boolean isCurrent() {
+    public Boolean getCurrent() {
         return current;
     }
 
-    public void setCurrent(boolean current) {
+    public void setCurrent(Boolean current) {
         this.current = current;
     }
 
-    
-    
+    public Long getTotal_effort() {
+        return total_effort;
+    }
+
+    public void setTotal_effort(Long total_effort) {
+        this.total_effort = total_effort;
+    }
+
     public int getId() {
         return id;
     }
@@ -81,6 +94,4 @@ public class ReleaseStartEnd {
     public void setEnd_date(Date end_date) {
         this.end_date = end_date;
     }
-    
-    
 }

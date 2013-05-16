@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import javax.ws.rs.*;
@@ -22,7 +21,6 @@ import scrumurai.data.EMF;
 
 import scrumurai.data.entities.Release;
 import scrumurai.data.entities.Sprint;
-import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
 import scrumurai.data.queryobjects.ReleaseStartEnd;
 
@@ -53,6 +51,40 @@ public class ReleaseResource implements Resource<Release> {
         Release obj = (Release) dm.read(id);
         if (obj != null) {
             return Response.ok(dm.read(id)).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
+
+    @GET
+    @Path("/datatotal/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response readBurndown(@PathParam("id") int id) {
+        System.out.println("LIST RELEASE BURNDOWN");
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<Object[]> query = em.createQuery("SELECT r.id, r.name, r.version, "
+                + "MIN(s.start_date), MAX(s.end_date), SUM(s.total_effort) "
+                + "FROM Release r, Sprint s "
+                + "WHERE r.id = s.release.id "
+                + "AND r.id = :release_id", Object[].class);
+        query.setParameter("release_id", id);
+        List<Object[]> rs = query.getResultList();
+        em.close();
+        if (rs.size() > 0) {
+            SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+            ReleaseStartEnd r = null;
+            try {
+                r = new ReleaseStartEnd((Integer) rs.get(0)[0],
+                        (String) rs.get(0)[1],
+                        (String) rs.get(0)[2],
+                        new java.sql.Date(sd.parse((String) rs.get(0)[3]).getTime()),
+                        new java.sql.Date(sd.parse((String) rs.get(0)[4]).getTime()),
+                        (Long) rs.get(0)[5]);
+            } catch (Exception ex) {
+                System.out.println(ex);
+                return Response.status(404).build();
+            }
+            return Response.ok(r).build();
         } else {
             return Response.status(404).build();
         }
