@@ -5,17 +5,18 @@ $(function () {
 
   $(document).on("pagebeforeshow","#burndown",  function() {    
 
-    if (_selectedProject[0] == -1)
+    if (_selectedProject[0] == -1){
       redirectError("You have no selected project.");
-
-    if(!fillBurndownSelectRelease(_selectedProject[0]))
+    }else if(!fillBurndownSelectRelease(_selectedProject[0])){
+      console.log("2if");
       redirectError("You have no releases.");
+    }else{
+      console.log("3it");
+      fillVelocity(_selectedProject[0]);
 
-    fillVelocity(_selectedProject[0]);
-
-    if($("#burndown_select_release").val())
-      generateGraph($("#burndown_select_release").val());
-
+      if($("#burndown_select_release").val())
+        generateGraph($("#burndown_select_release").val());
+    }
     return false;
   });
 
