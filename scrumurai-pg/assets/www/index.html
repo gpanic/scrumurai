@@ -8,7 +8,9 @@
   <link rel="stylesheet" href="css/jquery.mobile-1.3.1.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/burndown.css"/>
+  <link rel="stylesheet" href="css/jquery-ui.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
   <script src="js/jquery.mobile-1.3.1.min.js"></script>
   <script src="js/globals.js"></script>
   <script src="js/helper.js"></script>
@@ -573,10 +575,6 @@
             <label for="add_release_description">Description:</label>
             <textarea name="description" id="add_release_description" data-clear-btn="true" style="height:7em;"></textarea>
           </li>
-          <li data-role="fieldcontain">
-            <label for="add_release_version">Version:</label>
-            <input type="text" name="version" id="add_release_version" value="" data-clear-btn="true">
-          </li>
 
           <li class="ui-body ui-body-b">
             <fieldset class="ui-grid-a" >
@@ -590,6 +588,57 @@
 
   </div>
   <!-- /ADD RELEASE -->
+
+  <!-- VIEW RELEASE -->
+  <div data-role="page" id="viewrelease">
+
+    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <h1 style="height:30px;padding-top:10px">Nekaj</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <h1>Release 1</h1>
+      
+      <div id="viewrelease_progressbar_container">
+        <table id="viewrelease_progressbar_status">
+          <tr>
+            <td>Completed: <strong>23pt</strong></td>
+            <td>Remaining: <strong>15pt</strong></td>
+          </tr>
+        </table>
+        <div id="viewrelease_progressbar"></div>
+      </div>
+
+      <h3>Description</h3>
+      <p id="viewrelease_description">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
+
+      <p id="viewrelease_startdate"><strong>Start date:</strong> 21.06.2013</p>
+      
+      <p id="viewrelease_enddate"><strong>End date:</strong> 21.06.2013</p>
+      <script>
+      $(function() {
+        $( "#viewrelease_progressbar" ).progressbar({
+          value: 37
+        });
+      });
+      </script>
+
+      <h4>Change log</h4>
+      <p id="viewrelease_changelog">
+      </p>
+    </div><!-- /content -->
+
+  </div>
+  <!-- /VIEW RELEASE -->
 
   <!-- MY PROJECTS -->
   <div data-role="page" id="myprojects">

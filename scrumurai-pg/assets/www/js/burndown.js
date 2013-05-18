@@ -8,10 +8,8 @@ $(function () {
     if (_selectedProject[0] == -1){
       redirectError("You have no selected project.");
     }else if(!fillBurndownSelectRelease(_selectedProject[0])){
-      console.log("2if");
       redirectError("You have no releases.");
     }else{
-      console.log("3it");
       fillVelocity(_selectedProject[0]);
 
       if($("#burndown_select_release").val())
@@ -44,7 +42,7 @@ var fillBurndownSelectRelease = function (project_id) {
     var select_release = $("#burndown_select_release");
     //dodamo fielde
     $.each(data, function () {
-      select_release.append($("<option />").val(this.id).text(this.name+" "+this.version));
+      select_release.append($("<option />").val(this.id).text(this.name));
     });
 
   //nastavimo zadnjega kot izbranega

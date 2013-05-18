@@ -2,14 +2,14 @@
 
 $(document).ready(function() {
 	autoLogin();
-/*
+
 	$(document).on("pagebeforeshow",  function() {
 		if(!_user && location.hash != "#register"){
 			console.log("pagebeforeshow");
 			$.mobile.changePage("#login");
 		}
 	});
-*/
+
 	$(document).on("pagebeforeshow","#login",  function() {
 		console.log("pagebeforeshow #login");
 		if(!_user)

@@ -15,6 +15,10 @@ $(document).ready(function() {
 		addRelease();
 		return false;
 	});
+
+	$(".release_link").click(function(){
+		console.log()
+	});
 });
 
 var addRelease = function(){
@@ -65,12 +69,10 @@ var populateReleases = function() {
 		$("#release_coll_current_list").empty();
 		$("#release_coll_done_list").empty();
 		$.each(json, function(i, release) {
-			var release_html = "<li><a href='#' class='' data-releaseid='" + release.id + "'>" +
-								"<h2>" + release.name + "</h2>" +
-								"<p><strong>Version:</strong> " + release.version + "</p>" +
+			var release_html = "<li><a class='release_link' data-releaseid='" + release.id + "' href='javascript:selectRelease(" + release.id + ")'>" +
+								"<h2>" + release.name +"</h2>" +
 								"<p><strong>Start date:</strong> " + release.start_date + "</p>" +
 								"<p><strong>End date:</strong> " + release.end_date + "</p>";
-								console.log(release.current);
 			if(release.current) {
 				$("#release_coll_current_list").append(release_html);
 				releasesCurrent++;
@@ -90,4 +92,9 @@ var populateReleases = function() {
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
+}
+
+var selectRelease = function(release_id){
+	_currentRelease = release_id;
+	$.mobile.changePage("#viewrelease");
 }

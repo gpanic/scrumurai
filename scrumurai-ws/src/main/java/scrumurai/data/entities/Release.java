@@ -13,7 +13,6 @@ public class Release implements EntityObject {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private int id;
-    private String version;
     @NotNull
     private String name;
     private String description;
@@ -35,13 +34,6 @@ public class Release implements EntityObject {
         this.project = project;
     }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
 
     public String getName() {
         return name;
@@ -69,8 +61,7 @@ public class Release implements EntityObject {
 
     @Override
     public String toString() {
-        return "Release [id=" + id + ", project=" + project + ", version="
-                + version + ", name=" + name + ", description=" + description
-                + ", change_log=" + change_log + "]";
+        return "Release{" + "id=" + id + ", name=" + name + ", description=" + description + ", change_log=" + change_log + ", project=" + project + '}';
     }
+
 }

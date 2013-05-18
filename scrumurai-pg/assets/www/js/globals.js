@@ -8,4 +8,7 @@ var _selectedProject = [-1, "No projects yet"];
 var _currentProject = null;
 
 //is set when user is logged in
-var _user;
+var _user = null;
+
+// Currently viewed release, set in #relese, used in #viewrelease
+var _currentRelease = null;

@@ -21,8 +21,11 @@ import scrumurai.data.EMF;
 
 import scrumurai.data.entities.Release;
 import scrumurai.data.entities.Sprint;
+import scrumurai.data.entities.UserStory;
 import scrumurai.data.mapping.DataMapper;
+import scrumurai.data.queryobjects.ReleaseDetailed;
 import scrumurai.data.queryobjects.ReleaseStartEnd;
+import scrumurai.ws.resources.helpers.ReleaseHelper;
 
 @Path("/releases")
 public class ReleaseResource implements Resource<Release> {
@@ -57,12 +60,31 @@ public class ReleaseResource implements Resource<Release> {
     }
 
     @GET
+    @Path("/detailed/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response readDetailed(@PathParam("id") int id) {
+        System.out.println("LIST RELEASE DETAILED");
+        EntityManager em = EMF.get().createEntityManager();
+        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id IN (SELECT s.id FROM Sprint s WHERE s.release.id = :release_id)", UserStory.class);
+        query.setParameter("release_id", id);
+        List<UserStory> rs = query.getResultList();
+        em.close();
+        if (rs.size() > 0) {
+            ReleaseDetailed release = ReleaseHelper.setReleaseDetailed(rs);
+            if (release != null) {
+                return Response.ok(release).build();
+            }
+        }
+        return Response.status(404).build();
+    }
+
+    @GET
     @Path("/datatotal/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readBurndown(@PathParam("id") int id) {
         System.out.println("LIST RELEASE BURNDOWN");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<Object[]> query = em.createQuery("SELECT r.id, r.name, r.version, "
+        TypedQuery<Object[]> query = em.createQuery("SELECT r.id, r.name, "
                 + "MIN(s.start_date), MAX(s.end_date), SUM(s.total_effort) "
                 + "FROM Release r, Sprint s "
                 + "WHERE r.id = s.release.id "
@@ -76,10 +98,9 @@ public class ReleaseResource implements Resource<Release> {
             try {
                 r = new ReleaseStartEnd((Integer) rs.get(0)[0],
                         (String) rs.get(0)[1],
-                        (String) rs.get(0)[2],
+                        new java.sql.Date(sd.parse((String) rs.get(0)[2]).getTime()),
                         new java.sql.Date(sd.parse((String) rs.get(0)[3]).getTime()),
-                        new java.sql.Date(sd.parse((String) rs.get(0)[4]).getTime()),
-                        (Long) rs.get(0)[5]);
+                        (Long) rs.get(0)[4]);
             } catch (Exception ex) {
                 System.out.println(ex);
                 return Response.status(404).build();
@@ -146,7 +167,7 @@ public class ReleaseResource implements Resource<Release> {
         List<Sprint> rs = query.getResultList();
         em.close();
         if (rs.size() > 0) {
-            List<ReleaseStartEnd> releases = sortSprintsToReleaseStartEnd(rs);
+            List<ReleaseStartEnd> releases = ReleaseHelper.sortSprintsToReleaseStartEnd(rs);
             if (releases.size() > 0) {
                 return Response.ok(releases).build();
             }
@@ -155,45 +176,7 @@ public class ReleaseResource implements Resource<Release> {
 
     }
 
-    public List<ReleaseStartEnd> sortSprintsToReleaseStartEnd(List<Sprint> sprints) {
-        List<ReleaseStartEnd> rse = new ArrayList<ReleaseStartEnd>();
-        for (Sprint s : sprints) {
-            boolean contains = false;
-            for (ReleaseStartEnd rs : rse) {
-                if (s.getRelease().getId() == rs.getId()) {
-                    contains = true;
-                    break;
-                }
-            }
-            if (!contains) {
-                ReleaseStartEnd rs = new ReleaseStartEnd(s.getRelease().getId(), s.getRelease().getName(), s.getRelease().getVersion());
+    
 
-                Date start_date = null;
-                Date end_date = null;
-                for (Sprint s2 : sprints) {
-                    if (s2.getRelease().getId() == rs.getId()) {
-                        if (start_date != null) {
-                            if (s2.getStart_date().compareTo(start_date) < 0)
-                                start_date = s2.getStart_date();
-                            if (s2.getEnd_date().compareTo(end_date) > 0)
-                                end_date = s2.getEnd_date();
-                        } else {
-                            start_date = s2.getStart_date();
-                            end_date = s2.getEnd_date();
-                        }
-                    }
-                }
-                rs.setStart_date(start_date);
-                rs.setEnd_date(end_date);
-
-                if (end_date != null && end_date.compareTo(new java.sql.Date(Calendar.getInstance().getTimeInMillis())) < 0)
-                    rs.setCurrent(false);
-                else
-                    rs.setCurrent(true);
-                rse.add(rs);
-            }
-
-        }
-        return rse;
-    }
+    
 }

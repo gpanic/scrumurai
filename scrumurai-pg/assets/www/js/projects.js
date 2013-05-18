@@ -14,7 +14,7 @@ $(document).ready(function() {
 				_selectedProject[1] = json[0].name;
 				updateSelectedProject();
 			}).fail(function() {
-				alert("fail");
+				console.log("fail");
 			}).always(function() {
 				$.mobile.loading('hide');
 			});
@@ -120,7 +120,7 @@ var populateProjectsDialog = function() {
 		});
 		$(".projectPopupList").listview("refresh");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -152,7 +152,7 @@ var populateProjects = function() {
 		});
 		$("#myProjectsList").listview("refresh");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -205,7 +205,7 @@ var createProject = function() {
 		enableButton("#submitAddProject");
 		$.mobile.changePage("#myprojects");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -225,7 +225,7 @@ var deleteProject = function(id) {
 		}
 	}).done(function() {
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -244,7 +244,7 @@ var getProject = function(id) {
 	}).done(function( json 	) {
 		project = json;
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -289,7 +289,7 @@ var editProject = function() {
 		$.mobile.changePage("#viewproject");
 		populateViewProjectGrid(id);
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -323,7 +323,7 @@ var populateProjectMembers = function(project_id, name) {
 		});
 		$("#projectMembersList").listview("refresh");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -410,7 +410,7 @@ var deleteProjectMember = function(user_id) {
 	}).done(function() {
 		populateProjectMembers(_currentProject.id, _currentProject.name);
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});

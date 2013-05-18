@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="tbl_sprint")
+@Table(name = "tbl_sprint")
 @XmlRootElement
 public class Sprint implements EntityObject {
 
@@ -22,11 +22,9 @@ public class Sprint implements EntityObject {
     private Date end_date;
     private int total_effort;
     private int progress;
-    
     @ManyToOne()
     @NotNull
     private Project project;
-    
     @ManyToOne()
     @NotNull
     private Release release;
@@ -38,7 +36,7 @@ public class Sprint implements EntityObject {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public Project getProject() {
         return project;
     }
@@ -99,6 +97,4 @@ public class Sprint implements EntityObject {
     public String toString() {
         return "Sprint{" + "id=" + id + ", name=" + name + ", start=" + start_date + ", end=" + end_date + ", total_effort=" + total_effort + ", progress=" + progress + ", project=" + project + ", release=" + release + '}';
     }
-    
-    
 }
