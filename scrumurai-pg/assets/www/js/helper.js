@@ -14,3 +14,8 @@ function redirectError(msg){
   $.mobile.changePage("#errorpage");
   return false;
 }
+
+function getDateFormat(date){
+	var d = new Date(date);
+	return d.getDate()+"."+(d.getMonth()+1)+"."+d.getFullYear();
+}

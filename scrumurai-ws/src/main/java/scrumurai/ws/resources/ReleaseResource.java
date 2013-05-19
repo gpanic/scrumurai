@@ -68,6 +68,9 @@ public class ReleaseResource implements Resource<Release> {
         TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id IN (SELECT s.id FROM Sprint s WHERE s.release.id = :release_id)", UserStory.class);
         query.setParameter("release_id", id);
         List<UserStory> rs = query.getResultList();
+        for(UserStory u:rs){
+            System.out.println(u.getName()+" "+u.getSprint().getName());
+        }
         em.close();
         if (rs.size() > 0) {
             ReleaseDetailed release = ReleaseHelper.setReleaseDetailed(rs);

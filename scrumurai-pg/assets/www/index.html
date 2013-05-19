@@ -606,31 +606,25 @@
     </div><!-- /header -->
 
     <div data-role="content">
-      <h1>Release 1</h1>
+      <h1 id="viewrelease_name"></h1>
       
       <div id="viewrelease_progressbar_container">
         <table id="viewrelease_progressbar_status">
           <tr>
-            <td>Completed: <strong>23pt</strong></td>
-            <td>Remaining: <strong>15pt</strong></td>
+            <td>Completed: <strong id="viewrelease_done"></strong></td>
+            <td>Remaining: <strong id="viewrelease_total">15pt</strong></td>
           </tr>
         </table>
         <div id="viewrelease_progressbar"></div>
       </div>
 
       <h3>Description</h3>
-      <p id="viewrelease_description">Lorem ipsum dolor sit amet Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet</p>
+      <p id="viewrelease_description"></p>
 
-      <p id="viewrelease_startdate"><strong>Start date:</strong> 21.06.2013</p>
+      <p ><strong>Start date:</strong> <span id="viewrelease_startdate"></span></p>
       
-      <p id="viewrelease_enddate"><strong>End date:</strong> 21.06.2013</p>
-      <script>
-      $(function() {
-        $( "#viewrelease_progressbar" ).progressbar({
-          value: 37
-        });
-      });
-      </script>
+      <p><strong>End date:</strong> <span id="viewrelease_enddate"></span></p>
+     
 
       <h4>Change log</h4>
       <p id="viewrelease_changelog">

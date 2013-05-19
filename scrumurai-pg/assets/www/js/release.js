@@ -10,14 +10,16 @@ $(document).ready(function() {
 		populateReleases();
 	});
 
+	$(document).on("pagebeforeshow","#viewrelease",  function() {
+		console.log("pagebeforeshow #viewrelease");
+		if(_currentRelease != null)
+			getReleaseDetailed(_currentRelease);
+	});
+
 	$("#addReleaseForm").submit(function(){
 		console.log("addrelease");
 		addRelease();
 		return false;
-	});
-
-	$(".release_link").click(function(){
-		console.log()
 	});
 });
 
@@ -70,9 +72,9 @@ var populateReleases = function() {
 		$("#release_coll_done_list").empty();
 		$.each(json, function(i, release) {
 			var release_html = "<li><a class='release_link' data-releaseid='" + release.id + "' href='javascript:selectRelease(" + release.id + ")'>" +
-								"<h2>" + release.name +"</h2>" +
-								"<p><strong>Start date:</strong> " + release.start_date + "</p>" +
-								"<p><strong>End date:</strong> " + release.end_date + "</p>";
+			"<h2>" + release.name +"</h2>" +
+			"<p><strong>Start date:</strong> " + release.start_date + "</p>" +
+			"<p><strong>End date:</strong> " + release.end_date + "</p>";
 			if(release.current) {
 				$("#release_coll_current_list").append(release_html);
 				releasesCurrent++;
@@ -97,4 +99,30 @@ var populateReleases = function() {
 var selectRelease = function(release_id){
 	_currentRelease = release_id;
 	$.mobile.changePage("#viewrelease");
+}
+
+var getReleaseDetailed = function(release_id){
+	$.ajax({
+		url: _ws + "/releases/detailed/"+ release_id,
+		type: "GET",
+		dataType: "json",
+		beforeSend: function ( xhr ) {
+			$.mobile.loading('show');
+		}
+	}).done(function(json) {
+		console.log(json);
+		$("#viewrelease_name").text(json.name);
+		$("#viewrelease_done").text(json.effort_done+"pt");
+		$("#viewrelease_total").text(json.effort_total+"pt");
+		$("#viewrelease_description").text((json.description != null) ? json.description: "/");
+		$("#viewrelease_progressbar" ).progressbar({value: json.effort_done * 100 / json.effort_total});
+		$("#viewrelease_startdate").text(getDateFormat(json.start_date));
+		$("#viewrelease_enddate").text(getDateFormat(json.end_date));
+		$("#viewrelease_changelog").text((json.change_log != null) ? json.change_log:"/");
+
+	}).fail(function() {
+		console.log("fail");
+	}).always(function() {
+		$.mobile.loading('hide');
+	});
 }
