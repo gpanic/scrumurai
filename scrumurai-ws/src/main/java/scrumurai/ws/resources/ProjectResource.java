@@ -1,6 +1,8 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -9,6 +11,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import scrumurai.data.entities.Project;
+import scrumurai.data.entities.ProjectMember;
+import scrumurai.data.entities.User;
 import scrumurai.data.mapping.DataMapper;
 
 @Path("/projects")
@@ -17,12 +21,23 @@ public class ProjectResource implements Resource<Project> {
     @Context
     UriInfo uriInfo;
     private DataMapper dm = new DataMapper(Project.class);
+    private DataMapper dmpm = new DataMapper(ProjectMember.class);
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Project obj) {
-        System.err.println(obj);
         int id = dm.create(obj);
+        
+        Project p = new Project();
+        p.setId(id);
+        ProjectMember pm = new ProjectMember();
+        pm.setProject(p);
+        pm.setRole("owner");
+        User u = new User();
+        u.setId(obj.getProduct_owner().getId());
+        pm.setUser(u);
+        dmpm.create(pm);
+        
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
             return Response.created(uri).build();
@@ -70,5 +85,19 @@ public class ProjectResource implements Resource<Project> {
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
         return Response.ok(dm.list()).build();
+    }
+    
+    @GET
+    @Path("/user/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listByUser(@PathParam("id") int id) {
+        List<Project> list = (List<Project>) dm.list();
+        List<Project> selection = new ArrayList<Project>();
+        for(Project p : list) {
+            if(p.getProduct_owner().getId() == id) {
+                selection.add(p);
+            }
+        }
+        return Response.ok(selection).build();
     }
 }

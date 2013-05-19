@@ -114,4 +114,18 @@ public class ProjectMemberResource implements Resource<ProjectMember> {
         }
         return Response.ok(selection).build();
     }
+    
+    @GET
+    @Path("/user/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listByUser(@PathParam("id") int id) {
+        List<ProjectMember> list = (List<ProjectMember>)dm.list();
+        List<ProjectMember> selection = new ArrayList<ProjectMember>();
+        for(ProjectMember pm : list) {
+            if(pm.getUser().getId() == id) {
+                selection.add(pm);
+            }
+        }
+        return Response.ok(selection).build();
+    }
 }

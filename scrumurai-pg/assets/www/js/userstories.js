@@ -1,4 +1,3 @@
-var userid = "1";
 var _selectedUserstory = -1;
 
 $(document).ready(function() {
@@ -38,7 +37,6 @@ $(document).ready(function() {
 
 	$(document).on("pagebeforeshow", "#userstorystatedialog", function() {
 		var userstory = getUserstory(_selectedUserstory);
-		console.log(userstory.state);
 		$("#userStoryStateDialogList li").show();
 		$("#userStoryStateDialogList li").each(function() {
 			var child = $(this).find("a");
@@ -148,7 +146,7 @@ var createUserStory = function () {
 	$("#submitAddUserstory").button("disable");
 
 	var formResult = $("#addUserstoryForm").serializeObject();
-	if (!formResult.add_userstory_name || formResult.add_userstory_sprint == null) {
+	if (!formResult.add_userstory_name || formResult.add_userstory_sprint == null || _user == undefined) {
 		enableButton("#submitAddUserstory");
 		return false;
 	}
@@ -160,7 +158,7 @@ var createUserStory = function () {
 		business_value: formResult.add_userstory_bv,
 		state: "to do",
 		author: {
-			id: userid
+			id: _user.id
 		},
 		project: {
 			id: _selectedProject[0]
