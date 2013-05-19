@@ -10,8 +10,10 @@ $(document).ready(function() {
 					$.mobile.loading('show');
 				}
 			}).done(function(json) {
-				_selectedProject[0] = json[0].id;
-				_selectedProject[1] = json[0].name;
+				if (json.length != 0) {
+					_selectedProject[0] = json[0].id;
+					_selectedProject[1] = json[0].name;
+				}
 				updateSelectedProject();
 			}).fail(function() {
 				console.log("fail");
@@ -102,8 +104,11 @@ $(document).ready(function() {
 });
 
 var populateProjectsDialog = function() {
+	if(_user == undefined) {
+		return false;
+	}
 	$.ajax({
-		url: _ws + "/projects",
+		url: _ws + "/project-members/user/" + _user.id,
 		type: "GET",
 		dataType: "json",
 		beforeSend: function ( xhr ) {
@@ -112,8 +117,8 @@ var populateProjectsDialog = function() {
 	}).done(function(json) {
 		var projects = []
 		$(".projectPopupList li:not(:last)").remove();
-		$.each(json, function(i, project) {
-			projects.push("<li data-projectid='" + project.id + "'><a href='#'>" + project.name + "</a></li>");
+		$.each(json, function(i, projectmember) {
+			projects.push("<li data-projectid='" + projectmember.project.id + "'><a href='#'>" + projectmember.project.name + " (" + projectmember.role + ")</a></li>");
 		});
 		$.each(projects.reverse(), function(i, project_html) {
 			$(".projectPopupList").prepend(project_html);
@@ -127,8 +132,11 @@ var populateProjectsDialog = function() {
 };
 
 var populateProjects = function() {
+	if(_user == undefined) {
+		return false;
+	}
 	$.ajax({
-		url: _ws + "/projects",
+		url: _ws + "/projects/user/" + _user.id,
 		type: "GET",
 		dataType: "json",
 		beforeSend: function ( xhr ) {
@@ -176,25 +184,25 @@ var createProject = function() {
 	
 	var formResult = $("#addProjectForm").serializeObject();
 	
-	if (!formResult.add_project_name || !formResult.add_project_description || !formResult.add_project_velocity) {
+	if (!formResult.add_project_name || !formResult.add_project_description || !formResult.add_project_velocity || _user == undefined) {
 		enableButton("#submitAddProject");
 		return false;
 	}
-	
-	formResult["name"] = formResult["add_project_name"];
-	delete formResult["add_project_name"];
-	
-	formResult["description"] = formResult["add_project_description"];
-	delete formResult["add_project_description"];
-	
-	formResult["velocity"] = formResult["add_project_velocity"];
-	delete formResult["add_project_velocity"];
-	
+
+	var project = {
+		name: formResult["add_project_name"],
+		description: formResult["add_project_description"],
+		velocity: formResult["add_project_velocity"],
+		product_owner: {
+			id: _user.id
+		}
+	}
+
 	$.ajax({
 		url: _ws + "/projects",
 		type: "POST",
 		contentType: "application/json; charset=utf-8",
-		data: JSON.stringify(formResult),
+		data: JSON.stringify(project),
 		beforeSend: function ( xhr ) {
 			$.mobile.loading('show');
 		}
@@ -309,14 +317,16 @@ var populateProjectMembers = function(project_id, name) {
 		var projectMembers = [];
 		$("#projectMembersList").empty();
 		$.each(json, function(i, member) {
-			projectMembers.push(
-					"<li><a href='#' class='' data-memberid='" + member.user.id + "'>" +
-					"<h2>" + member.user.username + "</h2>" +
-					"<p><strong>Name:</strong> " + member.user.firstname + " " + member.user.lastname + "</p>" +
-					"<p><strong>Role:</strong> " + member.role + "</p>" +
-					"<p><strong>Email:</strong> " + member.user.email + "</p>" +
-					"</a><a href=# class='removeProjectMemberLink' data-memberid='" + member.user.id + "'>Remove</a></li>"
-			);
+			project_html = "<li><a href='#' class='' data-memberid='" + member.user.id + "'>" +
+							"<h2>" + member.user.username + "</h2>" +
+							"<p><strong>Name:</strong> " + member.user.firstname + " " + member.user.lastname + "</p>" +
+							"<p><strong>Role:</strong> " + member.role + "</p>" +
+							"<p><strong>Email:</strong> " + member.user.email + "</p></a>";
+			if (member.role != "owner") {
+				project_html += "<a href=# class='removeProjectMemberLink' data-memberid='" + member.user.id + "'>Remove</a>";
+			}
+			project_html += "</li>";
+			projectMembers.push(project_html);
 		});
 		$.each(projectMembers, function(i, project_html) {
 			$("#projectMembersList").append(project_html);
