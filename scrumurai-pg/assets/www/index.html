@@ -127,386 +127,71 @@
         <div class="ui-grid-a ui-responsive">
           <div class="ui-block-a" style="padding:10px">My tasks</div>
           <div class="ui-block-b">
-              <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
+            <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
           </div>
         </div>
       </h1>
 
-  </div><!-- /header -->
+    </div><!-- /header -->
 
-  <div data-role="content">
-    <ul data-role="listview">
-      <li>
-        <a href="#">
-          <h2>Task 1</h2>
-          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-          <p><strong>Effort:</strong> 9</p>
-          <p><strong>Business Value:</strong> Good</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Task 1</h2>
-          <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
-          <p><strong>Effort:</strong> 3</p>
-          <p><strong>Business Value:</strong> Must have</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Task 2</h2>
-          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-          <p><strong>Effort:</strong> 8</p>
-          <p><strong>Business Value:</strong> Good</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Task 3</h2>
-          <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
-          <p><strong>Effort:</strong> 2</p>
-          <p><strong>Business Value:</strong> Must have</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Task 4</h2>
-          <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
-          <p><strong>Effort:</strong> 5</p>
-          <p><strong>Business Value:</strong> Good</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Task 5</h2>
-          <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-          <p><strong>Effort:</strong> 6</p>
-          <p><strong>Business Value:</strong> Good</p>
-        </a>
-      </li>
-    </ul>
-  </div><!-- /content -->
-
-</div>
-<!-- /MY TASKS -->
-
-<!-- BURNDOWN -->
-<div data-role="page" id="burndown">
-
-  <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-      </ul>
-    </div><!-- /navbar -->
-      <h1>
-        <div class="ui-grid-a ui-responsive">
-          <div class="ui-block-a" style="padding:10px">My tasks</div>
-          <div class="ui-block-b">
-              <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
-          </div>
-        </div>
-      </h1>
-</div><!-- /header -->
-
-<div data-role="content">
-  <div data-role="fieldcontain">
-    <label for="burndown_select_release" class="select">Release</label>
-    <select name="burndown_select_release" id="burndown_select_release">
-    </select>
-  </div>
-
-  <p id="burndown_velocity"></p>
-  <br/>
-
-  <div id="graph_container">
-    <div id="graph" class="aGraph"></div>
-  </div>
-</div><!-- /content -->
-
-</div>
-<!-- /BURNDOWN -->
-
-<!-- BACKLOG -->
-<div data-role="page" id="backlog">
-
-  <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-      </ul>
-    </div><!-- /navbar -->
-      <h1>
-        <div class="ui-grid-a ui-responsive">
-          <div class="ui-block-a" style="padding:10px">My tasks</div>
-          <div class="ui-block-b">
-              <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
-          </div>
-        </div>
-      </h1>
-
-</div><!-- /header -->
-
-<div data-role="content">
-  <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="userstoriesList" data-inset="false">
-    <div data-role="collapsible" data-collapsed="false">
-      <h2>To do<span id="userstoriesToDoCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesToDoList">
-      </ul>
-    </div>
-    <div data-role="collapsible" id="userstoriesAssignedCollapsible">
-      <h2>Assigned<span id="userstoriesAssignedCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesAssignedList">
-      </ul>
-    </div>
-    <div data-role="collapsible" id="userstoriesInProgressCollapsible">
-      <h2>In progress<span id="userstoriesInProgressCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesInProgressList">
-      </ul>
-    </div>
-    <div data-role="collapsible" id="userstoriesCompletedCollapsible">
-      <h2>Completed<span id="userstoriesCompletedCount"style="float:right;"></span></h2>
-      <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesCompletedList">
-      </ul>
-    </div>
-  </div>
-  <div data-role="footer", class="ui-bar" data-position="fixed">
-    <a href="#adduserstory" data-icon="plus">New</a>
-    <a href="#edituserstory" data-icon="edit" style="display:none;" class="userstory-menu-options">Edit</a>
-    <a href="#userstorystatedialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Change state</a>
-    <a href="#assignuserstorydialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Assign</a>
-    <a href="#" id="deleteuserstory" data-icon="delete" style="display:none;" class="userstory-menu-options">Delete</a>
-  </div>
-</div><!-- /content -->
-
-</div>
-<!-- /BACKLOG -->
-
-<!-- USERSTORY STATE DIALOG -->
-<div data-role="page" id="userstorystatedialog">
-  <div data-role="header">
-    <h1>Change the state</h1>
-  </div>
-  <div data-role="content">
-    <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" id="userStoryStateDialogList">
-      <li><a href="javascript:updateUserstoryState('to do')">To do</a></li>
-      <li><a href="javascript:updateUserstoryState('assigned')">Assigned</a></li>
-      <li><a href="javascript:updateUserstoryState('in progress')">In progress</a></li>
-      <li><a href="javascript:updateUserstoryState('completed')">Completed</a></li>
-    </ul>
-  </div>
-</div>
-<!-- /USERSTORY STATE DIALOG -->
-
-<!-- ASSIGN USERSTORY DIALOG -->
-<div data-role="page" id="assignuserstorydialog">
-  <div data-role="header">
-    <h1>Assign user story to</h1>
-  </div>
-  <div data-role="content">
-    <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" id="assignUserstoryMembers">
-    </ul>
-  </div>
-</div>
-<!-- /ASSIGN USERSTORY DIALOG -->
-
-<!-- ADD USERSTORY -->
-<div data-role="page" id="adduserstory">
-
-  <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-      </ul>
-    </div><!-- /navbar -->
-    <h1 style="height:30px;padding-top:10px">Add User Story</h1>
-  </div><!-- /header -->
-
-  <div data-role="content">
-    <form id="addUserstoryForm">
+    <div data-role="content">
       <ul data-role="listview">
-        <li data-role="fieldcontain">
-          <label for="add_userstory_name">Name:</label>
-          <input type="text" name="add_userstory_name" id="add_userstory_name" value="" data-clear-btn="true">
+        <li>
+          <a href="#">
+            <h2>Task 1</h2>
+            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+            <p><strong>Effort:</strong> 9</p>
+            <p><strong>Business Value:</strong> Good</p>
+          </a>
         </li>
-        <li data-role="fieldcontain">
-          <label for="add_userstory_description">Description:</label>
-          <input type="text" name="add_userstory_description" id="add_userstory_description" value="" data-clear-btn="true">
+        <li>
+          <a href="#">
+            <h2>Task 1</h2>
+            <p><strong>Description:</strong> Phasellus feugiat sem eget ipsum eleifend imperdiet. Proin ultrices dui id nulla varius tristique.</p>
+            <p><strong>Effort:</strong> 3</p>
+            <p><strong>Business Value:</strong> Must have</p>
+          </a>
         </li>
-        <li data-role="fieldcontain">
-          <label for="add_userstory_effort" class="select">Effort:</label>
-          <select name="add_userstory_effort" id="add_userstory_effort">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="8">8</option>
-          </select>
+        <li>
+          <a href="#">
+            <h2>Task 2</h2>
+            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+            <p><strong>Effort:</strong> 8</p>
+            <p><strong>Business Value:</strong> Good</p>
+          </a>
         </li>
-        <li data-role="fieldcontain">
-          <label for="add_userstory_bv" class="select">Business value:</label>
-          <select name="add_userstory_bv" id="add_userstory_bv">
-            <option value="must have">Must have</option>
-            <option value="great">Great</option>
-            <option value="good">Good</option>
-            <option value="average">Average</option>
-            <option value="nice to have">Nice to have</option>
-          </select>
+        <li>
+          <a href="#">
+            <h2>Task 3</h2>
+            <p><strong>Description:</strong> Suspendisse ac eros cursus purus placerat lacinia.</p>
+            <p><strong>Effort:</strong> 2</p>
+            <p><strong>Business Value:</strong> Must have</p>
+          </a>
         </li>
-        <li data-role="fieldcontain">
-          <label for="add_userstory_sprint" class="select">Sprint:</label>
-          <select name="add_userstory_sprint" id="add_userstory_sprint">
-          </select>
+        <li>
+          <a href="#">
+            <h2>Task 4</h2>
+            <p><strong>Description:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in metus quis nisl lobortis pulvinar.</p>
+            <p><strong>Effort:</strong> 5</p>
+            <p><strong>Business Value:</strong> Good</p>
+          </a>
         </li>
-        <li class="ui-body ui-body-b">
-          <fieldset class="ui-grid-a" >
-            <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddUserstory">Create</button></div>
-            <div class="ui-block-b"><a href="#backlog" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
-          </fieldset>
-        </li>
-      </ul>
-    </form>
-  </div><!-- /content -->
-
-</div>
-<!-- /ADD USERSTORY -->
-
-<!-- EDIT USERSTORY -->
-<div data-role="page" id="edituserstory">
-
-  <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-      </ul>
-    </div><!-- /navbar -->
-    <h1 style="height:30px;padding-top:10px">Edit User Story</h1>
-  </div><!-- /header -->
-
-  <div data-role="content">
-    <form id="editUserstoryForm">
-      <ul data-role="listview">
-        <li data-role="fieldcontain">
-          <label for="edit_userstory_name">Name:</label>
-          <input type="text" name="edit_userstory_name" id="edit_userstory_name" value="" data-clear-btn="true">
-        </li>
-        <li data-role="fieldcontain">
-          <label for="edit_userstory_description">Description:</label>
-          <input type="text" name="edit_userstory_description" id="edit_userstory_description" value="" data-clear-btn="true">
-        </li>
-        <li data-role="fieldcontain">
-          <label for="edit_userstory_effort" class="select">Effort:</label>
-          <select name="edit_userstory_effort" id="edit_userstory_effort">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="8">8</option>
-          </select>
-        </li>
-        <li data-role="fieldcontain">
-          <label for="edit_userstory_bv" class="select">Business value:</label>
-          <select name="edit_userstory_bv" id="edit_userstory_bv">
-            <option value="must have">Must have</option>
-            <option value="great">Great</option>
-            <option value="good">Good</option>
-            <option value="average">Average</option>
-            <option value="nice to have">Nice to have</option>
-          </select>
-        </li>
-        <li data-role="fieldcontain">
-          <label for="edit_userstory_sprint" class="select">Sprint:</label>
-          <select name="edit_userstory_sprint" id="edit_userstory_sprint">
-          </select>
-        </li>
-        <li class="ui-body ui-body-b">
-          <fieldset class="ui-grid-a" >
-            <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditUserstory">Edit</button></div>
-            <div class="ui-block-b"><a href="#backlog" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
-          </fieldset>
+        <li>
+          <a href="#">
+            <h2>Task 5</h2>
+            <p><strong>Description:</strong> Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+            <p><strong>Effort:</strong> 6</p>
+            <p><strong>Business Value:</strong> Good</p>
+          </a>
         </li>
       </ul>
-    </form>
-  </div><!-- /content -->
-
-</div>
-<!-- /EDIT USERSTORY -->
-
-<!-- SPRINT -->
-<div data-role="page" id="sprint">
-
-  <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
-    <div data-role="navbar">
-      <ul>
-        <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-        <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-        <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-        <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-        <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-      </ul>
-    </div><!-- /navbar -->
-    <h2>Scrumurai</h2>
-  </div><!-- /header -->
-
-  <div data-role="content">
-    <ul data-role="listview" data-divider-theme="a">
-      <li data-role="list-divider">Release 2 <span class="ui-li-count">25 Mar</span></li>
-      <li>
-        <a href="#">
-          <h2>Sprint 1</h2>
-          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Sprint 2</h2>
-          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-        </a>
-      </li>
-      <li data-role="list-divider">Release 1 <span class="ui-li-count">10 Mar</span></li>
-      <li>
-        <a href="#">
-          <h2>Sprint 3</h2>
-          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Sprint 4</h2>
-          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <h2>Sprint 5</h2>
-          <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
-        </a>
-      </li>
     </div><!-- /content -->
 
   </div>
-  <!-- /SPRINT -->
+  <!-- /MY TASKS -->
 
-  <!-- RELEASE -->
-  <div data-role="page" id="release">
+  <!-- BURNDOWN -->
+  <div data-role="page" id="burndown">
 
     <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
       <div data-role="navbar">
@@ -522,324 +207,119 @@
         <div class="ui-grid-a ui-responsive">
           <div class="ui-block-a" style="padding:10px">My tasks</div>
           <div class="ui-block-b">
-              <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
+            <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
           </div>
         </div>
       </h1>
     </div><!-- /header -->
 
     <div data-role="content">
-      <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="#userstoriesList" data-inset="false">
+      <div data-role="fieldcontain">
+        <label for="burndown_select_release" class="select">Release</label>
+        <select name="burndown_select_release" id="burndown_select_release">
+        </select>
+      </div>
+
+      <p id="burndown_velocity"></p>
+      <br/>
+
+      <div id="graph_container">
+        <div id="graph" class="aGraph"></div>
+      </div>
+    </div><!-- /content -->
+
+  </div>
+  <!-- /BURNDOWN -->
+
+  <!-- BACKLOG -->
+  <div data-role="page" id="backlog">
+
+    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <h1>
+        <div class="ui-grid-a ui-responsive">
+          <div class="ui-block-a" style="padding:10px">My tasks</div>
+          <div class="ui-block-b">
+            <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
+          </div>
+        </div>
+      </h1>
+
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="userstoriesList" data-inset="false">
         <div data-role="collapsible" data-collapsed="false">
-          <h2>Current<span id="release_coll_current_count"style="float:right;"></span></h2>
-          <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="release_coll_current_list">
+          <h2>To do<span id="userstoriesToDoCount"style="float:right;"></span></h2>
+          <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesToDoList">
           </ul>
         </div>
         <div data-role="collapsible" id="userstoriesAssignedCollapsible">
-          <h2>Done<span id="release_coll_done_count"style="float:right;"></span></h2>
-          <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="release_coll_done_list">
+          <h2>Assigned<span id="userstoriesAssignedCount"style="float:right;"></span></h2>
+          <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesAssignedList">
+          </ul>
+        </div>
+        <div data-role="collapsible" id="userstoriesInProgressCollapsible">
+          <h2>In progress<span id="userstoriesInProgressCount"style="float:right;"></span></h2>
+          <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesInProgressList">
+          </ul>
+        </div>
+        <div data-role="collapsible" id="userstoriesCompletedCollapsible">
+          <h2>Completed<span id="userstoriesCompletedCount"style="float:right;"></span></h2>
+          <ul data-role="listview" data-split-theme="c" data-icon="false" id="userstoriesCompletedList">
           </ul>
         </div>
       </div>
-    </div><!-- /content -->
-
-    <div data-role="footer", class="ui-bar" data-position="fixed">
-      <a href="#addrelease" data-icon="plus">New</a>
-    </div>
-  </div>
-  <!-- /RELEASE -->
-
-  <!-- ADD RELEASE -->
-  <div data-role="page" id="addrelease">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">Add Release</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <p id="addRelease_fail" class="form_fail">
-        Name must not be empty.
-      </p>
-      <form id="addReleaseForm" type="post">
-        <ul data-role="listview">
-          <li data-role="fieldcontain">
-            <label for="add_release_name">Name:</label>
-            <input type="text" name="name" id="add_release_name" value="" data-clear-btn="true">
-          </li>
-          <li data-role="fieldcontain">
-            <label for="add_release_description">Description:</label>
-            <textarea name="description" id="add_release_description" data-clear-btn="true" style="height:7em;"></textarea>
-          </li>
-
-          <li class="ui-body ui-body-b">
-            <fieldset class="ui-grid-a" >
-              <div class="ui-block-a"><input type="submit" value="Create" id="submitAddRelease"></div>
-              <div class="ui-block-b"><a href="#release" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
-            </fieldset>
-          </li>
-        </ul>
-      </form>
-    </div><!-- /content -->
-
-  </div>
-  <!-- /ADD RELEASE -->
-
-  <!-- VIEW RELEASE -->
-  <div data-role="page" id="viewrelease">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">Nekaj</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <h1 id="viewrelease_name"></h1>
-      
-      <div id="viewrelease_progressbar_container">
-        <table id="viewrelease_progressbar_status">
-          <tr>
-            <td>Completed: <strong id="viewrelease_done"></strong></td>
-            <td>Remaining: <strong id="viewrelease_total">15pt</strong></td>
-          </tr>
-        </table>
-        <div id="viewrelease_progressbar"></div>
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#adduserstory" data-icon="plus">New</a>
+        <a href="#edituserstory" data-icon="edit" style="display:none;" class="userstory-menu-options">Edit</a>
+        <a href="#userstorystatedialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Change state</a>
+        <a href="#assignuserstorydialog" data-rel="dialog" data-icon="gear" style="display:none;" class="userstory-menu-options">Assign</a>
+        <a href="#" id="deleteuserstory" data-icon="delete" style="display:none;" class="userstory-menu-options">Delete</a>
       </div>
-
-      <h3>Description</h3>
-      <p id="viewrelease_description"></p>
-
-      <p ><strong>Start date:</strong> <span id="viewrelease_startdate"></span></p>
-      
-      <p><strong>End date:</strong> <span id="viewrelease_enddate"></span></p>
-     
-
-      <h4>Change log</h4>
-      <p id="viewrelease_changelog">
-      </p>
     </div><!-- /content -->
 
   </div>
-  <!-- /VIEW RELEASE -->
+  <!-- /BACKLOG -->
 
-  <!-- MY PROJECTS -->
-  <div data-role="page" id="myprojects">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">My Projects</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="myProjectsList">
-      </ul>
-    </div><!-- /content -->
-
-    <div data-role="footer", class="ui-bar" data-position="fixed">
-      <a href="#addproject" data-icon="plus">New</a>
-    </div>
-  </div>
-  <!-- /MY PROJECTS -->
-
-  <!-- VIEW PROJECT -->
-  <div data-role="page" id="viewproject">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px"></h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <ul data-role="listview">
-        <div class="ui-grid-a" data-theme="a" id="viewProjectGrid">
-          <div class="ui-block-a"><div class="ui-bar ui-bar-c">Id:</div></div>
-          <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectId"></div></div>
-          <div class="ui-block-a"><div class="ui-bar ui-bar-c">Name:</div></div>
-          <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectName"></div></div>
-          <div class="ui-block-a"><div class="ui-bar ui-bar-c">Description:</div></div>
-          <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectDescription"></div></div>
-          <div class="ui-block-a"><div class="ui-bar ui-bar-c">Velocity:</div></div>
-          <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectVelocity"></div></div>
-        </div>
-        <div data-role="footer", class="ui-bar" data-position="fixed">
-          <a href="#myprojects" data-icon="back">Back</a>
-          <a href="#" data-icon="edit" class="editProjectLink">Edit</a>
-          <a href="#" data-icon="bars" class="projectMembersLink">Members</a>
-          <a href="#" data-icon="delete" class="removeProjectLink">Delete</a>
-        </div>
-      </ul>
-    </div><!-- /content -->
-
-  </div>
-  <!-- /VIEW PROJECT -->
-
-  <!-- ADD PROJECT -->
-  <div data-role="page" id="addproject">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">Add Project</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <form id="addProjectForm">
-        <ul data-role="listview">
-          <li data-role="fieldcontain">
-            <label for="add_project_name">Name:</label>
-            <input type="text" name="add_project_name" id="add_project_name" value="" data-clear-btn="true">
-          </li>
-          <li data-role="fieldcontain">
-            <label for="add_project_description">Description:</label>
-            <textarea name="add_project_description" id="add_project_description" data-clear-btn="true" style="height:7em;"></textarea>
-          </li>
-          <li data-role="fieldcontain">
-            <label for="add_project_velocity">Starting velocity:</label>
-            <input type="range" name="add_project_velocity" id="add_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
-          </li>
-          <li class="ui-body ui-body-b">
-            <fieldset class="ui-grid-a" >
-              <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddProject">Create</button></div>
-              <div class="ui-block-b"><a href="#myprojects" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
-            </fieldset>
-          </li>
-        </ul>
-      </form>
-    </div><!-- /content -->
-
-  </div>
-  <!-- /ADD PROJECT -->
-
-  <!-- EDIT PROJECT -->
-  <div data-role="page" id="editproject">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">Edit Project</h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <form id="editProjectForm">
-        <ul data-role="listview">
-          <li data-role="fieldcontain">
-            <label for="edit_project_name">Name:</label>
-            <input type="text" name="edit_project_name" id="edit_project_name" value="" data-clear-btn="true">
-          </li>
-          <li data-role="fieldcontain">
-            <label for="edit_project_description">Description:</label>
-            <textarea name="edit_project_description" id="edit_project_description" data-clear-btn="true" style="height:7em;"></textarea>
-          </li>
-          <li data-role="fieldcontain">
-            <label for="edit_project_velocity">Velocity:</label>
-            <input type="range" name="edit_project_velocity" id="edit_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
-          </li>
-          <li class="ui-body ui-body-b">
-            <fieldset class="ui-grid-a" >
-              <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditProject">Edit</button></div>
-              <div class="ui-block-b"><a href="#viewproject" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
-            </fieldset>
-          </li>
-        </ul>
-      </form>
-    </div><!-- /content -->
-
-  </div>
-  <!-- /EDIT PROJECT -->
-
-  <!-- PROJECT MEMBERS -->
-  <div data-role="page" id="projectmembers">
-
-    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
-      <div data-role="navbar">
-        <ul>
-          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
-          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
-          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
-          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
-          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
-        </ul>
-      </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px" id="projectMembersTitle"></h1>
-    </div><!-- /header -->
-
-    <div data-role="content">
-      <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="projectMembersList">
-      </ul>
-    </div><!-- /content -->
-
-    <div data-role="footer", class="ui-bar" data-position="fixed">
-      <a href="#" data-icon="back">Back</a>
-      <a href="#addprojectmember" data-rel="dialog" data-icon="plus">Add member</a>
-    </div>
-  </div>
-  <!-- /PROJECT MEMBERS -->
-
-  <!-- ADD PROJECT MEMBER DIALOG -->
-  <div data-role="page" id="addprojectmember">
+  <!-- USERSTORY STATE DIALOG -->
+  <div data-role="page" id="userstorystatedialog">
     <div data-role="header">
-      <h1>Add member</h1>
+      <h1>Change the state</h1>
     </div>
     <div data-role="content">
-      <div id="addProjectMemberError">
-      </div>
-      <form id="addProjectMemberForm">
-        <label for="text-basic">Username:</label>
-        <input type="text" name="add_project_member_username" id="add_project_member_username" value="">
-        <button type="submit" data-theme="c" id="submitAddProjectMemberForm">Add</button>
-      </form>
+      <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" id="userStoryStateDialogList">
+        <li><a href="javascript:updateUserstoryState('to do')">To do</a></li>
+        <li><a href="javascript:updateUserstoryState('assigned')">Assigned</a></li>
+        <li><a href="javascript:updateUserstoryState('in progress')">In progress</a></li>
+        <li><a href="javascript:updateUserstoryState('completed')">Completed</a></li>
+      </ul>
     </div>
   </div>
-  <!-- /ADD PROJECT MEMBER DIALOG -->
+  <!-- /USERSTORY STATE DIALOG -->
 
-  <!-- ERROR PAGE -->
-  <div data-role="page" id="errorpage">
+  <!-- ASSIGN USERSTORY DIALOG -->
+  <div data-role="page" id="assignuserstorydialog">
+    <div data-role="header">
+      <h1>Assign user story to</h1>
+    </div>
+    <div data-role="content">
+      <ul data-role="listview" style="min-width:210px;" data-theme="d" data-icon="false" id="assignUserstoryMembers">
+      </ul>
+    </div>
+  </div>
+  <!-- /ASSIGN USERSTORY DIALOG -->
+
+  <!-- ADD USERSTORY -->
+  <div data-role="page" id="adduserstory">
 
     <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
       <div data-role="navbar">
@@ -851,14 +331,587 @@
           <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
         </ul>
       </div><!-- /navbar -->
-      <h1 style="height:30px;padding-top:10px">ERROR</h1>
+      <h1 style="height:30px;padding-top:10px">Add User Story</h1>
     </div><!-- /header -->
 
     <div data-role="content">
-      <p id="errorpage_msg"></p>
+      <form id="addUserstoryForm">
+        <ul data-role="listview">
+          <li data-role="fieldcontain">
+            <label for="add_userstory_name">Name:</label>
+            <input type="text" name="add_userstory_name" id="add_userstory_name" value="" data-clear-btn="true">
+          </li>
+          <li data-role="fieldcontain">
+            <label for="add_userstory_description">Description:</label>
+            <input type="text" name="add_userstory_description" id="add_userstory_description" value="" data-clear-btn="true">
+          </li>
+          <li data-role="fieldcontain">
+            <label for="add_userstory_effort" class="select">Effort:</label>
+            <select name="add_userstory_effort" id="add_userstory_effort">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="8">8</option>
+            </select>
+          </li>
+          <li data-role="fieldcontain">
+            <label for="add_userstory_bv" class="select">Business value:</label>
+            <select name="add_userstory_bv" id="add_userstory_bv">
+              <option value="must have">Must have</option>
+              <option value="great">Great</option>
+              <option value="good">Good</option>
+              <option value="average">Average</option>
+              <option value="nice to have">Nice to have</option>
+            </select>
+          </li>
+          <li data-role="fieldcontain">
+            <label for="add_userstory_sprint" class="select">Sprint:</label>
+            <select name="add_userstory_sprint" id="add_userstory_sprint">
+            </select>
+          </li>
+          <li class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a" >
+              <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddUserstory">Create</button></div>
+              <div class="ui-block-b"><a href="#backlog" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+            </fieldset>
+          </li>
+        </ul>
+      </form>
     </div><!-- /content -->
 
   </div>
-  <!-- /ERROR PAGE -->
-</body>
-</html>
+  <!-- /ADD USERSTORY -->
+
+  <!-- EDIT USERSTORY -->
+  <div data-role="page" id="edituserstory">
+
+    <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <h1 style="height:30px;padding-top:10px">Edit User Story</h1>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <form id="editUserstoryForm">
+        <ul data-role="listview">
+          <li data-role="fieldcontain">
+            <label for="edit_userstory_name">Name:</label>
+            <input type="text" name="edit_userstory_name" id="edit_userstory_name" value="" data-clear-btn="true">
+          </li>
+          <li data-role="fieldcontain">
+            <label for="edit_userstory_description">Description:</label>
+            <input type="text" name="edit_userstory_description" id="edit_userstory_description" value="" data-clear-btn="true">
+          </li>
+          <li data-role="fieldcontain">
+            <label for="edit_userstory_effort" class="select">Effort:</label>
+            <select name="edit_userstory_effort" id="edit_userstory_effort">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="8">8</option>
+            </select>
+          </li>
+          <li data-role="fieldcontain">
+            <label for="edit_userstory_bv" class="select">Business value:</label>
+            <select name="edit_userstory_bv" id="edit_userstory_bv">
+              <option value="must have">Must have</option>
+              <option value="great">Great</option>
+              <option value="good">Good</option>
+              <option value="average">Average</option>
+              <option value="nice to have">Nice to have</option>
+            </select>
+          </li>
+          <li data-role="fieldcontain">
+            <label for="edit_userstory_sprint" class="select">Sprint:</label>
+            <select name="edit_userstory_sprint" id="edit_userstory_sprint">
+            </select>
+          </li>
+          <li class="ui-body ui-body-b">
+            <fieldset class="ui-grid-a" >
+              <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditUserstory">Edit</button></div>
+              <div class="ui-block-b"><a href="#backlog" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+            </fieldset>
+          </li>
+        </ul>
+      </form>
+    </div><!-- /content -->
+
+  </div>
+  <!-- /EDIT USERSTORY -->
+
+  <!-- SPRINT -->
+  <div data-role="page" id="sprint">
+
+    <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+      <div data-role="navbar">
+        <ul>
+          <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+          <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+          <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+          <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+          <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+        </ul>
+      </div><!-- /navbar -->
+      <h2>Scrumurai</h2>
+    </div><!-- /header -->
+
+    <div data-role="content">
+      <ul data-role="listview" data-divider-theme="a">
+        <li data-role="list-divider">Release 2 <span class="ui-li-count">25 Mar</span></li>
+        <li>
+          <a href="#">
+            <h2>Sprint 1</h2>
+            <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <h2>Sprint 2</h2>
+            <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+          </a>
+        </li>
+        <li data-role="list-divider">Release 1 <span class="ui-li-count">10 Mar</span></li>
+        <li>
+          <a href="#">
+            <h2>Sprint 3</h2>
+            <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <h2>Sprint 4</h2>
+            <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <h2>Sprint 5</h2>
+            <p><strong>Week:</strong> 22 Mar - 29 Mar</p>
+          </a>
+        </li>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /SPRINT -->
+
+    <!-- RELEASE -->
+    <div data-role="page" id="release">
+
+      <div data-role="header" class="scrumurai-header" data-id="scrumurai-header" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1>
+          <div class="ui-grid-a ui-responsive">
+            <div class="ui-block-a" style="padding:10px">My tasks</div>
+            <div class="ui-block-b">
+              <a href="#projectsdialog" data-role="button" data-rel="dialog" data-mini="true" data-inline="true" data-icon="arrow-d" data-theme="a" data-shadow="false" data-iconpos="right" class="selectedProject"></a>
+            </div>
+          </div>
+        </h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <div data-role="collapsible-set" data-theme="a" data-content-theme="d" id="#userstoriesList" data-inset="false">
+          <div data-role="collapsible" data-collapsed="false">
+            <h2>Current<span id="release_coll_current_count"style="float:right;"></span></h2>
+            <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="release_coll_current_list">
+            </ul>
+          </div>
+          <div data-role="collapsible" id="userstoriesAssignedCollapsible">
+            <h2>Done<span id="release_coll_done_count"style="float:right;"></span></h2>
+            <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="release_coll_done_list">
+            </ul>
+          </div>
+        </div>
+      </div><!-- /content -->
+
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#addrelease" data-icon="plus">New</a>
+      </div>
+    </div>
+    <!-- /RELEASE -->
+
+    <!-- ADD RELEASE -->
+    <div data-role="page" id="addrelease">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Add Release</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <p id="addRelease_fail" class="form_fail">
+          Name must not be empty.
+        </p>
+        <form id="addReleaseForm" type="post">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="add_release_name">Name:</label>
+              <input type="text" name="name" id="add_release_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="add_release_description">Description:</label>
+              <textarea name="description" id="add_release_description" data-clear-btn="true" style="height:7em;"></textarea>
+            </li>
+
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><input type="submit" value="Create" id="submitAddRelease"></div>
+                <div class="ui-block-b"><a href="#release" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /ADD RELEASE -->
+
+    <!-- EDIT RELEASE -->
+    <div data-role="page" id="editrelease">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Edit Release</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <p id="editRelease_fail" class="form_fail">
+          Name must not be empty.
+        </p>
+        <form id="editReleaseForm" type="post">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="edit_release_name">Name:</label>
+              <input type="text" name="name" id="edit_release_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="edit_release_description">Description:</label>
+              <textarea name="description" id="edit_release_description" data-clear-btn="true" style="height:7em;"></textarea>
+            </li>
+
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><input type="submit" value="Edit" id="submitEditRelease"></div>
+                <div class="ui-block-b"><a href="#viewrelease" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /EDIT RELEASE -->
+
+    <!-- VIEW RELEASE -->
+    <div data-role="page" id="viewrelease">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Nekaj</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <h1 id="viewrelease_name"></h1>
+
+        <div id="viewrelease_progressbar_container">
+          <table id="viewrelease_progressbar_status">
+            <tr>
+              <td>Completed: <strong id="viewrelease_done"></strong></td>
+              <td>Remaining: <strong id="viewrelease_total">15pt</strong></td>
+            </tr>
+          </table>
+          <div id="viewrelease_progressbar"></div>
+        </div>
+
+        <h3>Description</h3>
+        <p id="viewrelease_description"></p>
+
+        <p ><strong>Start date:</strong> <span id="viewrelease_startdate"></span></p>
+
+        <p><strong>End date:</strong> <span id="viewrelease_enddate"></span></p>
+
+
+        <h4>Change log</h4>
+        <p id="viewrelease_changelog">
+        </p>
+
+        <div data-role="controlgroup" id="viewrelease_sprints">
+        </div>
+      </div><!-- /content -->
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#editrelease" data-icon="gear">Edit</a>
+        <a href="#deleterelease" data-icon="gear">Delete</a>
+      </div>
+    </div>
+    <!-- /VIEW RELEASE -->
+
+    <div data-role="page" id="deleterelease">
+    </div>
+
+    <!-- MY PROJECTS -->
+    <div data-role="page" id="myprojects">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">My Projects</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="myProjectsList">
+        </ul>
+      </div><!-- /content -->
+
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#addproject" data-icon="plus">New</a>
+      </div>
+    </div>
+    <!-- /MY PROJECTS -->
+
+    <!-- VIEW PROJECT -->
+    <div data-role="page" id="viewproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px"></h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <ul data-role="listview">
+          <div class="ui-grid-a" data-theme="a" id="viewProjectGrid">
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Id:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectId"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Name:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectName"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Description:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectDescription"></div></div>
+            <div class="ui-block-a"><div class="ui-bar ui-bar-c">Velocity:</div></div>
+            <div class="ui-block-b"><div class="ui-bar ui-bar-c viewProjectVelocity"></div></div>
+          </div>
+          <div data-role="footer", class="ui-bar" data-position="fixed">
+            <a href="#myprojects" data-icon="back">Back</a>
+            <a href="#" data-icon="edit" class="editProjectLink">Edit</a>
+            <a href="#" data-icon="bars" class="projectMembersLink">Members</a>
+            <a href="#" data-icon="delete" class="removeProjectLink">Delete</a>
+          </div>
+        </ul>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /VIEW PROJECT -->
+
+    <!-- ADD PROJECT -->
+    <div data-role="page" id="addproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Add Project</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <form id="addProjectForm">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="add_project_name">Name:</label>
+              <input type="text" name="add_project_name" id="add_project_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="add_project_description">Description:</label>
+              <textarea name="add_project_description" id="add_project_description" data-clear-btn="true" style="height:7em;"></textarea>
+            </li>
+            <li data-role="fieldcontain">
+              <label for="add_project_velocity">Starting velocity:</label>
+              <input type="range" name="add_project_velocity" id="add_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
+            </li>
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><button type="submit" data-theme="c" id="submitAddProject">Create</button></div>
+                <div class="ui-block-b"><a href="#myprojects" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /ADD PROJECT -->
+
+    <!-- EDIT PROJECT -->
+    <div data-role="page" id="editproject">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">Edit Project</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <form id="editProjectForm">
+          <ul data-role="listview">
+            <li data-role="fieldcontain">
+              <label for="edit_project_name">Name:</label>
+              <input type="text" name="edit_project_name" id="edit_project_name" value="" data-clear-btn="true">
+            </li>
+            <li data-role="fieldcontain">
+              <label for="edit_project_description">Description:</label>
+              <textarea name="edit_project_description" id="edit_project_description" data-clear-btn="true" style="height:7em;"></textarea>
+            </li>
+            <li data-role="fieldcontain">
+              <label for="edit_project_velocity">Velocity:</label>
+              <input type="range" name="edit_project_velocity" id="edit_project_velocity" value="10" min="1" max="20" step="1" data-highlight="true" data-theme="c">
+            </li>
+            <li class="ui-body ui-body-b">
+              <fieldset class="ui-grid-a" >
+                <div class="ui-block-a"><button type="submit" data-theme="c" id="submitEditProject">Edit</button></div>
+                <div class="ui-block-b"><a href="#viewproject" type="submit" data-theme="c" class="formCancel">Cancel</a></div>
+              </fieldset>
+            </li>
+          </ul>
+        </form>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /EDIT PROJECT -->
+
+    <!-- PROJECT MEMBERS -->
+    <div data-role="page" id="projectmembers">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px" id="projectMembersTitle"></h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <ul data-role="listview" data-split-theme="c" data-split-icon="delete" id="projectMembersList">
+        </ul>
+      </div><!-- /content -->
+
+      <div data-role="footer", class="ui-bar" data-position="fixed">
+        <a href="#" data-icon="back">Back</a>
+        <a href="#addprojectmember" data-rel="dialog" data-icon="plus">Add member</a>
+      </div>
+    </div>
+    <!-- /PROJECT MEMBERS -->
+
+    <!-- ADD PROJECT MEMBER DIALOG -->
+    <div data-role="page" id="addprojectmember">
+      <div data-role="header">
+        <h1>Add member</h1>
+      </div>
+      <div data-role="content">
+        <div id="addProjectMemberError">
+        </div>
+        <form id="addProjectMemberForm">
+          <label for="text-basic">Username:</label>
+          <input type="text" name="add_project_member_username" id="add_project_member_username" value="">
+          <button type="submit" data-theme="c" id="submitAddProjectMemberForm">Add</button>
+        </form>
+      </div>
+    </div>
+    <!-- /ADD PROJECT MEMBER DIALOG -->
+
+    <!-- ERROR PAGE -->
+    <div data-role="page" id="errorpage">
+
+      <div data-role="header" class="scrumuraiHeader" data-id="scrumuraiHeader" data-position="fixed">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#mytasks" data-transition="fade"><img src="img/menu_top/icon_mytasks.png"/></a></li>
+            <li><a href="#burndown" data-transition="fade"><img src="img/menu_top/icon_burndown.png"/></a></li>
+            <li><a href="#backlog" data-transition="fade"><img src="img/menu_top/icon_backlog.png"/></a></li>
+            <li><a href="#sprint" data-transition="fade"><img src="img/menu_top/icon_sprint.png"/></a></li>
+            <li><a href="#release" data-transition="fade"><img src="img/menu_top/icon_release.png"/></a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <h1 style="height:30px;padding-top:10px">ERROR</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <p id="errorpage_msg"></p>
+      </div><!-- /content -->
+
+    </div>
+    <!-- /ERROR PAGE -->
+  </body>
+  </html>

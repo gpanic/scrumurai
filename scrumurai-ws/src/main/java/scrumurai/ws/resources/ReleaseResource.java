@@ -18,6 +18,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import scrumurai.data.EMF;
+import scrumurai.data.entities.EntityObject;
 
 import scrumurai.data.entities.Release;
 import scrumurai.data.entities.Sprint;
@@ -37,7 +38,6 @@ public class ReleaseResource implements Resource<Release> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(Release obj) {
-        System.out.println(obj);
         int id = dm.create(obj);
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
@@ -65,15 +65,14 @@ public class ReleaseResource implements Resource<Release> {
     public Response readDetailed(@PathParam("id") int id) {
         System.out.println("LIST RELEASE DETAILED");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id IN (SELECT s.id FROM Sprint s WHERE s.release.id = :release_id)", UserStory.class);
+        TypedQuery<Release> query = em.createQuery("SELECT e FROM " + Release.class.getSimpleName() + " e WHERE e.id =  :release_id", Release.class);
+
+//        TypedQuery<UserStory> query = em.createQuery("SELECT e FROM " + UserStory.class.getSimpleName() + " e WHERE e.sprint.id IN (SELECT s.id FROM Sprint s WHERE s.release.id = :release_id)", UserStory.class);
         query.setParameter("release_id", id);
-        List<UserStory> rs = query.getResultList();
-        for(UserStory u:rs){
-            System.out.println(u.getName()+" "+u.getSprint().getName());
-        }
+        List<Release> rs = query.getResultList();
         em.close();
         if (rs.size() > 0) {
-            ReleaseDetailed release = ReleaseHelper.setReleaseDetailed(rs);
+            ReleaseDetailed release = ReleaseHelper.setReleaseDetailed(rs.get(0));
             if (release != null) {
                 return Response.ok(release).build();
             }
@@ -118,8 +117,27 @@ public class ReleaseResource implements Resource<Release> {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") int id, Release obj) {
+        System.out.println("UPDATE RELEASE");
         obj.setId(id);
         if (dm.update(obj)) {
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
+
+    @PUT
+    @Path("/detailed/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDetailed(@PathParam("id") int id, Release obj) {
+        EntityManager em = EMF.get().createEntityManager();
+        Release us;
+        if ((us = em.find(Release.class, id)) != null) {
+            em.getTransaction().begin();
+            us.setName(obj.getName());
+            us.setDescription(obj.getDescription());
+            em.getTransaction().commit();
+            em.close();
             return Response.status(204).build();
         } else {
             return Response.status(404).build();
@@ -136,6 +154,15 @@ public class ReleaseResource implements Resource<Release> {
         }
     }
 
+    @DELETE
+    @Path("/deletedetailed/{id}")
+    public Response deleteDetailed(@PathParam("id") int id) {
+        if (ReleaseHelper.delete(id) == 1)
+            return Response.status(204).build();
+        else
+            return Response.status(404).build();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response list() {
@@ -148,11 +175,16 @@ public class ReleaseResource implements Resource<Release> {
     public Response list(@PathParam("id") int id) {
         System.out.println("LIST PROJ");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<Release> query = em.createQuery("SELECT e FROM " + Release.class.getSimpleName() + " e WHERE e.project.id = :project_id", Release.class);
-        query.setParameter("project_id", id);
+        TypedQuery<Release> query = em.createQuery("SELECT e FROM " + Release.class
+                .getSimpleName() + " e WHERE e.project.id = :project_id", Release.class);
+        query.setParameter(
+                "project_id", id);
         List<Release> rs = query.getResultList();
+
         em.close();
-        if (rs.size() > 0) {
+
+        if (rs.size()
+                > 0) {
             return Response.ok(rs).build();
         } else {
             return Response.status(404).build();
@@ -165,12 +197,12 @@ public class ReleaseResource implements Resource<Release> {
     public Response listStartEnd(@PathParam("id") int id) {
         System.out.println("LIST RELEASE CURRENT DONE");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<Sprint> query = em.createQuery("SELECT e FROM " + Sprint.class.getSimpleName() + " e WHERE e.project.id = :project_id", Sprint.class);
+        TypedQuery<Release> query = em.createQuery("SELECT e FROM " + Release.class.getSimpleName() + " e WHERE e.project.id = :project_id", Release.class);
         query.setParameter("project_id", id);
-        List<Sprint> rs = query.getResultList();
+        List<Release> rs = query.getResultList();
         em.close();
         if (rs.size() > 0) {
-            List<ReleaseStartEnd> releases = ReleaseHelper.sortSprintsToReleaseStartEnd(rs);
+            List<ReleaseStartEnd> releases = ReleaseHelper.sortReleasesAddStartEnd(rs);
             if (releases.size() > 0) {
                 return Response.ok(releases).build();
             }
@@ -178,8 +210,4 @@ public class ReleaseResource implements Resource<Release> {
         return Response.status(404).build();
 
     }
-
-    
-
-    
 }
