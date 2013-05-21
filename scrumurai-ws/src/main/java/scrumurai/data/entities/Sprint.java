@@ -1,6 +1,6 @@
 package scrumurai.data.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -17,8 +17,10 @@ public class Sprint implements EntityObject {
     @NotNull
     private String name;
     @NotNull
+    @Temporal(TemporalType.DATE)
     private Date start_date;
     @NotNull
+    @Temporal(TemporalType.DATE)
     private Date end_date;
     private int total_effort;
     private int progress;

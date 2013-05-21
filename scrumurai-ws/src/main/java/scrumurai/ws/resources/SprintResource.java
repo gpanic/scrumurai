@@ -58,6 +58,27 @@ public class SprintResource implements Resource<Sprint> {
             return Response.status(404).build();
         }
     }
+    
+    @PUT
+    @Path("/{id}/details")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateDetail(@PathParam("id") int id, Sprint obj) {
+        EntityManager em = EMF.get().createEntityManager();
+        Sprint s;
+        if ((s = em.find(Sprint.class, id)) != null) {
+            em.getTransaction().begin();
+            s.setName(obj.getName());
+            s.setStart_date(obj.getStart_date());
+            s.setEnd_date(obj.getEnd_date());
+            Release r = em.find(Release.class, obj.getRelease().getId());
+            s.setRelease(r);
+            em.getTransaction().commit();
+            em.close();
+            return Response.status(204).build();
+        } else {
+            return Response.status(404).build();
+        }
+    }
 
     @DELETE
     @Path("/{id}")

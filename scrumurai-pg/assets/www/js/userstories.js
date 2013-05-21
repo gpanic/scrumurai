@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 	$(document).on("pageshow", "#edituserstory", function() {
 		$("#editUserstoryForm").each (function() {
-			this.reset("#add_userstory_sprint");
+			this.reset();
 		});
 		populateSprintSelect("#edit_userstory_sprint");
 		populateEditForm();
@@ -251,9 +251,9 @@ var populateEditForm = function() {
 	var userstory = getUserstory(_selectedUserstory);
 	$("#edit_userstory_name").val(userstory.name);
 	$("#edit_userstory_description").val(userstory.description);
-	$('#edit_userstory_effort').val($("#edit_userstory_effort option[value=" + userstory.effort + "]").val());
-	$('#edit_userstory_bv').val($("#edit_userstory_bv option[value=" + userstory.business_value + "]").val());
-	$('#edit_userstory_sprint').val($("#edit_userstory_sprint option[value=" + userstory.sprint.id + "]").val());
+	$('#edit_userstory_effort').val($("#edit_userstory_effort option[value='" + userstory.effort + "'']").val());
+	$('#edit_userstory_bv').val($("#edit_userstory_bv option[value='" + userstory.business_value + "'']").val());
+	$('#edit_userstory_sprint').val($("#edit_userstory_sprint option[value='" + userstory.sprint.id + "'']").val());
 }
 
 var updateUserStory = function() {
