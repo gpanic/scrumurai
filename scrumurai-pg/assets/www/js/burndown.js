@@ -153,6 +153,7 @@ var generateGraph = function(release_id){
   var data_total = getDataTotal(release_id);
   if(!data_total){
     console.log("dt false");
+    $("#graph_container").html('<p id="errorpage_msg">This release has no user stories.</p>')
     return false;
   }
   var data = getData(release_id,data_total[0]);
