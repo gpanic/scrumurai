@@ -12,3 +12,7 @@ var _user = null;
 
 // Currently viewed release, set in #relese, used in #viewrelease
 var _currentRelease = null;
+
+
+//currently selected user story
+var _currentTask = null;
