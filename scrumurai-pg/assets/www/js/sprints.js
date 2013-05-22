@@ -52,8 +52,8 @@ var populateSprints = function() {
 		$.each(json, function(i, sprint) {
 			var start = new Date(sprint.start_date);
 			var end = new Date(sprint.end_date);
-			var start_str = start.getUTCMonth() + "/" + start.getUTCDate() + "/" + start.getUTCFullYear();
-			var end_str = end.getUTCMonth() + "/" + end.getUTCDate() + "/" + end.getUTCFullYear();
+			var start_str = (start.getMonth() + 1) + "/" + start.getDate() + "/" + start.getFullYear();
+			var end_str = (end.getMonth() + 1) + "/" + end.getDate() + "/" + end.getFullYear();
 			var sprint_html = "<li data-sprintid='" + sprint.id + "'><a href='javascript:selectSprint(" + sprint.id + ")'>" +
 								"<h2>" + sprint.name + "</h2>" +
 								"<p><strong>Week:</strong> " + start_str + " - " + end_str + "</p>" +
@@ -78,6 +78,8 @@ var populateSprints = function() {
 		$("#sprintsList").listview("refresh");
 	}).fail(function() {
 		console.log("fail");
+		$("#sprintsList").empty();
+		$("#sprintsList").listview("refresh");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -123,8 +125,8 @@ var createSprint = function () {
 
 	var sprint = {
 		name: formResult.add_sprint_name,
-		start_date: start.getUTCFullYear() + "-" + (start.getUTCMonth() + 1) + "-" + (start.getUTCDate() + 1),
-		end_date: end.getUTCFullYear() + "-" + (end.getUTCMonth() + 1) + "-" + (end.getUTCDate() + 1),
+		start_date: start.getFullYear() + "-" + (start.getMonth() + 1) + "-" + start.getDate(),
+		end_date: end.getFullYear() + "-" + (end.getMonth() + 1) + "-" + end.getDate(),
 		project: {
 			id: _selectedProject[0]
 		},
@@ -173,7 +175,7 @@ var populateEditForm = function() {
 	var sprint = getSprint(_selectedSprint);
 	$("#edit_sprint_name").val(sprint.name);
 	var start = new Date(sprint.start_date);
-	var start_str = start.getUTCDate() + "/" + start.getUTCMonth() + "/" + start.getUTCFullYear();
+	var start_str = start.getDate() + "/" + start.getMonh() + "/" + start.getFullYear();
 	$("#edit_sprint_start").val(start_str);
 	$('#edit_sprint_release').val($("#edit_sprint_release option[value='" + sprint.release.id + "'']").val());
 }
@@ -213,8 +215,8 @@ var updateSprint = function() {
 
 	var sprint = {
 		name: formResult.edit_sprint_name,
-		start_date: start.getUTCFullYear() + "-" + (start.getUTCMonth() + 1) + "-" + (start.getUTCDate() + 1),
-		end_date: end.getUTCFullYear() + "-" + (end.getUTCMonth() + 1) + "-" + (end.getUTCDate() + 1),
+		start_date: start.getFullYear() + "-" + (start.getMonth() + 1) + "-" + start.getDate(),
+		end_date: end.getFullYear() + "-" + (end.getMonth() + 1) + "-" + end.getDate(),
 		release: {
 			id: formResult.edit_sprint_release
 		}

@@ -1,6 +1,7 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -29,6 +30,12 @@ public class UserStoryResource implements Resource<UserStory> {
     public Response create(UserStory obj) {
         System.err.println(obj);
         int id = dm.create(obj);
+        EntityManager em = EMF.get().createEntityManager();
+        em.getTransaction().begin();
+        Sprint s = em.find(Sprint.class, obj.getSprint().getId());
+        s.setTotal_effort(s.getTotal_effort() + obj.getEffort());
+        em.getTransaction().commit();
+        em.close();
         if (id > -1) {
             URI uri = uriInfo.getAbsolutePathBuilder().path(Integer.toString(id)).build();
             return Response.created(uri).build();
@@ -69,6 +76,16 @@ public class UserStoryResource implements Resource<UserStory> {
         UserStory us;
         if ((us = em.find(UserStory.class, id)) != null) {
             em.getTransaction().begin();
+            if (obj.getState().equals("completed") && !us.getState().equals("completed")) {
+                Sprint s = em.find(Sprint.class, us.getSprint().getId());
+                s.setProgress(s.getProgress() + us.getEffort());
+                us.setEnd_date(new Date());
+            }
+            if (!obj.getState().equals("completed") && us.getState().equals("completed")) {
+                Sprint s = em.find(Sprint.class, us.getSprint().getId());
+                s.setProgress(s.getProgress() - us.getEffort());
+                us.setEnd_date(null);
+            }
             us.setState(obj.getState());
             em.getTransaction().commit();
             em.close();
@@ -110,6 +127,9 @@ public class UserStoryResource implements Resource<UserStory> {
             em.getTransaction().begin();
             User u = em.find(User.class, obj.getAssignee().getId());
             us.setAssignee(u);
+            if(us.getState().equals("to do")) {
+                us.setState("assigned");
+            }
             em.getTransaction().commit();
             em.close();
             return Response.status(204).build();
@@ -121,6 +141,16 @@ public class UserStoryResource implements Resource<UserStory> {
     @DELETE
     @Path("/{id}")
     public Response delete(@PathParam("id") int id) {
+        EntityManager em = EMF.get().createEntityManager();
+        em.getTransaction().begin();
+        UserStory us = em.find(UserStory.class, id);
+        Sprint s = em.find(Sprint.class, us.getSprint().getId());
+        s.setTotal_effort(s.getTotal_effort() - us.getEffort());
+        if(us.getState().equals("completed")) {
+            s.setProgress(s.getProgress() - us.getEffort());
+        }
+        em.getTransaction().commit();
+        em.close();
         if (dm.delete(id)) {
             return Response.status(204).build();
         } else {
