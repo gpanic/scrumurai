@@ -1,6 +1,5 @@
 package scrumurai.data.queryobjects;
 
-import java.sql.Date;
 import java.util.List;
 import scrumurai.data.entities.Sprint;
 

@@ -1,6 +1,6 @@
 package scrumurai.data.queryobjects;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ReleaseStartEnd extends ReleaseObj{
 

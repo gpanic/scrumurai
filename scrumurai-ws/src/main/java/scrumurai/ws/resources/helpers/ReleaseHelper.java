@@ -10,13 +10,9 @@ import scrumurai.data.EMF;
 import scrumurai.data.entities.Release;
 import scrumurai.data.entities.Sprint;
 import scrumurai.data.entities.UserStory;
-import scrumurai.data.mapping.DataMapper;
 import scrumurai.data.queryobjects.ReleaseDetailed;
 import scrumurai.data.queryobjects.ReleaseObj;
 import scrumurai.data.queryobjects.ReleaseStartEnd;
-import scrumurai.ws.resources.ReleaseResource;
-import scrumurai.ws.resources.SprintResource;
-import scrumurai.ws.resources.UserStoryResource;
 
 public class ReleaseHelper {
 
@@ -33,7 +29,7 @@ public class ReleaseHelper {
             if (!contains) {
                 ReleaseStartEnd rs = new ReleaseStartEnd(s.getRelease().getId(), s.getRelease().getName());
                 setStartEndDate(sprints, rs);
-                if (rs.getEnd_date() != null && rs.getEnd_date().compareTo(new java.sql.Date(Calendar.getInstance().getTimeInMillis())) < 0)
+                if (rs.getEnd_date() != null && rs.getEnd_date().compareTo(new java.util.Date(Calendar.getInstance().getTimeInMillis())) < 0)
                     rs.setCurrent(false);
                 else
                     rs.setCurrent(true);
@@ -118,7 +114,7 @@ public class ReleaseHelper {
             ReleaseStartEnd rse = new ReleaseStartEnd(r.getId(), r.getName());
             List<Sprint> sprints = listSprints(r.getId());
             setStartEndDate(sprints, rse);
-            if (rse.getEnd_date() != null && rse.getEnd_date().compareTo(new java.sql.Date(Calendar.getInstance().getTimeInMillis())) < 0)
+            if (rse.getEnd_date() != null && rse.getEnd_date().compareTo(new java.util.Date(Calendar.getInstance().getTimeInMillis())) < 0)
                 rse.setCurrent(false);
             else
                 rse.setCurrent(true);

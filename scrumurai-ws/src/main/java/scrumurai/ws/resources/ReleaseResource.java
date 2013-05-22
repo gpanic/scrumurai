@@ -1,14 +1,8 @@
 package scrumurai.ws.resources;
 
 import java.net.URI;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -18,11 +12,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import scrumurai.data.EMF;
-import scrumurai.data.entities.EntityObject;
-
 import scrumurai.data.entities.Release;
-import scrumurai.data.entities.Sprint;
-import scrumurai.data.entities.UserStory;
+
 import scrumurai.data.mapping.DataMapper;
 import scrumurai.data.queryobjects.ReleaseDetailed;
 import scrumurai.data.queryobjects.ReleaseStartEnd;
@@ -100,8 +91,8 @@ public class ReleaseResource implements Resource<Release> {
             try {
                 r = new ReleaseStartEnd((Integer) rs.get(0)[0],
                         (String) rs.get(0)[1],
-                        new java.sql.Date(sd.parse((String) rs.get(0)[2]).getTime()),
-                        new java.sql.Date(sd.parse((String) rs.get(0)[3]).getTime()),
+                        new java.util.Date((Long) rs.get(0)[2]),
+                        new java.util.Date((Long) rs.get(0)[3]),
                         (Long) rs.get(0)[4]);
             } catch (Exception ex) {
                 System.out.println(ex);

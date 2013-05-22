@@ -98,6 +98,11 @@ var getReleaseDataTotal = function(release_id){
     }
   }).done(function (data) {
     d = data;
+
+    $.each(d,function(){
+      d.start_date = getDateFormatYmd(d.start_date);
+      d.end_date = getDateFormatYmd(d.end_date);
+    });
   }).fail(function (xhr, textStatus, errorThrown) {
     console.log("get release data total fail");
   }).always(function () {
@@ -124,13 +129,19 @@ var getData = function(release_id, data_top){
   for(var a = 0;a < userstories.length;a++){
    if(userstories[a].end_date){
     total_effort -= userstories[a].effort;
-    json.push({date: userstories[a].end_date, effort: total_effort});
+    json.push({date: getDateFormatYmd(userstories[a].end_date), effort: total_effort});
   }
 }
 return json;
 }
 
+function getDateFormatYmd(dt){
+  var d = new Date(dt);
+  return d.yyyymmdd();
+}
 var generateGraph = function(release_id){
+
+
   $("#graph").html("");
   // define dimensions of graph
   var m = [20, 5, 160, 75]; // margins
@@ -153,10 +164,12 @@ var generateGraph = function(release_id){
   var data_total = getDataTotal(release_id);
   if(!data_total){
     console.log("dt false");
-    $("#graph_container").html('<p id="errorpage_msg">This release has no user stories.</p>')
+    $("#graph_container").html('<p id="errorpage_msg">This release does not have any finished user stories.</p>')
     return false;
   }
   var data = getData(release_id,data_total[0]);
+
+  console.log(data);
 
   if(!data){
     $("#graph").html("<p id='errorpage_msg'>Your sprint does not have any finished user stories.</p>");
