@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	$(document).on("pageshow", "#mytasks", function() {
+		console.log(_selectedProject[0]);
 		console.log("pagebeforeshow #mytasks");
 		if(_selectedProject[0] != -1 && _user != null)
 			getMyTasks(_selectedProject[0], _user.id);

@@ -1,9 +1,22 @@
+function onLoad() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
 
+// PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+//
+function onDeviceReady() {
+    // Register the event listener
+    document.addEventListener("menubutton", onMenuKeyDown, false);
+}
+
+$(document).click(function(e) {
+	if (e.target.id != 'menu_button_menu' && !$('#menu_button_menu').find(e.target).length) {
+		$("#menu_button_menu").hide();
+	}
+});
 
 $(document).ready(function() {
 	autoLogin();
-
-	document.addEventListener("menubutton", showMenuButton, false);
 
 	$(document).on("pagebeforeshow",  function() {
 		if(!_user && location.hash != "#register"){
@@ -18,7 +31,7 @@ $(document).ready(function() {
 			autoLogin();
 		return false;
 	});
-	
+
 	$("#loginForm").submit(function(){
 		login();
 		return false;
@@ -28,6 +41,7 @@ $(document).ready(function() {
 		register();
 		return false;
 	});
+
 });
 
 
@@ -80,6 +94,7 @@ var login = function(){
 	}).fail(function(xhr, textStatus, errorThrown){
 		failedLogin();
 	}).always(function(){
+		enableButton("#submitLogin");
 		$.mobile.loading('hide');
 	});
 }
@@ -123,6 +138,23 @@ function loginNewUser(user,id){
 }
 
 
-var showMenuButton = function(){
-	alert("nekaj");
+var onMenuKeyDown = function(){
+	if(_user != null){
+		var menu = $("#menu_button_menu");
+		if (menu.is(':visible'))
+			menu.hide();
+		else
+			menu.show();
+	}
+}
+
+var logout = function(){
+	_user = null;
+
+	$("#login_username").val("");
+	$("#login_password").val("");
+
+	window.localStorage.setItem("login","");
+	$("#menu_button_menu").hide();
+	$.mobile.changePage("");
 }

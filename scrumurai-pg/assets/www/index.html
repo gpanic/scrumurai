@@ -30,8 +30,10 @@
   <script type="text/javascript" src="js/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
   <script src="js/mytasks.js"></script>
 </head> 
-<body> 
-
+<body onload="onLoad()"> 
+  <div id="menu_button_menu">
+    <a href="javascript:logout()">Log out</a>
+  </div>
   <!-- LOGIN -->
   <div data-role="page" id="login">
     <div data-role="content">  

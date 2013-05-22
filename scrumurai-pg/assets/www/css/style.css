@@ -60,3 +60,23 @@
 .ui-widget-content{
 	border: 1px solid #333333 !important;
 }
+
+#menu_button_menu{
+	background-color: #000;
+	position: absolute;
+	bottom: 0px;
+	z-index: 1000;
+	text-align: center;
+	width: 100%;
+	padding: 15px;
+	display: none;
+}
+
+#menu_button_menu a{
+	color: white;
+	font-size: 24px;
+	font-family: Arial;
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow: none;
+}
