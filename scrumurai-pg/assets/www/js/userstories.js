@@ -36,6 +36,7 @@ $(document).ready(function() {
 	});
 
 	$(document).on("pagebeforeshow", "#userstorystatedialog", function() {
+		console.log(_selectedUserstory);
 		var userstory = getUserstory(_selectedUserstory);
 		$("#userStoryStateDialogList li").show();
 		$("#userStoryStateDialogList li").each(function() {
@@ -226,6 +227,13 @@ var getUserstory = function(id) {
 
 var updateUserstoryState = function(state_new) {
 	if(_selectedUserstory != -1) {
+		userstory = getUserstory(_selectedUserstory);
+		start_date = userstory.sprint.start_date;
+		now = new Date();
+		if(now < userstory.sprint.start_date) {
+			redirectError("This sprint has not begun yet.");
+			return false;
+		}
 		$.ajax({
 			url: _ws + "/userstories/" + _selectedUserstory + "/state",
 			type: "PUT",
