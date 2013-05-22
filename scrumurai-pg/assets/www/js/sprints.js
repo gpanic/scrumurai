@@ -77,7 +77,7 @@ var populateSprints = function() {
 		});
 		$("#sprintsList").listview("refresh");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -148,7 +148,7 @@ var createSprint = function () {
 		enableButton("#submitAddSprint");
 		$.mobile.changePage("#sprint");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -191,7 +191,7 @@ var getSprint = function(id) {
 	}).done(function( json 	) {
 		sprint = json;
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -237,7 +237,7 @@ var updateSprint = function() {
 		_selectedSprint = -1;
 		$.mobile.changePage("#sprint");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -253,7 +253,7 @@ var deleteSprint = function() {
 	}).done(function() {
 		populateSprints();
 	}).fail(function() {
-		alert("fail");
+		console.log("fail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});

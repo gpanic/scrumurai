@@ -106,7 +106,7 @@ var populateReleases = function() {
 		$("#release_coll_current_list").listview("refresh");
 		$("#release_coll_done_list").listview("refresh");
 	}).fail(function() {
-		alert("fail");
+		console.log("fail populateRelease");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -150,7 +150,7 @@ var getReleaseDetailed = function(release_id){
 		$("#viewrelease_sprints > div a:first-child").addClass("ui-first-child");
 		$("#viewrelease_sprints > div a:last-child").addClass("ui-last-child");
 	}).fail(function() {
-		console.log("fail");
+		console.log("fail getReleaseDetail");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
@@ -170,7 +170,7 @@ var loadEditRelease = function(release_id){
 		$("#editrelease_id").remove();
 		$("#editReleaseForm").append("<input type='hidden' name='id' id='editrelease_id' value='" + json.id + "'/>");
 	}).fail(function() {
-		console.log("fail");
+		console.log("fail loadEditRelease");
 	}).always(function() {
 		$.mobile.loading('hide');
 	});
