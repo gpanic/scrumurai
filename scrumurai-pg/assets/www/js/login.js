@@ -3,6 +3,8 @@
 $(document).ready(function() {
 	autoLogin();
 
+	document.addEventListener("menubutton", showMenuButton, false);
+
 	$(document).on("pagebeforeshow",  function() {
 		if(!_user && location.hash != "#register"){
 			console.log("pagebeforeshow");
@@ -118,4 +120,9 @@ var register = function(){
 function loginNewUser(user,id){
 	user.id = id;
 	_user = user;
+}
+
+
+var showMenuButton = function(){
+	alert("nekaj");
 }

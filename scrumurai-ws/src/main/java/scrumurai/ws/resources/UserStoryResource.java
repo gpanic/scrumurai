@@ -194,12 +194,14 @@ public class UserStoryResource implements Resource<UserStory> {
     }
     
     @GET
-    @Path("/todo/{id}")
+    @Path("/todo/{project_id}/{user_id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listToDo(@PathParam("id") int project_id) {
+    public Response listToDo(@PathParam("project_id") int project_id, @PathParam("user_id")int user_id) {
+        System.out.println("TO DO");
         EntityManager em = EMF.get().createEntityManager();
-        TypedQuery<UserStory> query = em.createQuery("SELECT x FROM UserStory x WHERE x.project.id = :project_id AND x.end_date IS null ORDER BY x.sprint.start_date DESC", UserStory.class);
+        TypedQuery<UserStory> query = em.createQuery("SELECT x FROM UserStory x WHERE x.project.id = :project_id AND x.end_date IS null AND x.assignee.id = :user_id ORDER BY x.sprint.start_date DESC", UserStory.class);
         query.setParameter("project_id", project_id);
+        query.setParameter("user_id", user_id);
         List<UserStory> rs = query.getResultList();
         em.close();
         return Response.ok(rs).build();
