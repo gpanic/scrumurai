@@ -230,7 +230,7 @@ var updateUserstoryState = function(state_new) {
 		userstory = getUserstory(_selectedUserstory);
 		start_date = userstory.sprint.start_date;
 		now = new Date();
-		if(now < userstory.sprint.start_date) {
+		if(state_new == "completed" && now < userstory.sprint.start_date) {
 			redirectError("This sprint has not begun yet.");
 			return false;
 		}

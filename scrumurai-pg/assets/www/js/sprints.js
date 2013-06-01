@@ -121,7 +121,7 @@ var createSprint = function () {
 	}
 	var start = new Date(formResult.add_sprint_start);
 	var end = new Date(formResult.add_sprint_start);
-	end.setDate(end.getDate() + 4);
+	end.setDate(end.getDate() + 6);
 
 	var sprint = {
 		name: formResult.add_sprint_name,
@@ -175,7 +175,7 @@ var populateEditForm = function() {
 	var sprint = getSprint(_selectedSprint);
 	$("#edit_sprint_name").val(sprint.name);
 	var start = new Date(sprint.start_date);
-	var start_str = start.getDate() + "/" + start.getMonh() + "/" + start.getFullYear();
+	var start_str = start.getDate() + "/" + (start.getMonth() + 1) + "/" + start.getFullYear();
 	$("#edit_sprint_start").val(start_str);
 	$('#edit_sprint_release').val($("#edit_sprint_release option[value='" + sprint.release.id + "'']").val());
 }
@@ -211,7 +211,7 @@ var updateSprint = function() {
 
 	var start = new Date(formResult.edit_sprint_start);
 	var end = new Date(formResult.edit_sprint_start);
-	end.setDate(end.getDate() + 4);
+	end.setDate(end.getDate() + 6);
 
 	var sprint = {
 		name: formResult.edit_sprint_name,
