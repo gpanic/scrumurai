@@ -57,7 +57,7 @@ var autoLogin = function(){
 			type: "POST",
 			contentType: "text/plain; charset=utf-8",
 			data: JSON.stringify(loginData),
-			async: false
+			timeout: 5000
 		}).done(function(data){
 			_user = data;
 			$.mobile.changePage("#mytasks");
@@ -66,6 +66,10 @@ var autoLogin = function(){
 			$("#login_logo").removeClass("centered").addClass("login_logo");
 			$("#loginPage").show();
 		});
+	}else{
+		$.mobile.loading('hide');
+		$("#login_logo").removeClass("centered").addClass("login_logo");
+		$("#loginPage").show();
 	}
 }
 
@@ -154,7 +158,9 @@ var logout = function(){
 	$("#login_username").val("");
 	$("#login_password").val("");
 
+	$("#login_fail").hide();
+
 	window.localStorage.setItem("login","");
 	$("#menu_button_menu").hide();
-	$.mobile.changePage("");
+	$.mobile.changePage("#login");
 }

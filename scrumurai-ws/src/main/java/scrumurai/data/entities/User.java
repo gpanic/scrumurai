@@ -27,6 +27,7 @@ public class User implements EntityObject {
     private String lastname;
     private String number;
 
+    
     public User() {
     }
 

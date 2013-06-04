@@ -4,19 +4,24 @@ $(function () {
   });
 
   $(document).on("pagebeforeshow","#burndown",  function() {    
+    console.log("pagebeforeshow #burndown");
 
+    $("#graph_working").show();
+    $("#graph_error").text("");
     if (_selectedProject[0] == -1){
-      redirectError("You have no selected project.");
+      $("#graph_working").hide();
+      $("#graph_error").text("You have no selected project.");
     }else if(!fillBurndownSelectRelease(_selectedProject[0])){
-      redirectError("You have no releases.");
-    }else{
-      fillVelocity(_selectedProject[0]);
+     $("#graph_working").hide();
+     $("#graph_error").text("You have no releases.");
+   }else{
+    fillVelocity(_selectedProject[0]);
 
-      if($("#burndown_select_release").val())
-        generateGraph($("#burndown_select_release").val());
-    }
-    return false;
-  });
+    if($("#burndown_select_release").val())
+      generateGraph($("#burndown_select_release").val());
+  }
+  return false;
+});
 
 
   $("#burndown_select_release").change(function(){
@@ -27,6 +32,7 @@ $(function () {
 });
 
 var fillBurndownSelectRelease = function (project_id) {
+  console.log("fillBurndownSelectRelease");
   $('#burndown_select_release').find('option').remove().end();
   var found_releases = false;
   $.ajax({
@@ -55,6 +61,7 @@ var fillBurndownSelectRelease = function (project_id) {
 }).always(function () {
   $.mobile.loading('hide');
 });
+
 return found_releases;
 }
 
@@ -167,15 +174,15 @@ var generateGraph = function(release_id){
     $("#graph_container").html('<p id="errorpage_msg">This release does not have any finished user stories.</p>')
     return false;
   }
+
   var data = getData(release_id,data_total[0]);
-
-  console.log(data);
-
   if(!data){
+    console.log("data false");
     $("#graph").html("<p id='errorpage_msg'>Your sprint does not have any finished user stories.</p>");
     return false;
   }
-  //grid lines
+
+  // grid lines
   function make_x_axis() {
     return d3.svg.axis()
     .scale(x)

@@ -4,6 +4,11 @@ $(document).ready(function() {
 		console.log("pagebeforeshow #addrelease");
 		if(_selectedProject[0] == -1)
 			redirectError("First you need to create a project.");
+
+		$("#add_release_name").val("");
+		$("#add_release_description").val("");
+		enableButton("#submitAddRelease");
+
 	});
 
 	$(document).on("pagebeforeshow","#editrelease",  function() {
