@@ -5,7 +5,7 @@
     <groupId>scrumurai</groupId>
     <artifactId>scrumurai-ws</artifactId>
     <packaging>war</packaging>
-    <version>1</version>
+    <version>2</version>
 
     <name>scrumurai-ws</name>
     <url>http://maven.apache.org</url>
