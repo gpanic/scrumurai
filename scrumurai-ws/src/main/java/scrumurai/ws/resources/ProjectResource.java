@@ -3,12 +3,15 @@ package scrumurai.ws.resources;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import scrumurai.data.EMF;
 
 import scrumurai.data.entities.Project;
 import scrumurai.data.entities.ProjectMember;
@@ -74,6 +77,13 @@ public class ProjectResource implements Resource<Project> {
     @Path("/{id}")
     public Response delete(@PathParam("id") int id) {
         System.err.println("DELETE PROJECT");
+        EntityManager em = EMF.get().createEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("DELETE FROM ProjectMember pm WHERE pm.project.id = :id");
+        query.setParameter("id", id);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
         if (dm.delete(id)) {
             return Response.status(204).build();
         } else {

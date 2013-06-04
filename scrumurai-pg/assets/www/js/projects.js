@@ -1,35 +1,14 @@
 $(document).ready(function() {
 	
-	$(document).on("pageinit", function() {
-		if(_selectedProject[0] == -1) {
-			$.ajax({
-				url: _ws + "/projects",
-				type: "GET",
-				dataType: "json",
-				beforeSend: function ( xhr ) {
-					$.mobile.loading('show');
-				}
-			}).done(function(json) {
-				if (json.length != 0) {
-					_selectedProject[0] = json[0].id;
-					_selectedProject[1] = json[0].name;
-				}
-				updateSelectedProject();
-			}).fail(function() {
-				console.log("fail");
-			}).always(function() {
-				$.mobile.loading('hide');
-			});
-		} else {
-			updateSelectedProject();
-		}
+	$(document).on("pagebeforeshow", function() {
+		populateSelectProject();
 	});
 	
 	$(document).on("pagebeforeshow", "#myprojects", function() {
 		populateProjects();
 	});
 
-	$(document).on("pageinit", "#projectsdialog", function() {
+	$(document).on("pagebeforeshow", "#projectsdialog", function() {
 		populateProjectsDialog();
 	});
 	
@@ -103,7 +82,33 @@ $(document).ready(function() {
 
 });
 
+var populateSelectProject = function() {
+	if(_selectedProject[0] == -1) {
+			$.ajax({
+				url: _ws + "/projects",
+				type: "GET",
+				dataType: "json",
+				beforeSend: function ( xhr ) {
+					$.mobile.loading('show');
+				}
+			}).done(function(json) {
+				if (json.length != 0) {
+					_selectedProject[0] = json[0].id;
+					_selectedProject[1] = json[0].name;
+				}
+				updateSelectedProject();
+			}).fail(function() {
+				console.log("fail");
+			}).always(function() {
+				$.mobile.loading('hide');
+			});
+		} else {
+			updateSelectedProject();
+		}
+}
+
 var populateProjectsDialog = function() {
+	console.log("POPULATE PROJECTS DIALOG");
 	if(_user == undefined) {
 		return false;
 	}
@@ -115,6 +120,8 @@ var populateProjectsDialog = function() {
 			$.mobile.loading('show');
 		}
 	}).done(function(json) {
+		console.log("AAAAAAAAAAA");
+		console.log(json);
 		var projects = []
 		$(".projectPopupList li:not(:last)").remove();
 		$.each(json, function(i, projectmember) {
@@ -211,6 +218,7 @@ var createProject = function() {
 			this.reset();
 		});
 		enableButton("#submitAddProject");
+		updateSelectedProject();
 		$.mobile.changePage("#myprojects");
 	}).fail(function() {
 		console.log("fail");
@@ -232,6 +240,8 @@ var deleteProject = function(id) {
 			$.mobile.loading('show');
 		}
 	}).done(function() {
+		_selectedProject = [-1, "No projects yet"];
+		updateSelectedProject();
 	}).fail(function() {
 		console.log("fail");
 	}).always(function() {

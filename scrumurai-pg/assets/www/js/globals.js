@@ -1,4 +1,5 @@
 var _ws = "http://svizec.informatika.uni-mb.si:8080/scrumurai-ws-1/rest";
+//var _ws = "http://localhost:7659/scrumurai-ws/rest";
 
 /* PROJECTS */
 

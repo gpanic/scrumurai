@@ -21,7 +21,7 @@ $(document).ready(function() {
 		populateEditForm();
 	});
 
-	$(document).on("pageinit", "#assignuserstorydialog", function() {
+	$(document).on("pagebeforeshow", "#assignuserstorydialog", function() {
 		populateAssignableMembers();
 	});
 
@@ -367,6 +367,7 @@ var assignMember = function(user_id) {
 		$.mobile.changePage("#backlog");
 		_selectedUserstory = -1;
 		$("#assignuserstorydialog").dialog("close");
+		selectUserstory(-1);
 	}).fail(function() {
 		alert("fail");
 	}).always(function() {
