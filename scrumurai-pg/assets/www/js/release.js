@@ -79,6 +79,10 @@ function failedAddRelease(){
 }
 
 var populateReleases = function() {
+	$("#release_coll_current_list").empty();
+	$("#release_coll_done_list").empty();
+	$("#release_coll_current_count").html(0);
+	$("#release_coll_done_count").html(0);
 	$.ajax({
 		url: _ws + "/releases/currentdone/" + _selectedProject[0],
 		type: "GET",
@@ -89,8 +93,6 @@ var populateReleases = function() {
 	}).done(function(json) {
 		var releasesCurrent = 0;
 		var releasesDone = 0;
-		$("#release_coll_current_list").empty();
-		$("#release_coll_done_list").empty();
 		$.each(json, function(i, release) {
 			var release_html = "<li><a class='release_link' data-releaseid='" + release.id + "' href='javascript:selectRelease(" + release.id + ")'>" +
 			"<h2>" + release.name +"</h2>" +
