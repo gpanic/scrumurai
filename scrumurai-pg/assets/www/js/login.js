@@ -159,7 +159,7 @@ var logout = function(){
 	$("#login_password").val("");
 
 	$("#login_fail").hide();
-
+	$("#loginPage").show();
 	window.localStorage.setItem("login","");
 	$("#menu_button_menu").hide();
 	$.mobile.changePage("#login");
