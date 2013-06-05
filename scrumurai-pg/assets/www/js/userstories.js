@@ -50,6 +50,11 @@ $(document).ready(function() {
 	$("#deleteuserstory").tap(function() {
 		deleteUserStory();
 	});
+
+	$("#userstorystatedialog").bind("pagehide",function(){
+		_selectedUserstory = -1;
+		selectUserstory(-1);
+	});
 });
 
 var populateUserStories = function() {
@@ -191,6 +196,7 @@ var createUserStory = function () {
 }
 
 var selectUserstory = function(id) {
+	console.log("tu sem")
 	if (id != _selectedUserstory) {
 		$("#userstoriesList>div>div>ul>li").each(function() {
 			$(this).attr("data-theme", "d").removeClass("ui-btn-up-b").removeClass('ui-btn-hover-b').addClass("ui-btn-up-d").addClass('ui-btn-hover-d');
@@ -366,8 +372,8 @@ var assignMember = function(user_id) {
 	}).done(function(json) {
 		$.mobile.changePage("#backlog");
 		_selectedUserstory = -1;
-		$("#assignuserstorydialog").dialog("close");
 		selectUserstory(-1);
+		$("#assignuserstorydialog").dialog("close");
 	}).fail(function() {
 		alert("fail");
 	}).always(function() {
