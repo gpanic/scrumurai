@@ -9,7 +9,7 @@
         <class>scrumurai.data.entities.UserEffortVote</class>
         <class>scrumurai.data.entities.UserStory</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:/D:/scrumurai.sqlite" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:scrumurai.sqlite" />
             <property name="javax.persistence.jdbc.user" value="scrumurai"/>
             <property name="javax.persistence.jdbc.password" value="ninja"/>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
